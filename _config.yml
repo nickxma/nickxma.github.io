@@ -28,7 +28,7 @@ twitter_username: your_twitter_username
 github_username:  nickxma
 
 # Build settings
-theme: minima
+remote_theme: riggraz/no-style-please
 plugins:
   - jekyll-feed
 
