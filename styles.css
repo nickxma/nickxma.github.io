@@ -1,8 +1,8 @@
 /* styles.css */
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+	line-height: 1.6;
     margin: 40px;
     color: #000;
     background-color: #fff;
