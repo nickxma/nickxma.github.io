@@ -5,7 +5,7 @@ gem "jekyll-remote-theme"
 gem "no-style-please"
 
 group :jekyll_plugins do
-  gem "github-pages"  # This should be here
+  gem "github-pages", "~> 227"
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-seo-tag"
 end
