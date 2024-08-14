@@ -10,7 +10,7 @@ permalink: /:slug.html
 
 favicon: "logo.png"
 
-remote_theme: nickxma/no-flex
+remote_theme: no-style-please
 
 plugins:
   - jekyll-feed
