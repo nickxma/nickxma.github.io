@@ -45,3 +45,8 @@ code {
     border-radius: 3px;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* Make the <em> element smaller */
+body > em {
+    font-size: 14px; /* Adjust this size as needed */
+}
