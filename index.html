@@ -1,67 +1,855 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nickxma</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="favicon/favicon-16x16.png" type="image/png" sizes="16x16">
-    <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paradox of Acceptance</title>
+<meta name="description" content="Making mindfulness more legible without pretending it is simple.">
+<meta property="og:title" content="Paradox of Acceptance">
+<meta property="og:description" content="Making mindfulness more legible without pretending it is simple.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e3e8ee;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --text-tertiary: #888;
+  --accent: #5469d4;
+  --accent-soft: #eef1fb;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16161a;
+    --surface: #1e1e24;
+    --border: #2a2a30;
+    --text: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #666;
+    --accent: #7b8ff5;
+    --accent-soft: rgba(123, 143, 245, 0.1);
+  }
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---- NAV ---- */
+.poa-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(250, 250, 250, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (prefers-color-scheme: dark) {
+  .poa-nav { background: rgba(22, 22, 26, 0.88); }
+  .card { box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+}
+
+.poa-nav-brand {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.poa-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.poa-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.poa-nav-links a {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.poa-nav-links a:hover { color: var(--text); }
+.poa-nav-links a.active { color: var(--text); font-weight: 600; }
+
+/* ---- MAIN ---- */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+}
+
+/* ---- PAGE HEADER ---- */
+.page-header {
+  margin-bottom: 48px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.page-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- SECTIONS ---- */
+.content-section {
+  margin-bottom: 40px;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---- CARD GRID ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* ---- CARDS ---- */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.card-meta {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.card:hover .card-title {
+  color: var(--accent);
+}
+
+.card-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.card-arrow {
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-top: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+/* Completed state */
+.card.completed { border-color: var(--accent); }
+.card.completed::after {
+  content: '\2713';
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---- AUTH ---- */
+.auth-link {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+
+.auth-link:hover { color: var(--text); }
+
+.auth-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.auth-form input {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--text);
+  outline: none;
+  width: 140px;
+  transition: border-color 0.15s;
+}
+
+.auth-form input:focus { border-color: var(--accent); }
+
+.auth-btn-primary {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.auth-btn-primary:hover { opacity: 0.85; }
+
+.auth-mode-toggle {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.auth-error {
+  font-size: 0.72rem;
+  color: #cd3d64;
+  position: absolute;
+  bottom: -18px;
+  right: 0;
+  white-space: nowrap;
+}
+
+.auth-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.auth-user-email { font-size: 0.75rem; }
+
+.auth-signout {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+
+.auth-signout:hover { color: var(--text); }
+
+/* ---- SUBSCRIBE ---- */
+.subscribe-section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.subscribe-inner {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.subscribe-text {
+  flex-shrink: 0;
+}
+
+.subscribe-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.subscribe-subtext {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.subscribe-form-wrap {
+  flex: 1;
+  max-width: 320px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 8px;
+}
+
+.subscribe-form input[type="email"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.subscribe-form input[type="email"]:focus { border-color: var(--accent); }
+
+.subscribe-form button {
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.subscribe-form button:hover { opacity: 0.85; }
+.subscribe-form button:disabled { opacity: 0.5; cursor: default; }
+
+.subscribe-msg {
+  font-size: 0.78rem;
+  margin-top: 8px;
+  min-height: 1.2em;
+}
+
+.subscribe-msg.success { color: #2e7d32; }
+.subscribe-msg.error { color: #c62828; }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 24px 40px;
+  font-family: var(--font-sans);
+}
+
+.footer-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.footer-brand-link {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer-brand-link:hover { opacity: 0.7; }
+
+.footer-tagline {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-col h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.footer-col a {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+  .poa-nav { padding: 0 16px; height: 48px; }
+  .poa-nav-brand { font-size: 0.82rem; }
+  .poa-nav-links { gap: 16px; }
+  .poa-nav-links a { font-size: 0.78rem; }
+
+  .container { padding: 32px 16px 0; }
+  .page-header { margin-bottom: 36px; }
+  .page-header h1 { font-size: 1.6rem; }
+  .page-desc { font-size: 0.95rem; }
+
+  .card-grid { grid-template-columns: 1fr; }
+  .card { padding: 20px; }
+
+  .subscribe-section { padding: 0 16px 40px; }
+  .subscribe-inner { flex-direction: column; padding: 24px; gap: 16px; }
+  .subscribe-form-wrap { max-width: 100%; }
+  .subscribe-form { flex-direction: column; }
+  .subscribe-form button { width: 100%; }
+
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .site-footer { padding-bottom: calc(32px + env(safe-area-inset-bottom)); }
+
+  .auth-form {
+    flex-direction: column;
+    position: fixed;
+    top: 48px;
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0 0 0 8px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    gap: 8px;
+    z-index: 99;
+  }
+  .auth-form input { width: 200px; }
+  .auth-error { position: static; }
+}
+
+@media (max-width: 375px) {
+  .page-header h1 { font-size: 1.4rem; }
+  .card { padding: 14px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+</style>
+<link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>nickxma</h1>
-            <p class="tagline">appearances that pose as me</p>
-        </header>
 
-        <section class="section">
-            <h2 class="section-title">Work</h2>
-            <ul class="link-list">
-                <li><a href="https://www.paypal.com/us/digital-wallet/manage-money/crypto" target="_blank">
-                    <span>Crypto @PayPal</span>
-                    <span class="arrow">&rarr;</span>
-                </a></li>
-                <li><a href="https://share.google/UlMQ5zAZCZC8RMb1h" target="_blank">
-                    <span>Formula Body Works</span>
-                    <span class="arrow">&rarr;</span>
-                </a></li>
-                <li><a href="https://docs.rocketpool.net/guides/node/responsibilities" target="_blank">
-                    <span>Mini Pool Operator</span>
-                    <span class="arrow">&rarr;</span>
-                </a></li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Projects</h2>
-            <ul class="link-list">
-                <li><a href="/paradox-of-acceptance/">
-                    <span>Paradox of Acceptance</span>
-                    <span class="arrow">&rarr;</span>
-                </a></li>
-                <li><a href="/eth/">
-                    <span>Onchain Payments</span>
-                    <span class="arrow">&rarr;</span>
-                </a></li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Say hi</h2>
-            <div class="social-row">
-                <a href="https://x.com/0x7BA086" target="_blank">X</a>
-                <a href="https://app.ens.domains/name/nickxma.eth" target="_blank">ENS</a>
-                <a href="mailto:nickxma@gmail.com">Email</a>
-                <a href="https://t.me/nickxma" target="_blank">Telegram</a>
-            </div>
-        </section>
+<nav class="poa-nav">
+  <a href="/" class="poa-nav-brand">Paradox of Acceptance</a>
+  <div class="poa-nav-right">
+    <div class="poa-nav-links">
+      <a href="/">Tools</a>
+      <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">Essays</a>
+      <a href="https://paradoxofacceptance.xyz/mindfulness-wiki/">Wiki</a>
     </div>
+    <div id="auth-area" style="display:none">
+      <div id="auth-prompt">
+        <button class="auth-link" onclick="showAuthForm()">Sign in</button>
+      </div>
+      <form id="auth-form" class="auth-form" style="display:none" onsubmit="handleAuth(event)">
+        <input type="email" id="auth-email" placeholder="Email" required>
+        <input type="password" id="auth-password" placeholder="Password" required minlength="6">
+        <button type="submit" class="auth-btn-primary" id="auth-submit">Sign in</button>
+        <button type="button" class="auth-mode-toggle" onclick="toggleAuthMode()" id="auth-toggle">Create account</button>
+        <div id="auth-error" class="auth-error"></div>
+      </form>
+      <div id="auth-user" class="auth-user" style="display:none">
+        <span class="auth-user-email" id="user-email"></span>
+        <button class="auth-signout" onclick="doSignOut()">Sign out</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <header class="page-header">
+    <h1>Paradox of Acceptance</h1>
+    <p class="page-desc">Tools for the questions practice raises.</p>
+  </header>
+
+  <section class="content-section">
+    <h2 class="section-label">Start here</h2>
+    <div class="card-grid">
+      <a href="https://paradoxofacceptance.xyz/meditation-quiz/" class="card" data-tool="meditation-quiz">
+        <span class="badge">Recommended</span>
+        <span class="card-meta">Quiz &middot; 7 questions</span>
+        <h3 class="card-title">What Kind of Meditator Are You?</h3>
+        <p class="card-desc">Seven questions about how you practice — not how you think you should. Get matched to one of six practitioner profiles.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      <a href="https://paradoxofacceptance.xyz/meditation-debates/" class="card" data-tool="meditation-debates">
+        <span class="card-meta">Interactive &middot; 5 debates</span>
+        <h3 class="card-title">5 Debates the Field Can't Settle</h3>
+        <p class="card-desc">Five questions where serious practitioners land on different sides.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-label">Explore</h2>
+    <div class="card-grid">
+      <a href="https://paradoxofacceptance.xyz/concept-explorer/" class="card" data-tool="concept-explorer">
+        <span class="card-meta">Interactive &middot; 3 concepts</span>
+        <h3 class="card-title">The Nature of Experience</h3>
+        <p class="card-desc">Awareness, appearances, and the observer — three concepts easy to understand separately, easy to confuse in practice.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      <a href="https://paradoxofacceptance.xyz/teacher-debates/" class="card" data-tool="teacher-debates">
+        <span class="card-meta">Interactive &middot; 26 teachers</span>
+        <h3 class="card-title">26 Teachers, Mapped</h3>
+        <p class="card-desc">Where 26 contemplative teachers land on the hardest questions in practice.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      <a href="https://paradoxofacceptance.xyz/mindfulness-wiki/" class="card" data-tool="mindfulness-wiki">
+        <span class="card-meta">Reference &middot; 9 entries</span>
+        <h3 class="card-title">Wiki</h3>
+        <p class="card-desc">Nine contemplative concepts — what each term means, and why the distinctions matter.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-label">Personalize</h2>
+    <div class="card-grid">
+      <a href="https://paradoxofacceptance.xyz/meditation-recommender/" class="card" data-tool="meditation-recommender">
+        <span class="card-meta">Interactive</span>
+        <h3 class="card-title">What Should I Practice Next?</h3>
+        <p class="card-desc">What you're looking for, what you've tried, where you get stuck. One concrete recommendation.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      <a href="https://paradoxofacceptance.xyz/mindfulness-fit/" class="card" data-tool="mindfulness-fit">
+        <span class="card-meta">Assessment</span>
+        <h3 class="card-title">Should You Get Into Mindfulness?</h3>
+        <p class="card-desc">Most mindfulness content assumes the answer is yes. This tool doesn't.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-label">Reflect</h2>
+    <div class="card-grid">
+      <a href="https://paradoxofacceptance.xyz/mindfulness-pointers/" class="card" data-tool="mindfulness-pointers">
+        <span class="card-meta">Guided &middot; 6 practices</span>
+        <h3 class="card-title">Pointers</h3>
+        <p class="card-desc">Six contemplative pointers — each with a guided practice. Some instructions only make sense when you follow them.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      <a href="https://paradoxofacceptance.xyz/mindfulness-essays/" class="card" data-tool="mindfulness-essays">
+        <span class="card-meta">Long-form</span>
+        <h3 class="card-title">Essays</h3>
+        <p class="card-desc">Longer-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-label">Ritual</h2>
+    <div class="card-grid">
+      <a href="https://paradoxofacceptance.xyz/practice-today/" class="card">
+        <span class="card-meta">Daily &middot; Moon-guided</span>
+        <h3 class="card-title">Today's Practice</h3>
+        <p class="card-desc">A pose for today — what it asks of the body, what arises. Changes with the moon.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+      <a href="https://paradoxofacceptance.xyz/paradox-of-acceptance/rituals/studio-mythology/" class="card">
+        <span class="card-meta">Pose deck</span>
+        <h3 class="card-title">Yoga Studio Mythology</h3>
+        <p class="card-desc">A pose deck on the energy each shape carries: rebirth, clarity, boundaries, confidence, openness.</p>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<section class="subscribe-section">
+  <div class="subscribe-inner">
+    <div class="subscribe-text">
+      <p class="subscribe-heading">Stay in the loop</p>
+      <p class="subscribe-subtext">New tools and essays. No spam.</p>
+    </div>
+    <div class="subscribe-form-wrap">
+      <form class="subscribe-form" id="subscribe-form" onsubmit="return handleSubscribe(event)">
+        <input type="email" id="subscribe-email" placeholder="you@example.com" required>
+        <button type="submit" id="subscribe-btn">Subscribe</button>
+      </form>
+      <p class="subscribe-msg" id="subscribe-msg"></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="footer-brand-link">Paradox of Acceptance</a>
+      <p class="footer-tagline">Tools for the questions practice raises.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div class="footer-col">
+        <h4>Interactive</h4>
+        <a href="https://paradoxofacceptance.xyz/meditation-quiz/">Quiz</a>
+        <a href="https://paradoxofacceptance.xyz/meditation-recommender/">Recommender</a>
+        <a href="https://paradoxofacceptance.xyz/meditation-debates/">Debates</a>
+        <a href="https://paradoxofacceptance.xyz/teacher-debates/">Teacher Debates</a>
+        <a href="https://paradoxofacceptance.xyz/concept-explorer/">Concept Explorer</a>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-fit/">Practice Fit</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reading</h4>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">Essays</a>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-pointers/">Pointers</a>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-wiki/">Wiki</a>
+      </div>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ---- Dismiss auth form on click outside ----
+  document.addEventListener('click', function(e) {
+    var form = document.getElementById('auth-form');
+    var prompt = document.getElementById('auth-prompt');
+    if (form && form.style.display !== 'none' && !form.contains(e.target) && !e.target.classList.contains('auth-link')) {
+      form.style.display = 'none';
+      prompt.style.display = 'block';
+    }
+  });
+
+  // ---- Supabase Auth & Progress ----
+  (function() {
+    if (typeof supabase === 'undefined') return;
+
+    var sb = supabase.createClient(
+      'https://jyxwnfgcqgiqxjdlypvr.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5eHduZmdjcWdpcXhqZGx5cHZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyODkxNTYsImV4cCI6MjA4ODg2NTE1Nn0.4NFTioFSjRZVRqOB9kXToi_UueNrvxBj-vy6uRtCtrE'
+    );
+
+    var authArea = document.getElementById('auth-area');
+    var authPrompt = document.getElementById('auth-prompt');
+    var authFormEl = document.getElementById('auth-form');
+    var authUser = document.getElementById('auth-user');
+    var authError = document.getElementById('auth-error');
+    var authMode = 'signin';
+
+    authArea.style.display = 'block';
+
+    sb.auth.getSession().then(function(res) {
+      if (res.data.session) setUser(res.data.session.user);
+    });
+
+    sb.auth.onAuthStateChange(function(_, session) {
+      if (session) setUser(session.user);
+      else clearUser();
+    });
+
+    function setUser(user) {
+      authPrompt.style.display = 'none';
+      authFormEl.style.display = 'none';
+      authUser.style.display = 'flex';
+      document.getElementById('user-email').textContent = user.email;
+      loadProgress(user.id);
+    }
+
+    function clearUser() {
+      authPrompt.style.display = 'block';
+      authFormEl.style.display = 'none';
+      authUser.style.display = 'none';
+      document.querySelectorAll('.card').forEach(function(c) { c.classList.remove('completed'); });
+    }
+
+    window.showAuthForm = function() {
+      authPrompt.style.display = 'none';
+      authFormEl.style.display = 'flex';
+      document.getElementById('auth-email').focus();
+    };
+
+    window.toggleAuthMode = function() {
+      authMode = authMode === 'signin' ? 'signup' : 'signin';
+      document.getElementById('auth-submit').textContent =
+        authMode === 'signin' ? 'Sign in' : 'Create account';
+      document.getElementById('auth-toggle').textContent =
+        authMode === 'signin' ? 'Create account' : 'Sign in instead';
+      authError.textContent = '';
+    };
+
+    window.handleAuth = function(e) {
+      e.preventDefault();
+      authError.textContent = '';
+      var email = document.getElementById('auth-email').value;
+      var password = document.getElementById('auth-password').value;
+
+      var promise = authMode === 'signin'
+        ? sb.auth.signInWithPassword({ email: email, password: password })
+        : sb.auth.signUp({ email: email, password: password });
+
+      promise.then(function(res) {
+        if (res.error) authError.textContent = res.error.message;
+      });
+    };
+
+    window.doSignOut = function() {
+      sb.auth.signOut();
+    };
+
+    function loadProgress(userId) {
+      sb.from('tool_progress')
+        .select('tool_slug')
+        .eq('user_id', userId)
+        .then(function(res) {
+          if (!res.data) return;
+          document.querySelectorAll('.card').forEach(function(c) { c.classList.remove('completed'); });
+          res.data.forEach(function(p) {
+            var card = document.querySelector('[data-tool="' + p.tool_slug + '"]');
+            if (card) card.classList.add('completed');
+          });
+        });
+    }
+  })();
+
+  // ---- Subscribe Form ----
+  window.handleSubscribe = function(e) {
+    e.preventDefault();
+    var email = document.getElementById('subscribe-email').value.trim();
+    var btn = document.getElementById('subscribe-btn');
+    var msg = document.getElementById('subscribe-msg');
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = '...';
+    msg.textContent = '';
+    msg.className = 'subscribe-msg';
+
+    var sb = supabase.createClient(
+      'https://jyxwnfgcqgiqxjdlypvr.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5eHduZmdjcWdpcXhqZGx5cHZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyODkxNTYsImV4cCI6MjA4ODg2NTE1Nn0.4NFTioFSjRZVRqOB9kXToi_UueNrvxBj-vy6uRtCtrE'
+    );
+
+    sb.rpc('subscribe', { p_email: email }).then(function(res) {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      if (res.error) {
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.className = 'subscribe-msg error';
+      } else if (res.data && res.data.already_subscribed) {
+        msg.textContent = "You're already subscribed.";
+        msg.className = 'subscribe-msg success';
+      } else {
+        msg.textContent = "You're in. Welcome.";
+        msg.className = 'subscribe-msg success';
+        document.getElementById('subscribe-email').value = '';
+      }
+    });
+  };
+</script>
 </body>
 </html>
