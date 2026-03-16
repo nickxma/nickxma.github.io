@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paradox of Acceptance — Tools for the questions practice raises</title>
-<meta name="description" content="Interactive tools, essays, and guided practices for meditators.">
+<meta name="description" content="Interactive tools, essays, and guided practices for meditators — built from studying contemplative teachers across traditions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -15,19 +15,9 @@ html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #FFFFFF; color: #111111; }
 a { color: inherit; text-decoration: none; }
 
-/* Layout */
-.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 280px; gap: 16px; }
-.hero { padding: 64px 280px 48px; }
-.section { padding: 48px 280px; }
-.subscribe-section { padding: 80px 280px; }
-.footer { padding: 48px 280px; }
-
 /* Nav */
-.nav-left { display: flex; align-items: center; gap: 48px; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 64px; }
 .nav-logo { font-family: 'Newsreader', serif; font-size: 20px; font-weight: 500; color: #111; }
-.nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: #666; transition: color 0.15s; }
-.nav-links a:hover { color: #111; }
 
 /* Auth */
 .auth-area { display: none; }
@@ -47,46 +37,67 @@ a { color: inherit; text-decoration: none; }
 .sign-out-btn { font-size: 12px; color: #999; cursor: pointer; background: none; border: none; font-family: inherit; }
 .sign-out-btn:hover { color: #666; text-decoration: underline; }
 
-/* Hero */
-.hero-headline { font-family: 'Newsreader', serif; font-size: 44px; font-weight: 400; color: #111; line-height: 1.2; text-align: center; max-width: 600px; margin: 0 auto 32px; }
-.hero-card { border: 1px solid #E0E0E0; border-radius: 6px; background: #FAFAFA; padding: 24px 28px; max-width: 640px; margin: 0 auto; }
-.hero-card-label { font-size: 10px; font-weight: 600; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
-.hero-card-text { font-size: 15px; color: #444; line-height: 1.65; }
-
 /* Divider */
 .divider { border: none; border-top: 1px solid #EEEEEE; margin: 0; }
 
+/* Body layout */
+.body-layout { display: flex; padding: 48px 64px; gap: 0; }
+
+/* Sidebar */
+.sidebar { width: 200px; flex-shrink: 0; position: sticky; top: 48px; align-self: flex-start; }
+.sidebar-label { font-size: 10px; font-weight: 600; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+.sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sidebar-nav a { font-size: 14px; color: #666; transition: color 0.15s; display: block; }
+.sidebar-nav a:hover { color: #111; }
+.sidebar-nav a.active { color: #111; font-weight: 500; }
+
+/* Content */
+.content { flex: 1; min-width: 0; }
+.content-sections { display: flex; flex-direction: column; gap: 56px; }
+
+/* About */
+.about-headline { font-family: 'Newsreader', serif; font-size: 40px; font-weight: 400; color: #111; line-height: 1.2; margin-bottom: 20px; }
+.about-text { font-size: 15px; color: #555; line-height: 1.7; }
+.about-text p { margin-bottom: 12px; }
+.about-text p:last-child { margin-bottom: 0; }
+
 /* Section label */
-.section-label { font-size: 12px; font-weight: 600; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+.section-label { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
 
-/* Tool rows */
-.tool-row { display: block; padding: 20px 0; border-bottom: 1px solid #EEEEEE; cursor: pointer; transition: background 0.1s; text-decoration: none; color: inherit; }
-.tool-row:hover { background: #FAFAFA; margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; border-radius: 6px; }
-.tool-row:last-child { border-bottom: none; }
-
-/* Tool rows */
-.tool-info { flex: 1; min-width: 0; }
-.tool-title { font-family: 'Newsreader', serif; font-size: 24px; color: #111; margin-bottom: 4px; line-height: 1.3; }
-.tool-meta { font-size: 13px; color: #999; margin-bottom: 8px; }
-.tool-desc { font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+/* Tools grid */
+.tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.tool-card { display: block; padding: 16px 0; text-decoration: none; color: inherit; transition: background 0.1s; border-radius: 6px; }
+.tool-card:hover { background: #FAFAFA; margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; }
+.tool-title { font-family: 'Newsreader', serif; font-size: 20px; color: #111; margin-bottom: 4px; line-height: 1.3; }
+.tool-meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+.tool-desc { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 8px; }
 
 /* Status tag */
-.status-tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; border: 1px solid #DDDDDD; font-size: 11px; font-weight: 500; color: #AAAAAA; }
+.status-tag { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 12px; border: 1px solid #DDDDDD; font-size: 11px; font-weight: 500; color: #AAAAAA; }
 .status-tag svg { display: none; }
-.tool-row.completed .status-tag { background: #ECFDF5; border-color: #ECFDF5; color: #22C55E; }
-.tool-row.completed .status-tag svg { display: block; }
+.tool-card.completed .status-tag { background: #ECFDF5; border-color: #ECFDF5; color: #22C55E; }
+.tool-card.completed .status-tag svg { display: block; }
 .status-tag-text::after { content: 'Not started'; }
-.tool-row.completed .status-tag-text::after { content: 'Completed'; }
+.tool-card.completed .status-tag-text::after { content: 'Completed'; }
 .restart-btn { display: none; font-family: 'Inter', sans-serif; font-size: 12px; color: #999; background: none; border: none; cursor: pointer; margin-left: 8px; padding: 0; }
 .restart-btn:hover { text-decoration: underline; color: #666; }
-.tool-row.completed .restart-btn { display: inline; }
+.tool-card.completed .restart-btn { display: inline; }
+
+/* More cards */
+.more-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.more-card { display: block; padding: 20px; border: 1px solid #EEEEEE; border-radius: 4px; text-decoration: none; color: inherit; transition: border-color 0.15s, background 0.15s; }
+.more-card:hover { border-color: #DDD; background: #FAFAFA; }
+.more-card-label { font-size: 10px; font-weight: 600; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.more-card-title { font-family: 'Newsreader', serif; font-size: 22px; color: #111; margin-bottom: 8px; }
+.more-card-desc { font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 10px; }
+.more-card-link { font-size: 12px; font-weight: 500; color: #999; }
 
 /* Subscribe */
-.subscribe-section { text-align: center; }
-.subscribe-headline { font-family: 'Newsreader', serif; font-size: 32px; color: #111; margin-bottom: 12px; }
-.subscribe-sub { font-size: 16px; color: #666; margin-bottom: 28px; }
+.subscribe-section { padding: 64px 280px; text-align: center; }
+.subscribe-headline { font-family: 'Newsreader', serif; font-size: 28px; color: #111; margin-bottom: 12px; }
+.subscribe-sub { font-size: 15px; color: #666; margin-bottom: 28px; }
 .subscribe-form { display: inline-flex; border: 1px solid #DDD; border-radius: 4px; overflow: hidden; }
-.subscribe-input { font-family: 'Inter', sans-serif; font-size: 14px; padding: 12px 16px; border: none; outline: none; width: 320px; }
+.subscribe-input { font-family: 'Inter', sans-serif; font-size: 14px; padding: 12px 16px; border: none; outline: none; width: 280px; }
 .subscribe-btn { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; background: #111; color: #fff; border: none; cursor: pointer; transition: background 0.15s; }
 .subscribe-btn:hover { background: #333; }
 .subscribe-btn:disabled { background: #666; cursor: default; }
@@ -95,41 +106,39 @@ a { color: inherit; text-decoration: none; }
 .subscribe-msg.error { color: #DC2626; }
 
 /* Footer */
-.footer { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid #EEEEEE; }
-.footer-left {}
+.footer { display: flex; justify-content: space-between; align-items: flex-start; padding: 48px 64px; border-top: 1px solid #EEEEEE; }
 .footer-logo { font-family: 'Newsreader', serif; font-size: 18px; color: #111; margin-bottom: 6px; }
 .footer-tagline { font-size: 14px; color: #999; }
 .footer-right { display: flex; gap: 64px; }
-.footer-col {}
 .footer-col-label { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
 .footer-col a { display: block; font-size: 14px; color: #666; margin-bottom: 10px; transition: color 0.15s; }
 .footer-col a:hover { color: #111; }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .nav, .hero, .section, .subscribe-section, .footer { padding-left: 24px; padding-right: 24px; }
-  .nav { flex-wrap: wrap; }
-  .hero-headline { font-size: 32px; }
+  .nav { padding: 20px 24px; }
+  .body-layout { padding: 32px 24px; flex-direction: column; gap: 32px; }
+  .sidebar { width: 100%; position: static; border-bottom: 1px solid #EEE; padding-bottom: 24px; }
+  .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 4px 16px; }
+  .sidebar-label { display: none; }
+  .about-headline { font-size: 30px; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .more-cards { grid-template-columns: 1fr; }
+  .subscribe-section { padding: 48px 24px; }
   .subscribe-form { flex-direction: column; width: 100%; }
   .subscribe-input { width: 100%; }
   .subscribe-btn { width: 100%; }
-  .footer { flex-direction: column; gap: 32px; }
+  .footer { flex-direction: column; gap: 32px; padding: 48px 24px; }
   .footer-right { gap: 48px; }
-  .tool-title { font-size: 20px; }
-  .nav-left { gap: 24px; }
-  .nav-links { gap: 20px; }
-  .user-email { max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
 @media (max-width: 480px) {
-  .nav { gap: 8px; }
+  .nav { padding: 16px 20px; }
   .nav-logo { font-size: 18px; }
-  .nav-links { gap: 16px; }
-  .nav-links a { font-size: 12px; }
+  .about-headline { font-size: 26px; }
+  .tool-title { font-size: 18px; }
   .auth-area { width: 100%; }
   .auth-user { justify-content: flex-start; }
-  .user-email { max-width: 160px; }
-  .hero-headline { font-size: 26px; }
-  .tool-title { font-size: 18px; }
+  .user-email { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
 </style>
 </head>
@@ -137,14 +146,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- Nav -->
 <nav class="nav">
-  <div class="nav-left">
-    <a href="/" class="nav-logo">Paradox of Acceptance</a>
-    <div class="nav-links">
-      <a href="#tools">Tools</a>
-      <a href="/mindfulness-essays/">Essays</a>
-      <a href="/mindfulness-wiki/">Wiki</a>
-    </div>
-  </div>
+  <a href="/" class="nav-logo">Paradox of Acceptance</a>
   <div class="auth-area" id="auth-area">
     <div class="auth-prompt" id="auth-prompt">
       <button class="auth-link" onclick="showAuthForm()">Sign in</button>
@@ -165,123 +167,117 @@ a { color: inherit; text-decoration: none; }
 
 <hr class="divider">
 
-<!-- Hero -->
-<section class="hero">
-  <h1 class="hero-headline">Tools for the questions practice raises.</h1>
-  <div class="hero-card">
-    <div class="hero-card-label">ABOUT THIS PROJECT</div>
-    <p class="hero-card-text">Interactive tools, essays, and guided practices for meditators.</p>
-  </div>
-</section>
+<!-- Body: sidebar + content -->
+<div class="body-layout">
 
-<hr class="divider">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <ul class="sidebar-nav">
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#tools">Interactive Tools</a></li>
+      <li><a href="#more">Guided Practices</a></li>
+      <li><a href="#more">Essays</a></li>
+      <li><a href="#more">Wiki</a></li>
+    </ul>
+  </aside>
 
-<!-- TOOLS -->
-<section class="section" id="tools">
-  <div class="section-label">Interactive Tools</div>
+  <!-- Content -->
+  <main class="content">
+    <div class="content-sections">
 
-  <a href="/meditation-quiz/" class="tool-row" data-tool="meditation-quiz">
-    <div class="tool-info">
-      <div class="tool-title">What Kind of Meditator Are You?</div>
-      <div class="tool-meta">Quiz &middot; 7 questions</div>
-      <div class="tool-desc">Seven questions about how you practice — not how you think you should. Get matched to one of six practitioner profiles.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('meditation-quiz')">Restart</button></div>
+      <!-- About -->
+      <section id="about">
+        <h1 class="about-headline">Tools for the questions practice raises.</h1>
+        <div class="about-text">
+          <p>Mindfulness practice raises questions that most resources skip. What happens when concentration conflicts with acceptance? When teachers you trust disagree on fundamentals? When the techniques actually work and you're not sure what to do with that?</p>
+          <p>This is a collection of interactive tools, essays, and guided practices built from studying contemplative teachers across traditions. It covers what the official accounts structurally cannot — the tensions, the contradictions, and the open questions that serious practitioners sit with.</p>
+        </div>
+      </section>
+
+      <!-- Interactive Tools -->
+      <section id="tools">
+        <div class="section-label">Interactive Tools</div>
+        <div class="tools-grid">
+
+          <a href="/meditation-quiz/" class="tool-card" data-tool="meditation-quiz">
+            <div class="tool-title">What Kind of Meditator Are You?</div>
+            <div class="tool-meta">Quiz &middot; 7 questions</div>
+            <div class="tool-desc">Seven questions about how you practice — not how you think you should. Get matched to one of six practitioner profiles.</div>
+            <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('meditation-quiz')">Restart</button></div>
+          </a>
+
+          <a href="/meditation-debates/" class="tool-card" data-tool="meditation-debates">
+            <div class="tool-title">5 Debates the Field Can't Settle</div>
+            <div class="tool-meta">Interactive &middot; 5 debates</div>
+            <div class="tool-desc">Five questions where serious practitioners land on different sides.</div>
+            <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('meditation-debates')">Restart</button></div>
+          </a>
+
+          <a href="/teacher-debates/" class="tool-card" data-tool="teacher-debates">
+            <div class="tool-title">26 Teachers, Mapped</div>
+            <div class="tool-meta">Interactive &middot; 26 teachers</div>
+            <div class="tool-desc">Where 26 contemplative teachers land on the hardest questions in practice.</div>
+            <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('teacher-debates')">Restart</button></div>
+          </a>
+
+          <a href="/concept-explorer/" class="tool-card" data-tool="concept-explorer">
+            <div class="tool-title">The Nature of Experience</div>
+            <div class="tool-meta">Interactive &middot; 3 concepts</div>
+            <div class="tool-desc">Awareness, appearances, and the observer — three concepts easy to understand separately, easy to confuse in practice.</div>
+            <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('concept-explorer')">Restart</button></div>
+          </a>
+
+          <a href="/meditation-recommender/" class="tool-card" data-tool="meditation-recommender">
+            <div class="tool-title">What Should I Practice Next?</div>
+            <div class="tool-meta">Interactive</div>
+            <div class="tool-desc">What you're looking for, what you've tried, where you get stuck. One concrete recommendation.</div>
+            <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('meditation-recommender')">Restart</button></div>
+          </a>
+
+          <a href="/mindfulness-fit/" class="tool-card" data-tool="mindfulness-fit">
+            <div class="tool-title">Should You Get Into Mindfulness?</div>
+            <div class="tool-meta">Assessment</div>
+            <div class="tool-desc">Most mindfulness content assumes the answer is yes. This tool doesn't.</div>
+            <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('mindfulness-fit')">Restart</button></div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- More: Practices, Essays, Wiki -->
+      <section id="more">
+        <div class="section-label">More</div>
+        <div class="more-cards">
+
+          <a href="/mindfulness-pointers/" class="more-card" data-tool="mindfulness-pointers">
+            <div class="more-card-label">Guided Practices</div>
+            <div class="more-card-title">Pointers</div>
+            <div class="more-card-desc">Six contemplative pointers — each with a guided practice.</div>
+            <div class="more-card-link">6 practices &rarr;</div>
+          </a>
+
+          <a href="/mindfulness-essays/" class="more-card" data-tool="mindfulness-essays">
+            <div class="more-card-label">Essays</div>
+            <div class="more-card-title">Essays</div>
+            <div class="more-card-desc">What mindfulness does to a person — the tensions, the beliefs that dissolve.</div>
+            <div class="more-card-link">6 pieces &rarr;</div>
+          </a>
+
+          <a href="/mindfulness-wiki/" class="more-card" data-tool="mindfulness-wiki">
+            <div class="more-card-label">Reference</div>
+            <div class="more-card-title">Wiki</div>
+            <div class="more-card-desc">Contemplative concepts — what each term means, and why the distinctions matter.</div>
+            <div class="more-card-link">9 entries &rarr;</div>
+          </a>
+
+        </div>
+      </section>
+
     </div>
-  </a>
+  </main>
 
-  <a href="/meditation-debates/" class="tool-row" data-tool="meditation-debates">
-    <div class="tool-info">
-      <div class="tool-title">5 Debates the Field Can't Settle</div>
-      <div class="tool-meta">Interactive &middot; 5 debates</div>
-      <div class="tool-desc">Five questions where serious practitioners land on different sides.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('meditation-debates')">Restart</button></div>
-    </div>
-  </a>
-
-  <a href="/teacher-debates/" class="tool-row" data-tool="teacher-debates">
-    <div class="tool-info">
-      <div class="tool-title">26 Teachers, Mapped</div>
-      <div class="tool-meta">Interactive &middot; 26 teachers</div>
-      <div class="tool-desc">Where 26 contemplative teachers land on the hardest questions in practice.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('teacher-debates')">Restart</button></div>
-    </div>
-  </a>
-
-  <a href="/concept-explorer/" class="tool-row" data-tool="concept-explorer">
-    <div class="tool-info">
-      <div class="tool-title">The Nature of Experience</div>
-      <div class="tool-meta">Interactive &middot; 3 concepts</div>
-      <div class="tool-desc">Awareness, appearances, and the observer — three concepts easy to understand separately, easy to confuse in practice.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('concept-explorer')">Restart</button></div>
-    </div>
-  </a>
-
-  <a href="/meditation-recommender/" class="tool-row" data-tool="meditation-recommender">
-    <div class="tool-info">
-      <div class="tool-title">What Should I Practice Next?</div>
-      <div class="tool-meta">Interactive</div>
-      <div class="tool-desc">What you're looking for, what you've tried, where you get stuck. One concrete recommendation.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('meditation-recommender')">Restart</button></div>
-    </div>
-  </a>
-
-  <a href="/mindfulness-fit/" class="tool-row" data-tool="mindfulness-fit">
-    <div class="tool-info">
-      <div class="tool-title">Should You Get Into Mindfulness?</div>
-      <div class="tool-meta">Assessment</div>
-      <div class="tool-desc">Most mindfulness content assumes the answer is yes. This tool doesn't.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('mindfulness-fit')">Restart</button></div>
-    </div>
-  </a>
-</section>
-
-<hr class="divider">
-
-<!-- GUIDED PRACTICES -->
-<section class="section" id="practices">
-  <div class="section-label">Guided Practices</div>
-
-  <a href="/mindfulness-pointers/" class="tool-row" data-tool="mindfulness-pointers">
-    <div class="tool-info">
-      <div class="tool-title">Pointers</div>
-      <div class="tool-meta">Guided &middot; 6 practices</div>
-      <div class="tool-desc">Six contemplative pointers — each with a guided practice. Some instructions only make sense when you follow them.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('mindfulness-pointers')">Restart</button></div>
-    </div>
-  </a>
-</section>
-
-<hr class="divider">
-
-<!-- ESSAYS -->
-<section class="section" id="essays">
-  <div class="section-label">Essays</div>
-
-  <a href="/mindfulness-essays/" class="tool-row" data-tool="mindfulness-essays">
-    <div class="tool-info">
-      <div class="tool-title">Essays</div>
-      <div class="tool-meta">Long-form &middot; 6 pieces</div>
-      <div class="tool-desc">Longer-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('mindfulness-essays')">Restart</button></div>
-    </div>
-  </a>
-</section>
-
-<hr class="divider">
-
-<!-- REFERENCE -->
-<section class="section" id="reference">
-  <div class="section-label">Reference</div>
-
-  <a href="/mindfulness-wiki/" class="tool-row" data-tool="mindfulness-wiki">
-    <div class="tool-info">
-      <div class="tool-title">Wiki</div>
-      <div class="tool-meta">Reference</div>
-      <div class="tool-desc">Contemplative concepts — what each term means, and why the distinctions matter.</div>
-      <div class="tool-status"><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('mindfulness-wiki')">Restart</button></div>
-    </div>
-  </a>
-</section>
+</div>
 
 <hr class="divider">
 
@@ -322,6 +318,24 @@ a { color: inherit; text-decoration: none; }
 </footer>
 
 <script>
+/* Sidebar active state on scroll */
+(function() {
+  var links = document.querySelectorAll('.sidebar-nav a');
+  var sections = ['about', 'tools', 'more'];
+  function updateActive() {
+    var scrollY = window.scrollY + 100;
+    var current = 'about';
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) current = id;
+    });
+    links.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+})();
+
 /* Click-outside to close auth form */
 document.addEventListener('click', function(e) {
   var form = document.getElementById('auth-form');
@@ -374,7 +388,7 @@ document.addEventListener('click', function(e) {
     authPrompt.style.display = 'block';
     authFormEl.style.display = 'none';
     authUser.style.display = 'none';
-    document.querySelectorAll('.tool-row').forEach(function(r) {
+    document.querySelectorAll('.tool-card').forEach(function(r) {
       r.classList.remove('completed');
     });
   }
@@ -415,7 +429,7 @@ document.addEventListener('click', function(e) {
       .eq('user_id', userId)
       .then(function(res) {
         if (!res.data) return;
-        document.querySelectorAll('.tool-row').forEach(function(r) {
+        document.querySelectorAll('.tool-card').forEach(function(r) {
           r.classList.remove('completed');
         });
         res.data.forEach(function(p) {
