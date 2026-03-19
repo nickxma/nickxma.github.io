@@ -158,13 +158,11 @@ a { color: inherit; text-decoration: none; }
 .subscribe-msg.error { color: #DC2626; }
 
 /* Footer */
-.footer { display: flex; justify-content: space-between; align-items: flex-start; padding: 48px 64px; border-top: 1px solid var(--border); }
-.footer-logo { font-family: 'Newsreader', serif; font-size: 18px; color: var(--text-primary); margin-bottom: 6px; }
-.footer-tagline { font-size: 14px; color: var(--text-muted); }
-.footer-right { display: flex; gap: 64px; }
-.footer-col-label { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
-.footer-col a { display: block; font-size: 14px; color: var(--text-faint); margin-bottom: 10px; transition: color 0.15s; }
-.footer-col a:hover { color: var(--text-primary); }
+.footer { display: flex; align-items: center; justify-content: space-between; padding: 24px 64px; border-top: 1px solid var(--border); }
+.footer-logo { font-family: 'Newsreader', serif; font-size: 16px; color: var(--text-primary); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--text-faint); transition: color 0.15s; }
+.footer-links a:hover { color: var(--text-primary); }
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -182,8 +180,8 @@ a { color: inherit; text-decoration: none; }
   .subscribe-form { flex-direction: column; width: 100%; }
   .subscribe-input { width: 100%; }
   .subscribe-btn { width: 100%; }
-  .footer { flex-direction: column; gap: 32px; padding: 48px 24px; }
-  .footer-right { gap: 48px; }
+  .footer { flex-direction: column; gap: 16px; padding: 24px; align-items: flex-start; }
+  .footer-links { gap: 16px; }
 }
 @media (max-width: 480px) {
   .nav { padding: 16px 20px; }
@@ -414,26 +412,17 @@ a { color: inherit; text-decoration: none; }
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="footer-left">
-    <div class="footer-logo">Paradox of Acceptance</div>
-  </div>
-  <div class="footer-right">
-    <div class="footer-col">
-      <div class="footer-col-label">Tools</div>
-      <a href="/meditation-quiz/">Quiz</a>
-      <a href="/meditation-debates/">Debates</a>
-      <a href="/teacher-debates/">Teacher Map</a>
-      <a href="/concept-explorer/">Concepts</a>
-      <a href="/meditation-recommender/">Recommender</a>
-      <a href="/mindfulness-fit/">Practice Fit</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-label">More</div>
-      <a href="/essays/paradox-of-acceptance/">The Paradox of Acceptance</a>
-      <a href="/mindfulness-pointers/">Guided Practices</a>
-      <a href="/mindfulness-essays/">Essays</a>
-      <a href="/mindfulness-wiki/">Wiki</a>
-    </div>
+  <div class="footer-logo">Paradox of Acceptance</div>
+  <div class="footer-links">
+    <a href="/meditation-quiz/">Quiz</a>
+    <a href="/meditation-debates/">Debates</a>
+    <a href="/teacher-debates/">Teacher Map</a>
+    <a href="/concept-explorer/">Concepts</a>
+    <a href="/meditation-recommender/">Recommender</a>
+    <a href="/mindfulness-fit/">Practice Fit</a>
+    <a href="/mindfulness-essays/">Essays</a>
+    <a href="/mindfulness-pointers/">Guided Practices</a>
+    <a href="/mindfulness-wiki/">Wiki</a>
   </div>
 </footer>
 
