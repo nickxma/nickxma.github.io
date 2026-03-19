@@ -158,13 +158,11 @@ a { color: inherit; text-decoration: none; }
 .subscribe-msg.error { color: #DC2626; }
 
 /* Footer */
-.footer { display: flex; justify-content: space-between; align-items: flex-start; padding: 48px 64px; border-top: 1px solid var(--border); }
-.footer-logo { font-family: 'Newsreader', serif; font-size: 18px; color: var(--text-primary); margin-bottom: 6px; }
-.footer-tagline { font-size: 14px; color: var(--text-muted); }
-.footer-right { display: flex; gap: 64px; }
-.footer-col-label { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
-.footer-col a { display: block; font-size: 14px; color: var(--text-faint); margin-bottom: 10px; transition: color 0.15s; }
-.footer-col a:hover { color: var(--text-primary); }
+.footer { display: flex; align-items: center; justify-content: space-between; padding: 24px 64px; border-top: 1px solid var(--border); }
+.footer-logo { font-family: 'Newsreader', serif; font-size: 16px; color: var(--text-primary); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--text-faint); transition: color 0.15s; }
+.footer-links a:hover { color: var(--text-primary); }
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -182,8 +180,8 @@ a { color: inherit; text-decoration: none; }
   .subscribe-form { flex-direction: column; width: 100%; }
   .subscribe-input { width: 100%; }
   .subscribe-btn { width: 100%; }
-  .footer { flex-direction: column; gap: 32px; padding: 48px 24px; }
-  .footer-right { gap: 48px; }
+  .footer { flex-direction: column; gap: 16px; padding: 24px; align-items: flex-start; }
+  .footer-links { gap: 16px; }
 }
 @media (max-width: 480px) {
   .nav { padding: 16px 20px; }
@@ -237,7 +235,8 @@ a { color: inherit; text-decoration: none; }
       <li><a href="#about" class="active">About</a></li>
       <li><a href="#start">Where to start</a></li>
       <li><a href="#tools">Interactive Tools</a></li>
-      <li><a href="#more">Writing &amp; Wiki</a></li>
+      <li><a href="#essays">Essays</a></li>
+      <li><a href="#more">More</a></li>
     </ul>
   </aside>
 
@@ -277,6 +276,7 @@ a { color: inherit; text-decoration: none; }
             <div class="start-path-label">Something shifted</div>
             <div class="start-path-desc">Something changed during practice and you don't know how to think about it.</div>
             <div class="start-path-links">
+              <a href="/essays/paradox-of-acceptance/">The Paradox</a>
               <a href="/mindfulness-essays/">Paradoxes</a>
               <a href="/concept-explorer/">Concept Explorer</a>
             </div>
@@ -334,6 +334,35 @@ a { color: inherit; text-decoration: none; }
         </div>
       </section>
 
+      <!-- Essays -->
+      <section id="essays">
+        <div class="section-label">Essays</div>
+        <div class="more-cards">
+
+          <a href="/essays/paradox-of-acceptance/" class="more-card">
+            <div class="more-card-label">Featured Essay</div>
+            <div class="more-card-title">The Paradox of Acceptance</div>
+            <div class="more-card-desc">The central tension in contemplative practice — and why understanding it changes everything. Interactive essay with self-assessment.</div>
+            <div class="more-card-link">Read &rarr;</div>
+          </a>
+
+          <a href="/essays/should-you-meditate/" class="more-card">
+            <div class="more-card-label">Companion Essay</div>
+            <div class="more-card-title">Should You Get Into Mindfulness?</div>
+            <div class="more-card-desc">The case for treating meditation like medicine, not vitamins. With self-assessment.</div>
+            <div class="more-card-link">Read &rarr;</div>
+          </a>
+
+          <a href="/essays/cherry-picking/" class="more-card">
+            <div class="more-card-label">Companion Essay</div>
+            <div class="more-card-title">The Cherry-Picking Problem</div>
+            <div class="more-card-desc">You can't dissolve the neurotic self while keeping the motivated self. They're the same part.</div>
+            <div class="more-card-link">Read &rarr;</div>
+          </a>
+
+        </div>
+      </section>
+
       <!-- More: Practices, Essays, Wiki -->
       <section id="more">
         <div class="section-label">More</div>
@@ -383,25 +412,18 @@ a { color: inherit; text-decoration: none; }
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="footer-left">
-    <div class="footer-logo">Paradox of Acceptance</div>
-  </div>
-  <div class="footer-right">
-    <div class="footer-col">
-      <div class="footer-col-label">Tools</div>
-      <a href="/meditation-quiz/">Quiz</a>
-      <a href="/meditation-debates/">Debates</a>
-      <a href="/teacher-debates/">Teacher Map</a>
-      <a href="/concept-explorer/">Concepts</a>
-      <a href="/meditation-recommender/">Recommender</a>
-      <a href="/mindfulness-fit/">Practice Fit</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-label">More</div>
-      <a href="/mindfulness-pointers/">Guided Practices</a>
-      <a href="/mindfulness-essays/">Paradoxes</a>
-      <a href="/mindfulness-wiki/">Wiki</a>
-    </div>
+  <div class="footer-logo">Paradox of Acceptance</div>
+  <div class="footer-links">
+    <a href="/meditation-quiz/">Quiz</a>
+    <a href="/meditation-debates/">Debates</a>
+    <a href="/teacher-debates/">Teacher Map</a>
+    <a href="/concept-explorer/">Concepts</a>
+    <a href="/meditation-recommender/">Recommender</a>
+    <a href="/mindfulness-fit/">Practice Fit</a>
+    <a href="/mindfulness-essays/">Paradoxes</a>
+    <a href="/mindfulness-pointers/">Guided Practices</a>
+    <a href="/mindfulness-wiki/">Wiki</a>
+    <a href="https://x.com/quiet_drift" target="_blank" rel="noopener">@quiet_drift on X</a>
   </div>
 </footer>
 
@@ -426,7 +448,7 @@ a { color: inherit; text-decoration: none; }
 /* Sidebar active state on scroll */
 (function() {
   var links = document.querySelectorAll('.sidebar-nav a');
-  var sections = ['about', 'start', 'tools', 'more'];
+  var sections = ['about', 'start', 'tools', 'essays', 'more'];
   function updateActive() {
     var scrollY = window.scrollY + 100;
     var current = 'about';
