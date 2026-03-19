@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
   <title>Should You Get Into Mindfulness?</title>
-  <meta name="description" content="The case for treating meditation like medicine, not vitamins — with dosage, contraindications, and a clear sense of when you've had enough." />
+  <meta name="description" content="The case for treating meditation like medicine, not vitamins — who it helps, when it doesn't, and what nobody in the mindfulness world will tell you about dosage." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -43,7 +43,10 @@
     }
 
     /* ─── Back nav ─── */
-    .back-nav { padding: 20px 0 0; }
+    .back-nav {
+      padding: 20px 0 0;
+    }
+
     .back-nav a {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       font-size: 13px;
@@ -51,10 +54,15 @@
       text-decoration: none;
       letter-spacing: 0.02em;
     }
+
     .back-nav a:hover { text-decoration: underline; }
 
     /* ─── Narrow container (header) ─── */
-    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     /* ─── Wide layout (TOC + article) ─── */
     .body-layout {
@@ -112,7 +120,11 @@
     [data-theme="dark"] .toc-nav a.active { color: #EEEEEE; border-left-color: #EEEEEE; }
 
     /* ─── Article wrap ─── */
-    .article-wrap { flex: 1; min-width: 0; max-width: 680px; }
+    .article-wrap {
+      flex: 1;
+      min-width: 0;
+      max-width: 680px;
+    }
 
     /* ─── Header ─── */
     header {
@@ -163,6 +175,7 @@
 
     /* ─── Body content ─── */
     article { padding-bottom: 80px; }
+
     p { margin-bottom: 1.6em; }
 
     h2 {
@@ -201,7 +214,10 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .pull-quote.visible { opacity: 1; transform: translateY(0); }
+    .pull-quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .pull-quote cite {
       display: block;
@@ -213,7 +229,7 @@
       letter-spacing: 0.03em;
     }
 
-    /* ─── Expandable thought experiments ─── */
+    /* ─── Expandable sections ─── */
     .thought-experiment {
       background: var(--expand-bg);
       border: 1px solid var(--rule);
@@ -280,7 +296,11 @@
     .te-body p:last-child { margin-bottom: 0; }
 
     /* ─── Horizontal rule ─── */
-    hr { border: none; border-top: 1px solid var(--rule); margin: 56px 0; }
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 56px 0;
+    }
 
     /* ─── Inline callout ─── */
     .callout {
@@ -293,7 +313,10 @@
       font-style: italic;
     }
 
-    .callout strong { font-style: normal; color: var(--ink); }
+    .callout strong {
+      font-style: normal;
+      color: var(--ink);
+    }
 
     /* ─── Self-assessment ─── */
     #assessment {
@@ -434,7 +457,6 @@
     [data-theme="dark"] .option:hover { background: #1C1C1C; }
     [data-theme="dark"] .te-header:hover { background: #1C1C1C; }
     [data-theme="dark"] footer p { color: #666666; }
-    [data-theme="dark"] .callout { background: #1A1A1A; }
 
     /* ─── Toggle ─── */
     .essay-toggle { position: fixed; top: 20px; right: 24px; z-index: 100; background: none; border: none; cursor: pointer; padding: 2px; display: flex; align-items: center; gap: 6px; }
@@ -461,11 +483,11 @@
   </div>
 
   <header>
-    <div class="kicker">Essay · Mindfulness &amp; Dosage</div>
+    <div class="kicker">Essay · Mindfulness &amp; Medicine</div>
     <h1>Should You Get Into Mindfulness?</h1>
-    <p class="subtitle">The case for treating meditation like medicine, not vitamins</p>
+    <p class="subtitle">The case for treating meditation like medicine, not vitamins — and the question nobody in the field is asking.</p>
     <div class="meta">
-      <span>~12 min read</span>
+      <span>~15 min read</span>
       <span>·</span>
       <span>Interactive</span>
     </div>
@@ -484,8 +506,7 @@
       <li><a href="#ego-problem">The Ego Problem</a></li>
       <li><a href="#britton-data">The Britton Data</a></li>
       <li><a href="#better-question">A Better Question</a></li>
-      <li><a href="#closing">No Exit Strategy</a></li>
-      <li><a href="#assessment">Is This For You?</a></li>
+      <li><a href="#assessment">Should You Practice?</a></li>
     </ul>
   </aside>
 
@@ -493,13 +514,13 @@
 
     <article>
 
-      <p>My father takes a GLP-1 medication for weight loss. Every month his doctor adjusts the dosage — up or down, depending on how he's responding. Eventually, the doctor might tell him he doesn't need it anymore.</p>
+      <p>My father takes a GLP-1 medication for weight loss. Every month his doctor adjusts the dosage — up or down, depending on how he's responding. Eventually, the doctor might tell him he doesn't need it anymore. I've been meditating seriously for years and no one — not a teacher, not an app, not a single voice in the growing clinical literature — has ever suggested I might have had enough.</p>
 
-      <p>I've been meditating seriously for years and no one — not a teacher, not an app, not a single voice in the growing clinical literature — has ever suggested I might have had enough.</p>
+      <p>One of the few researchers studying meditation's adverse effects puts it simply: all practices are beneficial for some people, some of the time. That qualifier changes everything.</p>
 
-      <p>One of the few researchers studying meditation's adverse effects puts it simply: all practices are beneficial for some people, some of the time. That qualifier changes everything. Medicine has dosage. Physical training has <em>enough.</em> Mindfulness, somehow, does not.</p>
+      <p>Medicine has dosage. Physical training has a threshold at which more becomes counterproductive. Mindfulness, somehow, does not. The implicit model is linear: more practice, more benefit, no ceiling, no contraindications. It's almost like being given Parkinson's medication when you came in for weight loss. The treatment is real. The question is whether it matches the condition.</p>
 
-      <p>It's almost like being given Parkinson's medication when you came in for weight loss. The treatment is real. The question is whether it matches the condition.</p>
+      <p>This essay is not a debunking piece. The benefits of mindfulness are well-documented and real. What's missing isn't evidence that it works — it's any serious engagement with the question of <em>for whom</em>, and <em>how much</em>.</p>
 
       <div class="pull-quote">
         All practices are beneficial for some people, some of the time. That qualifier changes everything.
@@ -507,278 +528,300 @@
 
       <h2 id="sales-pitch">The Default Sales Pitch</h2>
 
-      <p>Here is how mindfulness is typically sold. It reduces stress. It improves focus. It helps with emotional regulation. It makes you a better partner, parent, colleague. It's good for your blood pressure, your sleep, your immune system. It's compatible with any religion or none. There are no known side effects. More is better.</p>
+      <p>The standard case for mindfulness goes something like this: stress is endemic, most people are lost in thought most of the time, and a few minutes of daily practice can measurably reduce reactivity, improve focus, build emotional regulation, and produce better relationships. The evidence base is real. The outcomes are reproducible. The benefits are accessible to almost anyone.</p>
 
-      <p>Most of this is roughly true, at least for some populations at some doses. The early evidence base for mindfulness-based stress reduction is real. The effects on rumination and anxiety are among the more robust findings in the contemplative science literature. I don't want to argue with that.</p>
+      <p>Implicit in all of this is a framework: mindfulness is universally applicable, universally beneficial, and — crucially — the more of it you do, the better. Apps are built around streaks. Retreats are pitched as accelerated progress. Teachers speak of deepening, stabilizing, and "going further." The ceiling is always just out of reach, which conveniently ensures there is always more to sell.</p>
 
-      <p>What I want to argue with is the framing. Because the framing is that of a vitamin — something universally beneficial, with no upper bound, no contraindications, and no conception of "enough." You take it forever. You take more when you can. The only risk is not taking it.</p>
+      <p>The vocabulary of the field has no real equivalent of "maintenance dose" or "you've arrived." There is no language for "enough." The practice presents itself as vitamins — something you take indefinitely, with diffuse benefits that compound over time, and no particular notion of what sufficiency would look like.</p>
 
-      <p>This is not how we talk about anything else that changes the brain.</p>
+      <p>That framing is worth interrogating. Not because mindfulness is a fraud, but because the absence of any dosage language is itself a signal about how the field understands what it's doing. Real medicine has dosage because it takes seriously the idea that the same substance that helps at one quantity can harm at another. Vitamins don't have dosage because we assume the body just excretes what it doesn't need.</p>
 
-      <div class="callout">
-        <strong>The vitamin framing is the problem.</strong> Not the practice itself. Vitamins don't need dosage. Medicine does. The question is which model better fits a practice that systematically alters how you relate to your own emotions, identity, and sense of future.
+      <p>The question is which category mindfulness actually belongs to.</p>
+
+      <div class="thought-experiment">
+        <div class="te-header" onclick="toggleTE(this)">
+          <span class="te-label">Consider This</span>
+          <span class="te-title">The Vitamins vs. Medicine Distinction</span>
+          <svg class="te-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="te-body">
+          <p>Think about how you would interact with a doctor who said: "Take this every day. More is better. There's no upper limit. It's good for everyone. We don't really track adverse effects." You would find a different doctor.</p>
+          <p>Now think about how mindfulness teachers and apps typically talk about practice. The resemblance is uncomfortable.</p>
+          <p>The vitamins framing lets the field avoid uncomfortable questions: Does daily practice always produce the same direction of effects? Do some people need it more than others? Can you get too much? When should you stop or taper?</p>
+          <p>A medicine framing would force answers. Which is probably why the field is so committed to vitamins.</p>
+        </div>
       </div>
 
       <h2 id="where-it-works">Where It Genuinely Works</h2>
 
-      <p>The strongest case for mindfulness is also the most specific. If you are someone whose suffering is primarily generated by your own mental habits — chronic rumination, over-identification with outcomes, anxiety that spirals rather than informs, a constant narrating self that adds suffering on top of pain — then the shift mindfulness produces is often genuinely helpful.</p>
+      <p>Let's be specific about the strongest use cases, because they're real and worth taking seriously.</p>
 
-      <p>The mechanism is fairly well understood. You learn to notice thoughts as thoughts rather than as reality. You develop some distance from the narrator. Reactivity slows down. The space between stimulus and response — the famous Viktor Frankl gap, though he may never have said it quite that way — gets wider. For someone trapped in recursive self-criticism or future-catastrophizing, this is real relief. Not metaphorical. Not placebo. The kind of relief that changes the texture of daily life.</p>
+      <p>The clearest candidate for mindfulness is chronic rumination: the person who gets stuck in loops of self-referential thought, who replays conversations, who projects bad outcomes into every future scenario, whose anxiety generates more anxiety because each anxious thought becomes evidence of a self in danger. For this profile, the shift mindfulness produces is often genuinely therapeutic. The instruction to notice that thoughts are events, not facts — that you are not your thoughts, you are the awareness watching them — can interrupt a recursive loop that would otherwise run indefinitely.</p>
 
-      <p>If narrative force is currently <em>impairing</em> your functioning — if you are suffering more from your relationship to experience than from experience itself — mindfulness is probably one of the best interventions available. The evidence supports this. The lived experience of millions of people supports this. I support this.</p>
+      <p>A related profile: over-identification with outcomes. The person who can't lose a game, who takes negative feedback as evidence of fundamental inadequacy, who needs things to go a particular way in order to feel okay. For them, the capacity to soften around a result — to witness disappointment without becoming it — is genuine relief. The practice delivers exactly what it promises.</p>
 
-      <p>The question is what happens next.</p>
+      <p>And then: generalized anxiety that has become structural. Not the anxiety that's pointing at something real and actionable, but the free-floating kind that attaches to whatever comes next, regardless of actual threat level. For a nervous system running chronically at threat-response levels, the ability to practice returning to baseline is not a philosophical preference. It's a physiological correction.</p>
 
-      <p>Because the practice doesn't come with a tapering schedule. It doesn't say: your rumination has improved, your reactivity is down, you can maintain with twenty minutes a day now, and here's what to watch for if you're overdoing it. It says: go deeper. There is always more to see. The journey has no destination — or, in some traditions, the destination is so radical that anything short of it represents incomplete understanding.</p>
+      <p>These use cases share a common feature: the problem is too much narrative, too much reaction, too much suffering generated by the self's relationship to its own mental content. In each case, the shift mindfulness produces — loosening identification, softening the grip of thought — is moving the needle in the right direction.</p>
 
-      <p>That framing works beautifully for the people who need more. It works less well for the people who might need less.</p>
+      <div class="callout">
+        <strong>The strongest mindfulness use case:</strong> you are generating suffering through your relationship to your own mental activity — rumination, over-identification, anxious loops that don't resolve. The practice gives you a different relationship to those contents. That's genuinely helpful.
+      </div>
+
+      <p>The question is what happens when the needle moves too far, or when you weren't holding it at the problematic end to begin with.</p>
 
       <h2 id="nobody-mentions">The Part Nobody Mentions</h2>
+
+      <p>One of the most experienced teachers in the non-dual tradition said something that should be more famous than it is.</p>
 
       <div class="pull-quote">
         "If you get good at meditating, you can really get good at hiding from yourself. It's kind of one of the dangers of meditation, right?"
         <cite>— Adyashanti</cite>
       </div>
 
-      <p>Adyashanti is not a critic of meditation. He is one of its most respected Western teachers. And he is saying something that the mainstream discourse almost never says: the practice can function as avoidance.</p>
+      <p>Sit with that for a moment. This is not a critic of mindfulness. This is someone who has spent decades teaching it, whose entire professional identity is built around its value. And he's describing a failure mode that the field's marketing literature treats as if it doesn't exist.</p>
 
-      <p>Not for everyone. Not at every stage. But for some people, at some point, the capacity to meet difficult emotions skillfully becomes the capacity to not have to deal with them at all. The meditation replaces the action the emotion was asking for.</p>
+      <p>The mechanism is straightforward once you see it. Meditation develops a specific skill: the ability to notice a difficult experience without being captured by it. To witness anxiety, grief, frustration, longing — and to let them pass without fusing with them. In therapeutic contexts, this is profoundly useful. It interrupts the feedback loops that turn one difficult moment into ten.</p>
 
-      <p>Here is what this looks like in practice. You feel dissatisfied with your career. The dissatisfaction arises as a contraction, a tightness, a thought-loop about wasted potential. In one mode, that discomfort is information. It's unpleasant but it's pointing at something real: you need to make a change. In another mode — the one that serious practice makes increasingly available — you notice the contraction, you soften around it, you return to the present moment. The charge drops. You feel better. Nothing changes.</p>
+      <p>But the skill doesn't distinguish between the suffering that was genuinely unnecessary and the suffering that was trying to point at something real. The same move that rescues you from a panic spiral can also be applied to the low-grade discomfort of an unresolved relationship problem, a career that isn't working, a life that has slowly drifted from what you actually wanted. You can witness it. You can soften around it. You can return to the breath, and the charge drops, and you feel — genuinely, not fraudulently — more okay.</p>
 
-      <p>The second mode is genuinely useful when the emotion is disproportionate to the situation. If you're spiraling about a minor career setback, being able to step back from the narrative is a gift. But what about when the emotion is proportionate? What about when the dissatisfaction is actually telling you the truth — that you are, in fact, in the wrong place, doing the wrong work, and the discomfort is the signal that should drive reorganization?</p>
+      <p>And the situation stays exactly the same.</p>
 
-      <p>The problem is that from the inside, these two situations feel identical. Both involve the same gesture: notice, soften, return. What's different is only what the emotion was pointing at. And that's exactly what gets lost in the dissolving.</p>
+      <p>This is the specific risk profile the field rarely names: the person who is not chronically over-reactive, not stuck in rumination spirals, but who has a set of real, external, addressable problems. For them, getting better at metabolizing discomfort in place doesn't move the needle toward wellbeing. It moves the needle toward comfortable stagnation.</p>
 
       <div class="thought-experiment">
         <div class="te-header" onclick="toggleTE(this)">
-          <span class="te-label">Thought Experiment</span>
-          <span class="te-title">The Relationship Signal</span>
+          <span class="te-label">The Pattern</span>
+          <span class="te-title">When Practice Becomes the Escape</span>
           <svg class="te-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="te-body">
-          <p>You've been feeling a low-grade unhappiness in a relationship. Not crisis-level. Not abuse. Just a persistent sense that something isn't right — that you're performing contentment rather than feeling it.</p>
-          <p>In one mode, this feeling accumulates until it becomes undeniable. It pushes you toward a difficult conversation, a renegotiation of terms, or an honest admission that the relationship isn't working. The discomfort is the engine of change.</p>
-          <p>In another mode, you notice the feeling each time it arises, acknowledge it without judgment, and let it pass. You don't suppress it — that would be old-fashioned repression. You <em>meet</em> it. Skillfully. Compassionately. And it dissolves, each time, without ever accumulating into the force that would make you act.</p>
-          <p>The question: is the second mode wisdom or is it a very sophisticated form of staying stuck?</p>
+          <p>The pattern tends to emerge slowly. A person has a difficult situation — a relationship that's ended but not quite over, a career track they no longer believe in, a creative ambition they've been deferring. There's a low-grade ache around it.</p>
+          <p>They start practicing. Initially, the ache softens, which feels like progress. They sit with the discomfort skillfully, without being overwhelmed. This is actually helpful — the reactivity reduces, the spiraling stops.</p>
+          <p>But the situation doesn't change. It doesn't need to feel as urgent anymore, because the urgency can be dissolved. The practice becomes the thing that regulates the signal that would otherwise motivate the change.</p>
+          <p>Years pass. They are genuinely more equanimous. And they have not addressed the thing that needed addressing. Some part of them knows this, which generates a different, subtler kind of suffering — one that practice is very well-positioned to also dissolve.</p>
+          <p>This is the snake eating its tail. The skill that was supposed to help them be more present becomes the thing that lets them be present with a life that isn't working, comfortably.</p>
         </div>
       </div>
+
+      <p>None of this means the practice is failing in a technical sense. The equanimity is real. The reduced reactivity is real. It's just that the treatment was applied to a condition that didn't require it, and something important got quieted in the process.</p>
 
       <h2 id="ego-problem">The Ego Problem</h2>
 
-      <p>In most Buddhist-derived frameworks, the ego is the problem. It's the source of suffering, the generator of craving and aversion, the illusion that keeps you trapped in samsara. The goal, stated or implied, is to see through it — to recognize that the self you've been defending, promoting, and protecting was never really there in the way you thought.</p>
+      <p>The Buddhist framing, in most of its Western presentations, treats ego as obstacle. The story you tell about yourself, the identification with a continuous self, the sense of being a particular someone who needs particular things — these are presented as the source of suffering, the thing to be seen through, loosened, ultimately dissolved.</p>
 
-      <p>This framing has a long history and a certain elegance. But it has a practical problem that not enough teachers acknowledge.</p>
+      <p>This framing has real power. Many people are genuinely imprisoned by ego-driven patterns: the need to be right, status anxiety, the inability to tolerate failure, the recursive self-concern that generates suffering without generating wisdom. For them, the practice of loosening that grip is liberatory.</p>
+
+      <p>But the teacher Craig Hamilton makes a distinction that the field tends to skip over. He says he prefers a model of <em>outgrowing</em> the ego rather than destroying it. The ego, in this frame, is a developmental structure — not a disease. It served functions. Those functions aren't necessarily obsolete just because you've noticed that the self constructing them is also a mental event.</p>
 
       <div class="pull-quote">
-        "I sometimes ponder how it is that within the religious and spiritual traditions that the ego gets such a bad name."
+        "I like to work with a model of outgrowing the ego rather than destroying it."
         <cite>— Diane Musho Hamilton</cite>
       </div>
 
-      <p>Hamilton is a Zen teacher with training in developmental psychology, and her alternative framing is worth taking seriously. She prefers to work with a model of <em>outgrowing</em> the ego rather than destroying it. In her view, the ego is not a disease to be cured but a developmental stage to be built through. You need a strong ego before you can meaningfully transcend one.</p>
+      <p>The functions are worth naming: reality-testing, future-modeling, sustained effort in service of long-term goals, the capacity to tolerate discomfort now because some later outcome matters, the ability to maintain commitments when they stop feeling exciting. These are not neuroses. They are the infrastructure of a functional adult life.</p>
 
-      <p>The distinction matters practically. If you haven't yet built a clear identity — if you don't have a stable sense of who you are, what you value, what you're willing to fight for, and what you're willing to endure — then a practice designed to dissolve the sense of self isn't liberation. It's structural damage. You're demolishing a building that was never finished.</p>
+      <p>The question the field is not asking: if you haven't yet fully <em>built</em> these structures, what exactly are you dissolving?</p>
 
-      <p>This is the population that the mindfulness mainstream rarely acknowledges exists. Not the anxious overachievers who need to learn to let go. The undermotivated, the directionless, the people whose problem isn't too much ego but not enough. For them, the instruction to "let go of attachment to outcomes" can function as spiritual permission to not try. The teaching meets them exactly where they don't need to be met.</p>
+      <p>Most of the mindfulness literature assumes the reader has a fully formed ego that has become an encumbrance. It is aimed at people who have already developed the capacity for sustained effort and deferred gratification, who have already built stable identities and accomplished things they care about, and who are now suffering from over-identification with all of that. For them, loosening is the right move.</p>
 
-      <div class="pull-quote">
-        "We need a biological sense of location to function. We need healthy physical and psychological boundaries… No matter how enlightened we are, unless we have a brain injury, some sense of being a particular person in the play of life inevitably remains."
-        <cite>— Joan Tollifson</cite>
-      </div>
-
-      <p>Tollifson's point is deceptively simple. The self isn't optional. It's not a luxury that enlightened people learn to do without. It's the operating system. And there's a meaningful difference between upgrading that operating system and wiping the drive.</p>
+      <p>But not everyone arriving at meditation has that problem. Some people are there because they're already somewhat low-affect, somewhat undermotivated, already pretty calm but struggling to care about long-term goals, already comfortable enough that the urgency to build anything in particular has gone quiet. For them, more equanimity doesn't solve a problem. It deepens one.</p>
 
       <div class="thought-experiment">
         <div class="te-header" onclick="toggleTE(this)">
-          <span class="te-label">Thought Experiment</span>
-          <span class="te-title">The Unbuilt Ego</span>
+          <span class="te-label">The Developmental Question</span>
+          <span class="te-title">Built Enough to Dissolve?</span>
           <svg class="te-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="te-body">
-          <p>Imagine two people at a meditation retreat. The first has spent twenty years building a career, raising children, navigating difficult relationships, and developing a clear sense of what they value. They're wound tight. They carry tension in their shoulders, anxiety about the future, and a relentless internal critic. For them, the instruction to relax, to let go, to stop identifying with the narrator — this is medicine for an actual condition.</p>
-          <p>The second person is twenty-three. They don't know what they want to do. They haven't committed to a career, a relationship, or a set of values. They experience a vague dissatisfaction that they haven't yet learned to interpret as a signal to build something. They arrive at the retreat looking for direction.</p>
-          <p>Both receive the same teaching: let go of the self. Notice how identity is constructed. See through the illusion of a fixed, separate you.</p>
-          <p>For the first person, this might be exactly right. For the second, it might be the worst possible advice — spiritual validation for an incomplete developmental project. Not because the insight is wrong, but because it's being administered to someone who hasn't built the thing the insight is about.</p>
+          <p>Joan Tollifson puts it plainly: "We need a biological sense of location to function. We need healthy physical and psychological boundaries... No matter how enlightened we are, unless we have a brain injury, some sense of being a particular person in the play of life inevitably remains."</p>
+          <p>That's an important admission from someone deep in the non-dual tradition. Even Tollifson concedes that a functional self isn't optional. The question, then, is whether the self you currently have is the kind that needs loosening — or the kind that needs building.</p>
+          <p>The clarity, ambition, competitive drive, sustained commitment to hard goals — these aren't automatic. Many people arrive at a meditation cushion without them. For those people, the dissolution model has the wrong starting point. You can't transcend a structure you haven't yet built.</p>
         </div>
       </div>
 
       <h2 id="britton-data">The Britton Data</h2>
 
-      <p>Willoughby Britton runs the Clinical and Affective Neuroscience Laboratory at Brown University. She is one of the very few researchers who has systematically studied meditation-related adverse effects — not as anecdotes or cautionary tales, but as data.</p>
+      <p>Willoughby Britton is a researcher at Brown University who has spent years doing what almost nobody else in the field was willing to do: systematically documenting what goes wrong.</p>
 
-      <p>Her findings are not what the mindfulness industry wants to hear.</p>
+      <p>Her findings are not anecdotes. They are recurring, documented patterns across hundreds of committed practitioners. And they are more extreme than the public discourse about meditation has been willing to acknowledge.</p>
+
+      <p>The cases she found include people reporting the loss of all emotion — not sadness, not numbness in the clinical sense, but a flat absence of emotional valence across everything. The inability to feel pleasure. One woman, a long-term practitioner, reported that she could no longer feel affection for her children. She wasn't depressed in the standard diagnostic sense. She was simply flat. The practice had been so effective at loosening her attachment to emotional states that it had taken affect itself with it.</p>
 
       <div class="pull-quote">
-        "There are people that are reporting that they've lost all emotions altogether and they don't feel pleasure anymore… a woman who no longer felt affection for her children."
+        "There are people that are reporting that they've lost all emotions altogether and they don't feel pleasure anymore... a woman who no longer felt affection for her children."
         <cite>— Willoughby Britton</cite>
       </div>
 
-      <p>This is not a rare edge case from a marginal study. This is a recurring pattern across hundreds of practitioners interviewed by Britton's research team. The most common reports: emotional blunting — not depression exactly, but a flattening of the entire emotional range such that positive and negative experiences both lose their color. Decreased motivation. A sense of depersonalization that practitioners initially interpret as spiritual progress but that, over time, starts to feel more like disconnection than liberation.</p>
+      <p>Her colleague Jared Lindahl frames the mechanism precisely: "You could have so much equanimity and diminished affect and diminished emotions." The issue isn't pathology in the conventional sense. The issue is that equanimity — the thing the practice is explicitly trying to produce — can overshoot.</p>
 
-      <div class="pull-quote">
-        "You could have so much equanimity and diminished affect and diminished emotions."
-        <cite>— Jared Lindahl</cite>
-      </div>
+      <p>This is the non-monotonic curve the field's marketing doesn't acknowledge. Equanimity is beneficial up to a point, and then it becomes flattening. Detachment is useful up to a point, and then it becomes dissociation. The beneficial range has an upper limit, and there is no obvious mechanism within the practice to tell you when you've reached it.</p>
 
-      <p>Lindahl, Britton's collaborator, names the mechanism precisely. Equanimity — the thing the practice is supposed to cultivate — can overshoot. The non-monotonic curve that medicine takes for granted applies here too: the dose that helps at one level harms at another. Detachment is useful until it becomes dissociation. Equanimity is beneficial until it becomes flattening. The line between "I'm less reactive" and "I can't feel things anymore" is not as bright as the marketing suggests.</p>
-
-      <p>What makes Britton's work particularly important is what it reveals about the community's response — or lack of one. The mindfulness world has no adverse event reporting system. There is no equivalent of the FDA's post-market surveillance. Teachers are not trained to screen for contraindications, to recognize when practice is causing harm, or to suggest that someone reduce their dose. The "already perfect" framework — the idea that awareness is always beneficial and that any difficulty in practice represents a stage to push through — has no conceptual room for "you've had enough."</p>
-
-      <div class="callout">
-        <strong>70% of documented difficulties emerged during intensive retreat.</strong> But 30% emerged from daily practice alone — even less than an hour per day. These aren't extreme cases. They're ordinary practitioners doing ordinary amounts of practice.
-      </div>
-
-      <h2 id="better-question">A Better Question Than "Should I Meditate?"</h2>
-
-      <p>The question should not be "should I meditate?" any more than the question should be "should I take medication?" The answer depends entirely on the condition.</p>
-
-      <p>If you are chronically anxious — if your default state involves recursive worry, over-preparation, difficulty sleeping because your mind won't stop narrating worst cases — then yes, probably. Mindfulness has one of its strongest evidence bases for exactly this condition. The ability to step back from the thought-stream, to see thoughts as events rather than truths, can genuinely change the quality of a life that is being degraded by excessive mental activity.</p>
-
-      <p>If you are over-reactive — if small provocations trigger disproportionate responses, if you find yourself in patterns of anger, defensiveness, or emotional flooding that damage your relationships and your judgment — then yes, probably. The capacity to notice a reaction before it reaches full expression, to create even a small gap between trigger and response, is one of the most practically useful things any practice can offer.</p>
-
-      <p>If you are over-identified with outcomes — if your sense of self-worth is so tightly coupled to external results that every setback feels existential, every failure feels like proof of fundamental inadequacy — then yes, probably. The insight that you are not your performance, not your productivity, not the sum of your accomplishments, can be genuinely freeing in exactly the way the teachers describe.</p>
-
-      <p>But.</p>
-
-      <p>If you are already pretty calm — if your problem isn't excess anxiety but insufficient urgency, not too much self-criticism but too little self-demand — then the calculus changes. More equanimity, for this person, doesn't solve a problem. It deepens a condition that's already present: a comfortable relationship with the status quo that doesn't need further softening.</p>
-
-      <p>If you are undermotivated — if you're struggling to commit to long-term goals, to tolerate the discomfort of sustained effort, to care enough about future outcomes to organize your present around them — then the last thing you might need is a practice whose central instruction is to return to the present moment and notice that it's already fine.</p>
-
-      <p>If your problem is not that you care too much but that you care too little, mindfulness may not be the right treatment. Not because it doesn't work. Because it works on a condition you don't have.</p>
+      <p>Seventy percent of the adverse effects Britton documented emerged during intensive retreat. But thirty percent emerged from ordinary daily practice — less than an hour a day. These weren't people doing anything extreme. They were people doing exactly what the apps and teachers recommend, and some of them got worse.</p>
 
       <div class="thought-experiment">
         <div class="te-header" onclick="toggleTE(this)">
-          <span class="te-label">Thought Experiment</span>
-          <span class="te-title">The Differential Diagnosis</span>
+          <span class="te-label">The Research</span>
+          <span class="te-title">Why the Field Ignored This</span>
           <svg class="te-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="te-body">
-          <p>A doctor doesn't prescribe blood pressure medication without measuring blood pressure. They don't prescribe antidepressants because "everyone could use a mood boost." They diagnose first. They match the treatment to the condition. And they have a concept of when the treatment has done its work.</p>
-          <p>Now imagine a doctor who prescribed the same medication to every patient who walked in. Anxious? Take this. Calm? Take this. Motivated? Take this. Unmotivated? Take this. The medication genuinely helps a large subset of patients. But because the doctor has no diagnostic framework — no way to distinguish who needs it from who doesn't — they give it to everyone and interpret all outcomes as confirmation that it works.</p>
-          <p>That is roughly the current state of the mindfulness industry. The treatment is real. The diagnostic framework is missing. And the business model is structured around indefinite use.</p>
+          <p>The mindfulness field's resistance to adverse effects research isn't primarily cynical. It's structural. The framework has no conceptual room for "you've had enough." The entire architecture assumes that awareness is a direction — you move toward it, not past it. There is no "too much." There is no overshoot.</p>
+          <p>When someone gets worse, the standard explanation is that they're processing something difficult, that the practice is "stirring things up," that this is temporary turbulence on the way to clarity. This framing is sometimes correct. But it's also a framework that can explain away any outcome — including outcomes that are actually just harm.</p>
+          <p>Britton's work was initially met with significant resistance. Teachers who had seen adverse effects in their students often had no language for it except "they weren't practicing correctly" or "they needed more support." The possibility that the practice itself, applied competently, could produce harm at scale — that the dose-response curve was non-linear — was not a welcome conceptual addition.</p>
+          <p>It still isn't. But the data exists.</p>
         </div>
       </div>
 
-      <h2 id="closing">No Exit Strategy</h2>
+      <p>There's a particular shame loop that compounds the harm. When practitioners get worse — more anxious, more dissociated, more emotionally flat — and they seek support in the mindfulness community, the message they often receive is: this is your resistance. This is your ego. Practice more, go deeper, trust the process. They conclude they are fundamentally broken, when the more accurate description is: this treatment may not be right for you, or this dose may not be right for where you are.</p>
 
-      <p>Here is the asymmetry that no one in the mindfulness world addresses. The community has sophisticated, beautiful, well-tested language for why you should start. It has a rich tradition of encouragement for going deeper. It has frameworks for understanding difficulty as breakthrough, plateau as resistance, doubt as ego defending itself.</p>
+      <p>The field has no language for either of those statements. That's not an oversight. It's structural. A practice that frames itself as "always beneficial, no upper bound" cannot simultaneously say "not for you" or "you've had enough." Until it can, it isn't taking its own effects seriously.</p>
 
-      <p>What it does not have — at all — is language for "you've had enough."</p>
+      <h2 id="better-question">A Better Question Than "Should I Meditate?"</h2>
 
-      <p>No teacher says: your anxiety has improved to within normal range, your reactivity is manageable, you have a functional relationship with your own thoughts, and at this point more practice may be doing more than you need it to. No app sends a notification that says: based on your patterns, you might benefit from doing less of this. No retreat center suggests that this might be your last one for a while.</p>
+      <p>The question "should I meditate?" is mostly unanswerable as asked, because it treats mindfulness as a single thing applied uniformly to a single kind of person. It isn't, and we aren't.</p>
 
-      <p>The absence is not an oversight. It is structural. The framework of awakening only points in one direction. There is always more to realize. Awareness can always deepen. The self can always be seen through more thoroughly. In this frame, the idea of "enough" is itself a sign of insufficient understanding — a subtle form of the ego defending its territory.</p>
+      <p>A more useful question is: what is your current condition, and does this treatment match it?</p>
 
-      <p>Which means that the framework is self-sealing. Any suggestion that you might have had enough is interpretable, within the framework, as evidence that you haven't. Any sense that the practice might be doing something you don't want is treatable, within the framework, as resistance to be sat with. The only direction the system allows is forward.</p>
+      <p>If you are chronically over-reactive — if your nervous system runs at threat levels disproportionate to actual threats, if your thoughts generate recursive spirals of suffering, if you are imprisoned by self-referential anxiety that doesn't resolve through action — then yes, almost certainly. The shift mindfulness produces moves the needle in the right direction for you. Start. The benefits will probably be clear and substantial.</p>
 
-      <p>Medicine has a different word for a treatment that you can never stop taking, that interprets any desire to stop as a symptom of the condition it treats, and that has no concept of a completed course.</p>
+      <p>If you are moderately anxious, mostly functional, struggling with the ordinary weight of life — a difficult relationship, a job that doesn't fit, a creative aspiration you haven't acted on — then the answer is more complicated. Mindfulness may help you tolerate those circumstances more gracefully. It may also reduce the pressure that would otherwise push you to change them. These are different outcomes, and you should have a view about which one you're actually optimizing for.</p>
 
-      <p>Whether that makes mindfulness a path or a trap depends on where you're starting from.</p>
+      <p>If you are already pretty calm, already somewhat low-affect, already struggling to summon urgency around long-term goals — then the answer might genuinely be no, or at least "not more." The problem you have is not excess reactivity. It is insufficient drive. A practice that is very good at dissolving reactivity is the wrong tool for that problem. It is solving for something you don't have.</p>
 
-      <div class="pull-quote">
-        The framework of awakening only points in one direction. Whether that makes it a path or a trap depends on where you're starting from.
+      <div class="callout">
+        The question isn't "is mindfulness good?" It's "does this treatment match my current condition?" Those are different questions, and the field has only ever tried to answer the first one.
       </div>
 
-      <hr />
+      <p>No one in the mindfulness world gives that third answer because their framework doesn't allow for it. The architecture of "awakening" only points in one direction. More awareness is always better. More equanimity is always better. There is no mechanism for diagnosing which patients shouldn't take the medication, or which have already taken enough.</p>
 
-      <p style="font-size: 16px; color: var(--ink-light); font-style: italic; text-align: center; margin-bottom: 16px;">This essay is part of a series exploring the tensions within serious mindfulness practice. For the next essay — what happens when equanimity starts to erode the motivation structure that organized your life — see <a href="../paradox-of-acceptance/" style="color: var(--sage);">The Paradox of Acceptance</a>.</p>
+      <p>That absence is not an accident. It follows directly from the metaphysics. If the goal is recognizing something that is always already the case — if awareness itself is the destination, and it has no gradations of too-much — then dosage is a category error. You can't overdose on seeing clearly.</p>
+
+      <p>The problem is that this isn't actually how the practice works on the ground, which is why Britton had data to collect in the first place.</p>
+
+      <div class="thought-experiment">
+        <div class="te-header" onclick="toggleTE(this)">
+          <span class="te-label">The Honest Audit</span>
+          <span class="te-title">What a Dosage Model Would Require</span>
+          <svg class="te-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="te-body">
+          <p>Imagine mindfulness treated like medicine, with genuine dosage thinking. A practitioner would hear things like:</p>
+          <p>"Your rumination scores are significantly lower after six months of daily practice. Your reactivity has reduced. We're going to scale back to three sessions per week and see if the gains hold."</p>
+          <p>"You're showing signs of affect blunting — your emotional responsiveness has decreased in ways that may not be serving you. Let's pause intensive practice and assess."</p>
+          <p>"Based on your presenting profile — low baseline anxiety, struggling with motivation and long-term follow-through — daily mindfulness may not be the right intervention. You might benefit more from something that builds tolerating frustration in pursuit of goals, not dissolving it."</p>
+          <p>None of these conversations happen in mainstream mindfulness contexts. They can't happen, because the framework has no room for them. A path that only goes one direction can't give you a reason to stop, slow down, or turn around.</p>
+        </div>
+      </div>
+
+      <p>The honest position, at the end of all of this, is asymmetric. The mindfulness community has developed extraordinarily sophisticated language for why you should start, deepen, and continue. It has developed almost no language for when you've had enough, when you're the wrong patient for this treatment, or when the dose you've already taken has done its work.</p>
+
+      <p>That asymmetry isn't an accident. It reflects the structure of the framework, not a gap that someone simply forgot to fill in. A path that describes itself as always pointing toward more clarity cannot simultaneously acknowledge that some practitioners have arrived, or that some shouldn't have started.</p>
+
+      <p>Whether this makes mindfulness a path or a trap depends entirely on where you're starting from.</p>
+
+      <p>For the person who is genuinely over-reactive, chronically anxious, imprisoned by their own mental content — it is probably a path. The treatment matches the condition. Start now.</p>
+
+      <p>For the person who is already fairly equanimous, already soft on stakes, already a little too comfortable with letting things slide — the framework has nothing useful to say. It will tell them they need more practice. That answer is, for them, the wrong prescription.</p>
+
+      <p>The question of whether you're the first person or the second is one you will have to answer yourself, because no one inside the mindfulness framework is incentivized to help you figure it out.</p>
 
       <hr />
 
       <!-- Self-Assessment -->
       <section id="assessment">
-        <h2>Is This For You?</h2>
-        <p class="assessment-intro">Four questions to help you think about whether mindfulness matches your current condition. Not a diagnosis — a starting point for honest reflection.</p>
+        <h2>Should You Practice?</h2>
+        <p class="assessment-intro">Four questions to locate yourself. This is not a clinical tool — it's a prompt for honest self-assessment. Answer based on where you actually are, not where you'd like to be.</p>
 
         <div class="question" id="q1">
-          <p>1. What is your default relationship with your own thoughts?</p>
+          <p>1. How would you describe your baseline relationship to anxiety and rumination?</p>
           <div class="options">
             <label class="option">
-              <input type="radio" name="q1" value="4" />
-              <span>I get caught in loops constantly — worry, self-criticism, replaying conversations, catastrophizing about the future. It's exhausting.</span>
-            </label>
-            <label class="option">
-              <input type="radio" name="q1" value="3" />
-              <span>I ruminate more than I'd like, but I can usually break out of it eventually. Some days are worse than others.</span>
+              <input type="radio" name="q1" value="1" />
+              <span>Significant. I spiral, replay conversations, catastrophize, can't turn it off.</span>
             </label>
             <label class="option">
               <input type="radio" name="q1" value="2" />
-              <span>I'm generally pretty calm. I have anxious periods but they're not my baseline.</span>
+              <span>Moderate. I get anxious but it doesn't dominate. I function, sometimes uncomfortably.</span>
             </label>
             <label class="option">
-              <input type="radio" name="q1" value="1" />
-              <span>Honestly, my mind is pretty quiet. If anything, I sometimes wish I felt more urgency about things.</span>
+              <input type="radio" name="q1" value="3" />
+              <span>Low. I'm generally calm. Hard things don't stick. I recover quickly.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" value="4" />
+              <span>Very low. I struggle more with motivation and caring than with anxiety.</span>
             </label>
           </div>
         </div>
 
         <div class="question" id="q2">
-          <p>2. When you think about long-term goals — career, health, relationships — what do you feel?</p>
+          <p>2. When you imagine the next five years of your life not going the way you'd hoped — less accomplished, less connected, more adrift — how does that feel?</p>
           <div class="options">
             <label class="option">
-              <input type="radio" name="q2" value="4" />
-              <span>Intense pressure. The gap between where I am and where I should be feels overwhelming. I can't stop comparing.</span>
-            </label>
-            <label class="option">
-              <input type="radio" name="q2" value="3" />
-              <span>A mix of motivation and anxiety. I care about the future and sometimes that caring becomes stressful.</span>
+              <input type="radio" name="q2" value="1" />
+              <span>Genuinely frightening. The image has real weight. It organizes me.</span>
             </label>
             <label class="option">
               <input type="radio" name="q2" value="2" />
-              <span>Mild interest. I have goals but they don't generate much emotional charge either way.</span>
+              <span>Concerning enough to be motivating, but not overwhelming.</span>
             </label>
             <label class="option">
-              <input type="radio" name="q2" value="1" />
-              <span>Pretty neutral. I find it hard to get worked up about long-term outcomes. Things will be what they'll be.</span>
+              <input type="radio" name="q2" value="3" />
+              <span>I'd manage. The image doesn't grip me much. I trust I'd adapt.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="4" />
+              <span>Mostly workable. The future doesn't carry much emotional weight for me.</span>
             </label>
           </div>
         </div>
 
         <div class="question" id="q3">
-          <p>3. How do you typically respond to discomfort — physical or emotional?</p>
+          <p>3. How do you relate to difficult emotions when they arise — grief, loneliness, frustration, longing?</p>
           <div class="options">
             <label class="option">
-              <input type="radio" name="q3" value="4" />
-              <span>I react strongly. Discomfort triggers immediate avoidance, frustration, or anxiety. I have a hard time sitting with anything unpleasant.</span>
-            </label>
-            <label class="option">
-              <input type="radio" name="q3" value="3" />
-              <span>I can tolerate it but I don't like it. I push through when I have to, but it costs me.</span>
+              <input type="radio" name="q3" value="1" />
+              <span>They take over. I become them. Hard to get perspective.</span>
             </label>
             <label class="option">
               <input type="radio" name="q3" value="2" />
-              <span>I'm reasonably good at being with discomfort. It doesn't control me, though it's not nothing.</span>
+              <span>They're uncomfortable and they stay for a while, but I don't fully lose myself in them.</span>
             </label>
             <label class="option">
-              <input type="radio" name="q3" value="1" />
-              <span>Discomfort passes through fairly easily. I can sit with most things without much disturbance. Sometimes I wonder if that ease costs me something.</span>
+              <input type="radio" name="q3" value="3" />
+              <span>I can usually observe them without being consumed. The charge drops fairly quickly.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="4" />
+              <span>Emotions don't tend to have much grip. Sometimes I notice I'm not feeling as much as I'd expect.</span>
             </label>
           </div>
         </div>
 
         <div class="question" id="q4">
-          <p>4. If someone you trusted told you "you should try meditating less," how would that land?</p>
+          <p>4. What's your honest primary reason for considering (or continuing) mindfulness practice?</p>
           <div class="options">
             <label class="option">
-              <input type="radio" name="q4" value="4" />
-              <span>I don't meditate at all. I'm here trying to figure out if I should start.</span>
-            </label>
-            <label class="option">
-              <input type="radio" name="q4" value="3" />
-              <span>I'd be curious. I practice occasionally but I've never thought about whether it could be too much.</span>
+              <input type="radio" name="q4" value="1" />
+              <span>My reactivity, anxiety, or stress is genuinely impairing my life.</span>
             </label>
             <label class="option">
               <input type="radio" name="q4" value="2" />
-              <span>I'd resist at first but I'd consider it. My practice feels important to me but I can see how someone might overcorrect.</span>
+              <span>I want to think more clearly and act with less unnecessary friction.</span>
             </label>
             <label class="option">
-              <input type="radio" name="q4" value="1" />
-              <span>I'd actually find that validating. I've quietly wondered whether I've already gotten what I needed from practice.</span>
+              <input type="radio" name="q4" value="3" />
+              <span>I've been practicing a while and it's become habit — not sure what it's doing anymore.</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="4" />
+              <span>It helps me feel okay about things I'm not sure I should feel okay about.</span>
             </label>
           </div>
         </div>
 
-        <button id="submit-assessment" onclick="submitAssessment()">See your result →</button>
+        <button id="submit-assessment" onclick="submitAssessment()">See where you land →</button>
 
         <div id="assessment-result">
           <h3 id="result-label"></h3>
@@ -789,7 +832,7 @@
     </article>
 
     <footer>
-      <p>© 2026 Paradox of Acceptance · <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">More essays</a> · <a href="https://paradoxofacceptance.xyz">paradoxofacceptance.xyz</a></p>
+      <p>Part of the <em>Paradox of Acceptance</em> series · <a href="/essays/paradox-of-acceptance/">Read the main essay</a> · <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">All essays</a></p>
     </footer>
 
   </div><!-- /article-wrap -->
@@ -805,7 +848,7 @@
     document.getElementById('progress-bar').style.width = pct + '%';
   });
 
-  // ─── Expandable thought experiments ───
+  // ─── Expandable sections ───
   function toggleTE(header) {
     const block = header.closest('.thought-experiment');
     block.classList.toggle('open');
@@ -858,21 +901,25 @@
     }
 
     const total = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + parseInt(q4.value);
+    const q4val = parseInt(q4.value);
 
     let label, text;
 
-    if (total >= 14) {
-      label = 'Strong Candidate — This Is Probably For You';
-      text = 'Your pattern suggests high reactivity, significant rumination, and emotional responses that are doing more harm than good. This is exactly the condition where mindfulness has its strongest evidence base. The ability to step back from the thought-stream, to see thoughts as events rather than truths, could meaningfully change the quality of your daily life. The concerns in this essay — about overdose, about dissolving motivation you still need — don\'t apply to you yet. Start practicing. The early benefits are real.';
-    } else if (total >= 10) {
-      label = 'Likely Beneficial — With Attention to Dosage';
-      text = 'You show a mix of reactivity and stability. Mindfulness would probably help, particularly with the anxiety and rumination that still has a grip on you. But you\'re close enough to the middle that the dosage question is worth keeping in mind as you progress. Pay attention to whether practice is making you more capable of acting on difficult feelings, or more capable of dissolving them before they inform action. Both are possible. The difference matters.';
-    } else if (total >= 7) {
-      label = 'Proceed With Caution';
-      text = 'You\'re already fairly calm, fairly equanimous, and fairly comfortable with discomfort. That\'s a genuine strength. But it also means the standard mindfulness sales pitch — "reduce your anxiety, find peace" — is solving a problem you may not have. If you practice, pay close attention to whether it\'s sharpening your engagement with life or softening it. For someone with your profile, the risk isn\'t that meditation won\'t work. It\'s that it might work on the wrong thing.';
+    if (q4val === 4) {
+      label = 'Worth Pausing On';
+      text = 'You\'ve described using practice to feel okay about things you\'re not sure you should feel okay about. That\'s a signal worth taking seriously. Mindfulness is very good at dissolving discomfort. It\'s less good at distinguishing between discomfort that\'s unnecessary noise and discomfort that\'s pointing at something real. Before deepening practice, it might be worth asking: what is this helping me avoid? That\'s not an argument against practice — it\'s a prerequisite for using it well.';
+    } else if (total <= 6) {
+      label = 'Start — The Case Is Clear';
+      text = 'Based on what you\'ve described, the concerns in this essay are not yet relevant to you. Your reactivity, anxiety, and the weight of future stakes are all functioning at levels where mindfulness would offer real and substantial relief. The treatment matches the condition. The concerns about dosage and affect-flattening are downstream of a lot of practice — you\'re nowhere near them. The benefits of starting are probably clear and accessible.';
+    } else if (total <= 9) {
+      label = 'Continue, With Attention';
+      text = 'You\'re somewhere in the productive middle — enough reactivity that the practice is doing useful work, but not so far along the equanimity curve that the concerns here are pressing. The main thing worth watching: are you using practice to process difficult experiences and return to engagement with them, or to dissolve them so you don\'t have to? Those are different projects. The first is what the practice is for. The second is available as a byproduct, and worth staying honest about.';
+    } else if (total <= 13) {
+      label = 'Audit Before Deepening';
+      text = 'Your profile suggests you\'re already fairly equanimous, and that the future doesn\'t carry a lot of emotional weight. Before deepening practice, it\'s worth asking whether the thing you\'re trying to reduce — reactivity, anxiety, urgency — is still present in amounts that are actually causing problems. More equanimity solves the right problem for some people and the wrong problem for others. This is a moment for honest assessment, not necessarily a reason to stop — but not a clear case for more, either.';
     } else {
-      label = 'This Might Not Be Your Medicine';
-      text = 'Your answers suggest that your current challenge isn\'t excess anxiety or reactivity — it\'s more likely insufficient urgency, motivation, or emotional charge around the things that matter. More equanimity may not be what you need. If anything, you might benefit from practices or frameworks that increase felt stakes, sharpen identity, and help you care more about outcomes — the opposite direction from standard mindfulness instruction. That doesn\'t mean meditation has nothing to offer you, ever. But it does mean the default dose may be the wrong prescription right now.';
+      label = 'The Practice May Not Be Matching the Condition';
+      text = 'What you\'ve described — low anxiety, low emotional reactivity, a future that doesn\'t grip you — doesn\'t suggest a problem that mindfulness is designed to solve. The practice is very good at reducing what you appear to already have relatively little of. The concerns in this essay about affect-flattening and motivation erosion are most directly relevant to this profile. That doesn\'t mean stop — but it does mean the reflexive answer of "more practice" probably isn\'t the right one. Worth asking what problem you\'re actually trying to solve, and whether this is the right tool for it.';
     }
 
     const result = document.getElementById('assessment-result');
