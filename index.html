@@ -237,7 +237,8 @@ a { color: inherit; text-decoration: none; }
       <li><a href="#about" class="active">About</a></li>
       <li><a href="#start">Where to start</a></li>
       <li><a href="#tools">Interactive Tools</a></li>
-      <li><a href="#more">Essays &amp; Wiki</a></li>
+      <li><a href="#essays">Essays</a></li>
+      <li><a href="#more">More</a></li>
     </ul>
   </aside>
 
@@ -277,6 +278,7 @@ a { color: inherit; text-decoration: none; }
             <div class="start-path-label">Something shifted</div>
             <div class="start-path-desc">Something changed during practice and you don't know how to think about it.</div>
             <div class="start-path-links">
+              <a href="/essays/paradox-of-acceptance/">The Paradox</a>
               <a href="/mindfulness-essays/">Essays</a>
               <a href="/concept-explorer/">Concept Explorer</a>
             </div>
@@ -329,6 +331,21 @@ a { color: inherit; text-decoration: none; }
             <div class="tool-meta">Assessment</div>
             <div class="tool-desc">Most mindfulness content assumes the answer is yes. This tool doesn't.</div>
             <div><span class="status-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="status-tag-text"></span></span><button class="restart-btn" onclick="event.preventDefault();event.stopPropagation();restartTool('mindfulness-fit')">Restart</button></div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Essays -->
+      <section id="essays">
+        <div class="section-label">Essays</div>
+        <div class="more-cards">
+
+          <a href="/essays/paradox-of-acceptance/" class="more-card">
+            <div class="more-card-label">Featured Essay</div>
+            <div class="more-card-title">The Paradox of Acceptance</div>
+            <div class="more-card-desc">The central tension in contemplative practice — and why understanding it changes everything. Interactive essay with self-assessment.</div>
+            <div class="more-card-link">Read &rarr;</div>
           </a>
 
         </div>
@@ -398,6 +415,7 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="footer-col">
       <div class="footer-col-label">More</div>
+      <a href="/essays/paradox-of-acceptance/">The Paradox of Acceptance</a>
       <a href="/mindfulness-pointers/">Guided Practices</a>
       <a href="/mindfulness-essays/">Essays</a>
       <a href="/mindfulness-wiki/">Wiki</a>
@@ -426,7 +444,7 @@ a { color: inherit; text-decoration: none; }
 /* Sidebar active state on scroll */
 (function() {
   var links = document.querySelectorAll('.sidebar-nav a');
-  var sections = ['about', 'start', 'tools', 'more'];
+  var sections = ['about', 'start', 'tools', 'essays', 'more'];
   function updateActive() {
     var scrollY = window.scrollY + 100;
     var current = 'about';
