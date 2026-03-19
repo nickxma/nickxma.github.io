@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paradox of Acceptance — Tools for the questions practice raises</title>
-<meta name="description" content="Interactive tools, essays, and guided practices for meditators — built from studying contemplative teachers across traditions.">
+<title>Paradox of Acceptance</title>
+<meta name="description" content="Interactive tools, essays, and guided practices covering what the official mindfulness accounts structurally cannot — the tensions, contradictions, and open questions serious practitioners sit with.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -92,6 +92,15 @@ a { color: inherit; text-decoration: none; }
 .more-card-desc { font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 10px; }
 .more-card-link { font-size: 12px; font-weight: 500; color: #999; }
 
+/* Entry paths */
+.start-paths { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+.start-path { padding: 20px 0; border-top: 1px solid #E8E8E8; padding-right: 32px; }
+.start-path-label { font-family: 'Newsreader', serif; font-size: 17px; color: #111; margin-bottom: 6px; }
+.start-path-desc { font-size: 13px; color: #777; line-height: 1.5; margin-bottom: 12px; }
+.start-path-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.start-path-links a { font-size: 12px; font-weight: 500; color: #555; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #DDD; transition: color 0.15s, text-decoration-color 0.15s; }
+.start-path-links a:hover { color: #111; text-decoration-color: #111; }
+
 /* Subscribe */
 .subscribe-section { padding: 64px 280px; text-align: center; }
 .subscribe-headline { font-family: 'Newsreader', serif; font-size: 28px; color: #111; margin-bottom: 12px; }
@@ -124,6 +133,8 @@ a { color: inherit; text-decoration: none; }
   .about-headline { font-size: 30px; }
   .tools-grid { grid-template-columns: 1fr; }
   .more-cards { grid-template-columns: 1fr; }
+  .start-paths { grid-template-columns: 1fr; }
+  .start-path { padding-right: 0; }
   .subscribe-section { padding: 48px 24px; }
   .subscribe-form { flex-direction: column; width: 100%; }
   .subscribe-input { width: 100%; }
@@ -175,10 +186,9 @@ a { color: inherit; text-decoration: none; }
     <div class="sidebar-label">Navigation</div>
     <ul class="sidebar-nav">
       <li><a href="#about" class="active">About</a></li>
+      <li><a href="#start">Where to start</a></li>
       <li><a href="#tools">Interactive Tools</a></li>
-      <li><a href="#more">Guided Practices</a></li>
-      <li><a href="#more">Essays</a></li>
-      <li><a href="#more">Wiki</a></li>
+      <li><a href="#more">Essays &amp; Wiki</a></li>
     </ul>
   </aside>
 
@@ -190,8 +200,39 @@ a { color: inherit; text-decoration: none; }
       <section id="about">
         <h1 class="about-headline">Tools for the questions practice raises.</h1>
         <div class="about-text">
-          <p>Mindfulness practice raises questions that most resources skip. What happens when concentration conflicts with acceptance? When teachers you trust disagree on fundamentals? When the techniques actually work and you're not sure what to do with that?</p>
-          <p>This is a collection of interactive tools, essays, and guided practices built from studying contemplative teachers across traditions. It covers what the official accounts structurally cannot — the tensions, the contradictions, and the open questions that serious practitioners sit with.</p>
+          <p>Mindfulness practice raises questions most resources don't address. What happens when concentration conflicts with acceptance? When teachers you trust disagree on fundamentals? When the techniques work and you're not sure what to do with that?</p>
+          <p>Built from studying contemplative teachers across traditions — covering what the official accounts structurally cannot: the tensions, the contradictions, the open questions serious practitioners sit with.</p>
+        </div>
+      </section>
+
+      <!-- Where to start -->
+      <section id="start">
+        <div class="section-label">Where to start</div>
+        <div class="start-paths">
+          <div class="start-path">
+            <div class="start-path-label">Curious but skeptical</div>
+            <div class="start-path-desc">You want an honest picture before committing any time to this.</div>
+            <div class="start-path-links">
+              <a href="/mindfulness-fit/">Practice Fit</a>
+              <a href="/meditation-debates/">5 Debates</a>
+            </div>
+          </div>
+          <div class="start-path">
+            <div class="start-path-label">Already practicing</div>
+            <div class="start-path-desc">Looking for what you're missing, or why you've plateaued.</div>
+            <div class="start-path-links">
+              <a href="/meditation-quiz/">Meditator Quiz</a>
+              <a href="/meditation-recommender/">Recommender</a>
+            </div>
+          </div>
+          <div class="start-path">
+            <div class="start-path-label">Something shifted</div>
+            <div class="start-path-desc">Something changed during practice and you don't know how to think about it.</div>
+            <div class="start-path-links">
+              <a href="/mindfulness-essays/">Essays</a>
+              <a href="/concept-explorer/">Concept Explorer</a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -296,7 +337,6 @@ a { color: inherit; text-decoration: none; }
 <footer class="footer">
   <div class="footer-left">
     <div class="footer-logo">Paradox of Acceptance</div>
-    <div class="footer-tagline">Tools for the questions practice raises.</div>
   </div>
   <div class="footer-right">
     <div class="footer-col">
@@ -321,7 +361,7 @@ a { color: inherit; text-decoration: none; }
 /* Sidebar active state on scroll */
 (function() {
   var links = document.querySelectorAll('.sidebar-nav a');
-  var sections = ['about', 'tools', 'more'];
+  var sections = ['about', 'start', 'tools', 'more'];
   function updateActive() {
     var scrollY = window.scrollY + 100;
     var current = 'about';
@@ -330,7 +370,8 @@ a { color: inherit; text-decoration: none; }
       if (el && el.offsetTop <= scrollY) current = id;
     });
     links.forEach(function(a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      var href = a.getAttribute('href');
+      a.classList.toggle('active', href === '#' + current || (current === 'more' && href === '#more'));
     });
   }
   window.addEventListener('scroll', updateActive, { passive: true });
