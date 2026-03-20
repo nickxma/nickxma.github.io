@@ -1,0 +1,16 @@
+{
+  "name": "Acceptance Pass",
+  "description": "A non-transferable membership credential for the Paradox of Acceptance community. Holders gain access to members-only practices, early essays, and deeper contemplative material.",
+  "image": "https://paradoxofacceptance.xyz/pass/metadata/acceptance-pass.svg",
+  "external_url": "https://paradoxofacceptance.xyz/pass/",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Membership"
+    },
+    {
+      "trait_type": "Transferable",
+      "value": "No"
+    }
+  ]
+}
