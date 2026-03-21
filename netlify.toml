@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+
+# No build command needed — pure static HTML site
+# GitHub Pages serves main; Netlify provides PR preview URLs
