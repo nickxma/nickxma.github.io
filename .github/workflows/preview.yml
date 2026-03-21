@@ -1,0 +1,79 @@
+name: PR Preview
+
+# Deploys PR content to Netlify and posts preview URL as a PR comment.
+# Preview URL: https://pr-{number}--{site-name}.netlify.app
+#
+# Required GitHub repository secrets:
+#   NETLIFY_AUTH_TOKEN  — Personal access token from app.netlify.com/user/applications
+#   NETLIFY_SITE_ID     — Site API ID from Site settings > General > Site details
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy preview to Netlify
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: "."
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "PR #${{ github.event.pull_request.number }} — ${{ github.event.pull_request.title }}"
+          enable-pull-request-comment: true
+          overwrites-pull-request-comment: true
+          alias: pr-${{ github.event.pull_request.number }}
+          netlify-config-path: ./netlify.toml
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 5
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Netlify preview deploy
+        run: |
+          echo "Looking for deploy with alias pr-$PR_NUMBER on site $NETLIFY_SITE_ID"
+
+          DEPLOYS=$(curl -sf \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID/deploys?per_page=100")
+
+          DEPLOY_ID=$(echo "$DEPLOYS" | \
+            jq -r --arg alias "pr-$PR_NUMBER" \
+            '.[] | select(.branch == $alias or .name == $alias) | .id' | head -1)
+
+          if [ -n "$DEPLOY_ID" ]; then
+            curl -sf -X DELETE \
+              -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+              "https://api.netlify.com/api/v1/deploys/$DEPLOY_ID"
+            echo "Deleted deploy $DEPLOY_ID"
+          else
+            echo "No deploy found for alias pr-$PR_NUMBER (may have already been cleaned up)"
+          fi
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        continue-on-error: true
+
+      - name: Comment on closed PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🗑️ Preview deployment removed (PR closed).'
+            })
