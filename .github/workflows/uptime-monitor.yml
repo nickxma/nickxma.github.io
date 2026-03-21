@@ -1,0 +1,114 @@
+name: Uptime Monitor
+
+# Pings paradoxofacceptance.xyz every 5 minutes.
+# On downtime: opens a GitHub issue labeled "uptime-alert" (one per outage).
+# On recovery: adds a comment and closes any open uptime-alert issues.
+# GitHub sends email notifications on new issues per your repo notification settings.
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check:
+    name: Check paradoxofacceptance.xyz
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check site status
+        id: check
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            --max-time 30 --retry 2 --retry-delay 5 \
+            https://paradoxofacceptance.xyz 2>/dev/null || echo "000")
+          echo "http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
+          if [[ "$HTTP_CODE" =~ ^[23][0-9][0-9]$ ]]; then
+            echo "status=up" >> "$GITHUB_OUTPUT"
+            echo "Site is UP (HTTP $HTTP_CODE)"
+          else
+            echo "status=down" >> "$GITHUB_OUTPUT"
+            echo "Site is DOWN (HTTP $HTTP_CODE)"
+          fi
+
+      - name: Open downtime alert
+        if: steps.check.outputs.status == 'down'
+        uses: actions/github-script@v7
+        env:
+          HTTP_CODE: ${{ steps.check.outputs.http_code }}
+        with:
+          script: |
+            // Ensure the label exists
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'uptime-alert',
+                color: 'e11d48',
+                description: 'Automated uptime monitoring alert',
+              });
+            } catch (_) { /* label already exists */ }
+
+            // Open a new alert issue only if no existing open one
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'uptime-alert',
+            });
+
+            if (open.length === 0) {
+              const now = new Date().toISOString();
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🚨 Uptime Alert: paradoxofacceptance.xyz is DOWN',
+                body: [
+                  '## Site Down Alert',
+                  '',
+                  '| Field | Value |',
+                  '|-------|-------|',
+                  `| **Site** | https://paradoxofacceptance.xyz |`,
+                  `| **HTTP Status** | \`${process.env.HTTP_CODE}\` |`,
+                  `| **Detected at** | ${now} |`,
+                  '',
+                  'This issue will be closed automatically when the site recovers.',
+                  '',
+                  '_Monitored by the [Uptime Monitor workflow](../../actions/workflows/uptime-monitor.yml)._',
+                ].join('\n'),
+                labels: ['uptime-alert'],
+              });
+            }
+
+      - name: Close recovery alert
+        if: steps.check.outputs.status == 'up'
+        uses: actions/github-script@v7
+        env:
+          HTTP_CODE: ${{ steps.check.outputs.http_code }}
+        with:
+          script: |
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'uptime-alert',
+            });
+
+            for (const issue of open) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `✅ Site recovered at ${new Date().toISOString()}. HTTP status: \`${process.env.HTTP_CODE}\``,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }
