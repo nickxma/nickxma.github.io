@@ -157,6 +157,9 @@ a { color: inherit; text-decoration: none; }
 .subscribe-msg.success { color: #22C55E; }
 .subscribe-msg.error { color: #DC2626; }
 
+/* Accessibility */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
 /* Footer */
 .footer { display: flex; align-items: center; justify-content: space-between; padding: 24px 64px; border-top: 1px solid var(--border); }
 .footer-logo { font-family: 'Newsreader', serif; font-size: 16px; color: var(--text-primary); }
@@ -410,14 +413,15 @@ a { color: inherit; text-decoration: none; }
 <hr class="divider">
 
 <!-- Subscribe -->
-<section class="subscribe-section">
-  <h2 class="subscribe-headline">Stay with the questions</h2>
-  <p class="subscribe-sub">New tools and essays, when they're ready. No spam.</p>
-  <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-    <input class="subscribe-input" type="email" id="subscribe-email" placeholder="you@email.com" required>
+<section class="subscribe-section" aria-label="Newsletter signup">
+  <h2 class="subscribe-headline">Get new essays in your inbox</h2>
+  <p class="subscribe-sub">No spam. Unsubscribe anytime.</p>
+  <form class="subscribe-form" onsubmit="handleSubscribe(event)" novalidate>
+    <label for="subscribe-email" class="visually-hidden">Email address</label>
+    <input class="subscribe-input" type="email" id="subscribe-email" name="email" placeholder="you@email.com" required autocomplete="email" aria-required="true">
     <button class="subscribe-btn" type="submit" id="subscribe-btn">Subscribe</button>
   </form>
-  <div class="subscribe-msg" id="subscribe-msg"></div>
+  <div class="subscribe-msg" id="subscribe-msg" role="status" aria-live="polite"></div>
 </section>
 
 <!-- Footer -->
@@ -601,20 +605,32 @@ document.addEventListener('click', function(e) {
     btn.textContent = '...';
     msg.textContent = '';
     msg.className = 'subscribe-msg';
-    sb.rpc('subscribe', { p_email: email }).then(function(res) {
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    }).then(function(res) {
       btn.disabled = false;
       btn.textContent = 'Subscribe';
-      if (res.error) {
+      if (!res.ok) {
         msg.textContent = 'Something went wrong. Try again.';
         msg.className = 'subscribe-msg error';
-      } else if (res.data && res.data.already_subscribed) {
-        msg.textContent = "You're already subscribed.";
-        msg.className = 'subscribe-msg success';
-      } else {
-        msg.textContent = "You're in. Welcome.";
-        msg.className = 'subscribe-msg success';
-        document.getElementById('subscribe-email').value = '';
+        return;
       }
+      return res.json().then(function(data) {
+        if (data && data.already_subscribed) {
+          msg.textContent = "You're already subscribed.";
+        } else {
+          msg.textContent = "You're in. Welcome.";
+          document.getElementById('subscribe-email').value = '';
+        }
+        msg.className = 'subscribe-msg success';
+      });
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      msg.textContent = 'Something went wrong. Try again.';
+      msg.className = 'subscribe-msg error';
     });
   };
 })();
