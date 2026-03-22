@@ -466,6 +466,25 @@
     [data-theme="dark"] .toggle-knob { transform: translateX(18px); background: #EEEEEE; }
     .moon-icon { color: #CCCCCC; flex-shrink: 0; transition: color 0.25s; display: block; }
     [data-theme="dark"] .moon-icon { color: #DDDDDD; }
+
+    /* ─── Subscribe widget ─── */
+    .subscribe-widget { margin: 56px 0 0; padding: 40px 0; border-top: 1px solid var(--rule); text-align: center; }
+    .subscribe-widget-headline { font-family: Georgia, 'Times New Roman', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+    .subscribe-widget-sub { font-family: Georgia, 'Times New Roman', serif; font-size: 15px; color: var(--ink-light); margin-bottom: 24px; }
+    .subscribe-widget-row { display: inline-flex; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; max-width: 420px; width: 100%; }
+    .subscribe-widget-input { font-family: Georgia, 'Times New Roman', serif; font-size: 16px; padding: 10px 14px; border: none; outline: none; flex: 1; background: var(--cream); color: var(--ink); min-width: 0; }
+    .subscribe-widget-btn { font-family: Georgia, 'Times New Roman', serif; font-size: 15px; padding: 10px 20px; background: var(--sage); color: #fff; border: none; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+    .subscribe-widget-btn:hover { background: var(--sage-dark); }
+    .subscribe-widget-btn:disabled { background: var(--sage-light); cursor: default; }
+    .subscribe-widget-msg { font-family: Georgia, 'Times New Roman', serif; font-size: 14px; margin-top: 10px; min-height: 20px; }
+    .subscribe-widget-msg.success { color: #22C55E; }
+    .subscribe-widget-msg.error { color: #DC2626; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    [data-theme="dark"] .subscribe-widget-input { background: #1C1C1C; }
+    @media (max-width: 600px) {
+      .subscribe-widget-row { flex-direction: column; }
+      .subscribe-widget-btn { width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -831,6 +850,19 @@
 
     </article>
 
+    <div class="subscribe-widget" role="complementary" aria-label="Newsletter signup">
+      <p class="subscribe-widget-headline">Get new essays in your inbox</p>
+      <p class="subscribe-widget-sub">No spam. Unsubscribe anytime.</p>
+      <form onsubmit="handleSubscribeWidget(event)" novalidate>
+        <label for="subscribe-widget-email" class="visually-hidden">Email address</label>
+        <div class="subscribe-widget-row">
+          <input class="subscribe-widget-input" type="email" id="subscribe-widget-email" name="email" placeholder="you@email.com" required autocomplete="email" aria-required="true">
+          <button class="subscribe-widget-btn" type="submit" id="subscribe-widget-btn">Subscribe</button>
+        </div>
+        <div class="subscribe-widget-msg" id="subscribe-widget-msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
     <footer>
       <p>Part of the <em>Paradox of Acceptance</em> series · <a href="/essays/paradox-of-acceptance/">Read the main essay</a> · <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">All essays</a></p>
     </footer>
@@ -887,6 +919,46 @@
 
   window.addEventListener('scroll', updateActiveToc, { passive: true });
   updateActiveToc();
+
+  // ─── Subscribe widget ───
+  window.handleSubscribeWidget = function(e) {
+    e.preventDefault();
+    var email = document.getElementById('subscribe-widget-email').value.trim();
+    var btn = document.getElementById('subscribe-widget-btn');
+    var msg = document.getElementById('subscribe-widget-msg');
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = '...';
+    msg.textContent = '';
+    msg.className = 'subscribe-widget-msg';
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    }).then(function(res) {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      if (!res.ok) {
+        msg.textContent = 'Something went wrong. Please try again.';
+        msg.className = 'subscribe-widget-msg error';
+        return;
+      }
+      return res.json().then(function(data) {
+        if (data && data.already_subscribed) {
+          msg.textContent = "You're already subscribed.";
+        } else {
+          msg.textContent = "You're in. Welcome.";
+          document.getElementById('subscribe-widget-email').value = '';
+        }
+        msg.className = 'subscribe-widget-msg success';
+      });
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.className = 'subscribe-widget-msg error';
+    });
+  };
 
   // ─── Self-assessment ───
   function submitAssessment() {
