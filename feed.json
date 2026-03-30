@@ -1,0 +1,58 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Paradox of Acceptance — Essays",
+  "home_page_url": "https://paradoxofacceptance.xyz/",
+  "feed_url": "https://paradoxofacceptance.xyz/feed.json",
+  "description": "Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.",
+  "language": "en",
+  "authors": [
+    { "name": "Nick" }
+  ],
+  "items": [
+    {
+      "id": "https://paradoxofacceptance.xyz/essays/when-to-quit/",
+      "url": "https://paradoxofacceptance.xyz/essays/when-to-quit/",
+      "title": "When to Quit: The Exit Conditions Mindfulness Never Names",
+      "summary": "Mindfulness has rich language for starting and deepening — and almost none for stopping. This piece examines when quitting, reducing, or restructuring practice is the more honest move.",
+      "date_published": "2026-03-21T00:00:00Z",
+      "date_modified": "2026-03-21T00:00:00Z",
+      "authors": [{ "name": "Nick" }]
+    },
+    {
+      "id": "https://paradoxofacceptance.xyz/essays/the-avoidance-problem/",
+      "url": "https://paradoxofacceptance.xyz/essays/the-avoidance-problem/",
+      "title": "The Avoidance Problem: When Meditation Becomes Evasion",
+      "summary": "Mindfulness can make you comfortable in situations you should change. The practice works exactly as intended — and that's the problem. A look at how skillful meditation becomes sophisticated evasion.",
+      "date_published": "2026-03-21T00:00:00Z",
+      "date_modified": "2026-03-21T00:00:00Z",
+      "authors": [{ "name": "Nick" }]
+    },
+    {
+      "id": "https://paradoxofacceptance.xyz/essays/the-cherry-picking-problem/",
+      "url": "https://paradoxofacceptance.xyz/essays/the-cherry-picking-problem/",
+      "title": "The Cherry-Picking Problem: What Non-Dual Practice Costs",
+      "summary": "Most practitioners want to dissolve the suffering self and keep the driven one. But the non-dual insight doesn't make that distinction — and the community won't say what that costs.",
+      "date_published": "2026-03-21T00:00:00Z",
+      "date_modified": "2026-03-21T00:00:00Z",
+      "authors": [{ "name": "Nick" }]
+    },
+    {
+      "id": "https://paradoxofacceptance.xyz/essays/should-you-get-into-mindfulness/",
+      "url": "https://paradoxofacceptance.xyz/essays/should-you-get-into-mindfulness/",
+      "title": "Should You Get Into Mindfulness? The Case for Dosage",
+      "summary": "Mindfulness is sold as universal. Medicine isn't. The case for treating meditation like medicine — with dosage, contraindications, and honest calibration about who it's actually for.",
+      "date_published": "2026-03-21T00:00:00Z",
+      "date_modified": "2026-03-21T00:00:00Z",
+      "authors": [{ "name": "Nick" }]
+    },
+    {
+      "id": "https://paradoxofacceptance.xyz/essays/paradox-of-acceptance/",
+      "url": "https://paradoxofacceptance.xyz/essays/paradox-of-acceptance/",
+      "title": "The Paradox of Acceptance",
+      "summary": "A meditation on what happens to ambition, urgency, and deferred gratification when mindfulness becomes very good.",
+      "date_published": "2026-03-20T00:00:00Z",
+      "date_modified": "2026-03-20T00:00:00Z",
+      "authors": [{ "name": "Nick" }]
+    }
+  ]
+}

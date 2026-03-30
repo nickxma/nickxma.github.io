@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essays — Paradox of Acceptance</title>
+<meta name="description" content="Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.">
+<link rel="alternate" type="application/atom+xml" title="Paradox of Acceptance" href="/feed.xml">
+<link rel="alternate" type="application/json" href="/feed.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #FFFFFF; color: #111111; }
+a { color: inherit; text-decoration: none; }
+
+/* Layout */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 280px; }
+.page-header { padding: 64px 280px 48px; border-bottom: 1px solid #EEEEEE; }
+.section { padding: 48px 280px; }
+.footer { padding: 48px 280px; }
+
+/* Nav */
+.nav-logo { font-family: 'Newsreader', serif; font-size: 20px; font-weight: 500; color: #111; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: #666; transition: color 0.15s; }
+.nav-links a:hover { color: #111; }
+.nav-links a.active { color: #111; }
+
+/* Divider */
+.divider { border: none; border-top: 1px solid #EEEEEE; margin: 0; }
+
+/* Page header */
+.page-kicker { font-size: 12px; font-weight: 600; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.page-title { font-family: 'Newsreader', serif; font-size: 40px; font-weight: 400; color: #111; margin-bottom: 16px; }
+.page-desc { font-size: 16px; color: #666; line-height: 1.65; max-width: 560px; }
+
+/* Essay rows */
+.essay-row { display: block; padding: 32px 0; border-bottom: 1px solid #EEEEEE; cursor: pointer; transition: background 0.1s; text-decoration: none; color: inherit; }
+.essay-row:hover { background: #FAFAFA; margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; border-radius: 6px; }
+.essay-row:last-child { border-bottom: none; }
+.essay-kicker { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.essay-title { font-family: 'Newsreader', serif; font-size: 28px; color: #111; margin-bottom: 8px; line-height: 1.3; }
+.essay-desc { font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 12px; max-width: 600px; }
+.essay-meta { font-size: 13px; color: #AAA; margin-bottom: 10px; }
+.essay-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.essay-tag { font-size: 11px; font-weight: 500; color: #666; background: #F5F5F5; border: 1px solid #E8E8E8; padding: 3px 10px; border-radius: 100px; transition: background 0.1s, border-color 0.1s; }
+.essay-tag:hover { background: #EEEEEE; border-color: #CCC; }
+
+/* Footer */
+.footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EEEEEE; padding-top: 24px; padding-bottom: 24px; }
+.footer-logo { font-family: 'Newsreader', serif; font-size: 16px; color: #111; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.footer-links a { font-size: 13px; color: #666; transition: color 0.15s; }
+.footer-links a:hover { color: #111; }
+
+/* Subscribe */
+.subscribe-section { padding: 80px 280px; text-align: center; }
+.subscribe-headline { font-family: 'Newsreader', serif; font-size: 28px; color: #111; margin-bottom: 10px; }
+.subscribe-sub { font-size: 15px; color: #666; margin-bottom: 24px; }
+.subscribe-form { display: inline-flex; border: 1px solid #DDD; border-radius: 4px; overflow: hidden; }
+.subscribe-input { font-family: 'Inter', sans-serif; font-size: 14px; padding: 11px 16px; border: none; outline: none; width: 280px; }
+.subscribe-btn { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; background: #111; color: #fff; border: none; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+.subscribe-btn:hover { background: #333; }
+.subscribe-btn:disabled { background: #666; cursor: default; }
+.subscribe-msg { font-size: 13px; margin-top: 10px; min-height: 18px; }
+.subscribe-msg.success { color: #22C55E; }
+.subscribe-msg.error { color: #DC2626; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav, .page-header, .section, .subscribe-section, .footer { padding-left: 24px; padding-right: 24px; }
+  .page-title { font-size: 32px; }
+  .subscribe-form { flex-direction: column; width: 100%; }
+  .subscribe-input { width: 100%; }
+  .subscribe-btn { width: 100%; }
+  .footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .footer-links { gap: 16px; }
+  .nav-links { gap: 20px; }
+}
+</style>
+    <!-- Sentry error monitoring (https://sentry.io) -->
+    <script src="https://browser.sentry-cdn.com/9.0.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+    <script src="/shared/sentry-init.js"></script>
+<script defer data-domain="paradoxofacceptance.xyz" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:48px;">
+    <a href="/" class="nav-logo">Paradox of Acceptance</a>
+    <div class="nav-links">
+      <a href="/#start-here">Tools</a>
+      <a href="/essays/" class="active">Essays</a>
+      <a href="/reading-lists/">Reading Lists</a>
+      <a href="/mindfulness-wiki/">Wiki</a>
+    <a href="/about/">About</a>
+      <a href="/pass/">Pass</a>
+      <a href="/search/">Search</a>
+    </div>
+  </div>
+</nav>
+
+<hr class="divider">
+
+<!-- Page header -->
+<section class="page-header">
+  <div class="page-kicker">Long-form</div>
+  <h1 class="page-title">Essays</h1>
+  <p class="page-desc">What mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.</p>
+</section>
+
+<!-- Essays -->
+<section class="section">
+
+  <a href="/essays/paradox-of-acceptance/" class="essay-row">
+    <div class="essay-kicker">Essay · Mindfulness &amp; Motivation</div>
+    <div class="essay-title">The Paradox of Acceptance</div>
+    <div class="essay-desc">What happens to ambition, urgency, and deferred gratification when mindfulness becomes very good? The better we get at meeting whatever arises, the less obvious it becomes why we should sacrifice now for a later state we also expect to be able to accept.</div>
+    <div class="essay-meta">18 min read &middot; Interactive</div>
+    <div class="essay-tags">
+      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
+      <a href="/tags/motivation/" class="essay-tag" onclick="event.stopPropagation()">#motivation</a>
+      <a href="/tags/acceptance/" class="essay-tag" onclick="event.stopPropagation()">#acceptance</a>
+      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+    </div>
+  </a>
+
+  <a href="/essays/should-you-get-into-mindfulness/" class="essay-row">
+    <div class="essay-kicker">Essay · Who Mindfulness Is For</div>
+    <div class="essay-title">Should You Get Into Mindfulness?</div>
+    <div class="essay-desc">The case for treating meditation like medicine, not vitamins — who it helps, when it doesn't, and what nobody in the mindfulness world will tell you about dosage.</div>
+    <div class="essay-meta">7 min read</div>
+    <div class="essay-tags">
+      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
+      <a href="/tags/beginners/" class="essay-tag" onclick="event.stopPropagation()">#beginners</a>
+      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <a href="/tags/mental-health/" class="essay-tag" onclick="event.stopPropagation()">#mental-health</a>
+    </div>
+  </a>
+
+  <a href="/essays/the-cherry-picking-problem/" class="essay-row">
+    <div class="essay-kicker">Essay · Self &amp; Motivation</div>
+    <div class="essay-title">The Cherry-Picking Problem</div>
+    <div class="essay-desc">You can't be an atheist about every god except one. The neurotic self and the motivated self are the same process — and dissolving one without touching the other is harder than it looks.</div>
+    <div class="essay-meta">7 min read</div>
+    <div class="essay-tags">
+      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
+      <a href="/tags/self/" class="essay-tag" onclick="event.stopPropagation()">#self</a>
+      <a href="/tags/motivation/" class="essay-tag" onclick="event.stopPropagation()">#motivation</a>
+      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+    </div>
+  </a>
+
+  <a href="/essays/the-avoidance-problem/" class="essay-row">
+    <div class="essay-kicker">Essay · Practice &amp; Honesty</div>
+    <div class="essay-title">The Avoidance Problem</div>
+    <div class="essay-desc">Skilled meditators can use practice to metabolize difficult feelings before asking what they mean — not equanimity, but avoidance with better posture. Mindfulness can make you comfortable in situations you should change.</div>
+    <div class="essay-meta">9 min read</div>
+    <div class="essay-tags">
+      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
+      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <a href="/tags/avoidance/" class="essay-tag" onclick="event.stopPropagation()">#avoidance</a>
+      <a href="/tags/honesty/" class="essay-tag" onclick="event.stopPropagation()">#honesty</a>
+    </div>
+  </a>
+
+  <a href="/essays/when-to-quit/" class="essay-row">
+    <div class="essay-kicker">Essay · Practice &amp; Exit</div>
+    <div class="essay-title">When to Quit</div>
+    <div class="essay-desc">The mindfulness world has rich language for starting and deepening — and almost none for stopping. This essay names the legitimate exit conditions that almost no teacher will state clearly.</div>
+    <div class="essay-meta">9 min read</div>
+    <div class="essay-tags">
+      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
+      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <a href="/tags/stopping/" class="essay-tag" onclick="event.stopPropagation()">#stopping</a>
+    </div>
+  </a>
+
+<!-- /ESSAYS -->
+</section>
+
+<hr class="divider">
+
+<!-- Subscribe -->
+<section class="subscribe-section">
+  <h2 class="subscribe-headline">Stay with the questions</h2>
+  <p class="subscribe-sub">New essays and tools, when they're ready. No spam.</p>
+  <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+    <input class="subscribe-input" type="email" id="subscribe-email" placeholder="you@email.com" required>
+    <button class="subscribe-btn" type="submit" id="subscribe-btn">Subscribe</button>
+  </form>
+  <div class="subscribe-msg" id="subscribe-msg"></div>
+</section>
+
+<hr class="divider">
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-logo">Paradox of Acceptance</div>
+  <div class="footer-links">
+    <a href="/meditation-quiz/">Quiz</a>
+    <a href="/meditation-debates/">Debates</a>
+    <a href="/teacher-debates/">Teacher Map</a>
+    <a href="/meditation-recommender/">Recommender</a>
+    <a href="/essays/">Essays</a>
+    <a href="/mindfulness-pointers/">Pointers</a>
+    <a href="/mindfulness-wiki/">Wiki</a>
+    <a href="/pass/">Pass</a>
+    <a href="https://x.com/quiet_drift" target="_blank" rel="noopener">Twitter / X</a>
+    <a href="/feed.xml"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;margin-right:3px"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>RSS Feed</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function() {
+  if (typeof supabase === 'undefined') return;
+  var sb = supabase.createClient(
+    'https://jyxwnfgcqgiqxjdlypvr.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5eHduZmdjcWdpcXhqZGx5cHZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyODkxNTYsImV4cCI6MjA4ODg2NTE1Nn0.4NFTioFSjRZVRqOB9kXToi_UueNrvxBj-vy6uRtCtrE'
+  );
+
+  // SWAP: Replace sb.rpc call with email platform API (Resend or Buttondown) once backend IC (OLU-109) completes setup
+  window.handleSubscribe = function(e) {
+    e.preventDefault();
+    var email = document.getElementById('subscribe-email').value.trim();
+    var btn = document.getElementById('subscribe-btn');
+    var msg = document.getElementById('subscribe-msg');
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = '...';
+    msg.textContent = '';
+    msg.className = 'subscribe-msg';
+    sb.rpc('subscribe', { p_email: email }).then(function(res) {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      if (res.error) {
+        msg.textContent = 'Something went wrong. Try again.';
+        msg.className = 'subscribe-msg error';
+      } else if (res.data && res.data.already_subscribed) {
+        msg.textContent = "You're already subscribed.";
+        msg.className = 'subscribe-msg success';
+      } else {
+        msg.textContent = "You're in. Welcome.";
+        msg.className = 'subscribe-msg success';
+        document.getElementById('subscribe-email').value = '';
+      }
+    });
+  };
+})();
+</script>
+<script src="/shared/pwa.js"></script>
+</body>
+</html>

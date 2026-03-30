@@ -1,0 +1,306 @@
+/**
+ * print.css — Paradox of Acceptance
+ *
+ * Clean print styles for essay pages.
+ * Link with: <link rel="stylesheet" media="print" href="/shared/print.css">
+ *
+ * Spec:
+ *   - Single column, black on white, Georgia 12pt
+ *   - Show: title, author/meta, body content
+ *   - Hide: nav, TOC sidebar, CTAs, modals, theme toggle, progress bar
+ *   - External link URLs appended in parentheses
+ *   - Page numbers via CSS counter
+ *   - No page breaks inside images, code blocks, callouts, pull-quotes
+ */
+
+@media print {
+
+  /* ─── Page setup ─── */
+
+  @page {
+    margin: 2cm 2.5cm;
+    size: letter;
+
+    @bottom-right {
+      content: counter(page);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 10pt;
+      color: #555;
+    }
+  }
+
+  /* ─── Reset ─── */
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box !important;
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: black;
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* ─── Hide UI chrome ─── */
+
+  /* Theme toggle, fixed overlays */
+  .essay-toggle,
+  #theme-toggle,
+  #progress-bar,
+  #reading-time-badge,
+  /* Navigation */
+  .back-nav,
+  /* TOC */
+  .toc-sidebar,
+  .toc-mobile-btn,
+  .toc-mobile-overlay,
+  /* Subscribe modal and CTAs */
+  #poa-subscribe-modal,
+  .reading-list-cta,
+  /* Related essays */
+  .related-essays,
+  .related-essays-wrap,
+  /* Footer */
+  footer,
+  /* Assessment interactive section */
+  #assessment,
+  /* Scripts/JS-injected reading tracker UI */
+  .poa-reading-track {
+    display: none !important;
+  }
+
+  /* ─── Layout: collapse flex/grid to single column ─── */
+
+  .body-layout {
+    display: block !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .article-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* ─── Header ─── */
+
+  header {
+    padding: 0 0 24pt !important;
+    border-bottom: 1pt solid #ccc !important;
+    margin-bottom: 24pt !important;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 22pt !important;
+    line-height: 1.2 !important;
+    letter-spacing: normal !important;
+    font-weight: bold !important;
+    margin-bottom: 10pt !important;
+    page-break-after: avoid;
+  }
+
+  .kicker {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 9pt !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: #555 !important;
+    margin-bottom: 10pt !important;
+  }
+
+  .subtitle {
+    font-style: italic !important;
+    font-size: 13pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12pt !important;
+    max-width: none !important;
+    color: #333 !important;
+  }
+
+  .meta {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 9pt !important;
+    color: #555 !important;
+  }
+
+  /* ─── Body content ─── */
+
+  article {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+  }
+
+  p {
+    margin-bottom: 10pt !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2 {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 15pt !important;
+    font-weight: bold !important;
+    margin-top: 20pt !important;
+    margin-bottom: 8pt !important;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 13pt !important;
+    font-weight: bold !important;
+    margin-top: 14pt !important;
+    margin-bottom: 6pt !important;
+    page-break-after: avoid;
+  }
+
+  /* ─── Pull-quotes ─── */
+
+  .pull-quote {
+    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 13pt !important;
+    font-style: italic !important;
+    border-left: 3pt solid #999 !important;
+    padding: 6pt 0 6pt 14pt !important;
+    margin: 16pt 0 !important;
+    color: #333 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Always show pull-quotes (they animate in on screen) */
+  .pull-quote {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* ─── Callouts ─── */
+
+  .callout {
+    border: 1pt solid #ccc !important;
+    padding: 10pt 14pt !important;
+    margin: 16pt 0 !important;
+    font-size: 11pt !important;
+    page-break-inside: avoid;
+  }
+
+  /* ─── Thought experiments (expand all for print) ─── */
+
+  .thought-experiment {
+    border: 1pt solid #ccc !important;
+    padding: 10pt 14pt !important;
+    margin: 16pt 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .te-header {
+    cursor: default !important;
+    padding: 0 0 8pt !important;
+    border-bottom: 1pt solid #ddd !important;
+    margin-bottom: 8pt !important;
+  }
+
+  /* Force all thought-experiment bodies open */
+  .te-body {
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .te-icon {
+    display: none !important;
+  }
+
+  .te-label {
+    font-size: 9pt !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #555 !important;
+    display: block !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .te-title {
+    font-weight: bold !important;
+    font-size: 11pt !important;
+  }
+
+  /* ─── Images ─── */
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  figure {
+    page-break-inside: avoid;
+  }
+
+  /* ─── Code blocks ─── */
+
+  pre,
+  code {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 10pt !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    border: 1pt solid #ddd !important;
+    padding: 2pt 4pt !important;
+  }
+
+  pre {
+    padding: 8pt !important;
+    page-break-inside: avoid;
+  }
+
+  /* ─── Links: append external URLs ─── */
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Don't expand internal anchors, footnote refs, or icon-only links */
+  a[href^="#"]::after,
+  a[href^="/"]:not([href^="//"])::after {
+    content: none;
+  }
+
+  /* Don't expand links that contain only an image or SVG */
+  a img:only-child::after,
+  a svg:only-child::after {
+    content: none;
+  }
+
+  /* ─── Dark mode reset ─── */
+
+  [data-theme="dark"],
+  [data-theme="dark"] body,
+  [data-theme="dark"] * {
+    background: white !important;
+    color: black !important;
+  }
+}

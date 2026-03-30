@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What "Beginner's Mind" Actually Means — Paradox of Acceptance</title>
+  <meta name="description" content="Shunryu Suzuki's phrase gets repeated so often it's lost its edge. Beginner's mind isn't about pretending not to know things — it's about a specific relationship to experience that's genuinely hard to maintain." />
+  <meta property="og:title" content="What \"Beginner's Mind\" Actually Means" />
+  <meta property="og:description" content="Shunryu Suzuki's phrase gets repeated so often it's lost its edge. Beginner's mind isn't about pretending not to know things." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://paradoxofacceptance.xyz/blog/what-beginners-mind-actually-means/" />
+  <meta property="og:image" content="https://paradox-cron.vercel.app/api/og?slug=what-beginners-mind-actually-means" />
+  <meta property="article:published_time" content="2026-03-18T00:00:00Z" />
+  <meta property="article:author" content="Nick" />
+  <meta property="article:tag" content="mindfulness" />
+  <meta property="article:tag" content="practice" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://paradox-cron.vercel.app/api/og?slug=what-beginners-mind-actually-means" />
+  <link rel="canonical" href="https://paradoxofacceptance.xyz/blog/what-beginners-mind-actually-means/" />
+  <link rel="alternate" type="application/atom+xml" title="Paradox of Acceptance" href="/feed.xml">
+  <link rel="stylesheet" media="print" href="/shared/print.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What \"Beginner's Mind\" Actually Means",
+    "description": "Shunryu Suzuki's phrase gets repeated so often it's lost its edge. Beginner's mind isn't about pretending not to know things.",
+    "author": { "@type": "Person", "name": "Nick" },
+    "datePublished": "2026-03-18",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Paradox of Acceptance",
+      "url": "https://paradoxofacceptance.xyz"
+    },
+    "mainEntityOfPage": "https://paradoxofacceptance.xyz/blog/what-beginners-mind-actually-means/"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <!-- Sentry -->
+  <script src="https://browser.sentry-cdn.com/9.0.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
+  <script src="/shared/sentry-init.js"></script>
+  <script defer data-domain="paradoxofacceptance.xyz" src="https://plausible.io/js/script.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf8f4;
+      --sage: #7d8c6e;
+      --sage-light: #a4b594;
+      --ink: #2c2c2c;
+      --ink-light: #555;
+      --rule: #e2ddd6;
+      --bg-expand: #f0ede7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+
+    /* ── Progress bar ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: var(--sage);
+      z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Top nav ── */
+    .top-nav {
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav-logo {
+      font-family: 'Newsreader', serif;
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .top-nav-links { display: flex; align-items: center; gap: 28px; }
+    .top-nav-links a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .top-nav-links a:hover, .top-nav-links a.active { color: var(--ink); }
+
+    /* ── Hero image ── */
+    .hero-image-wrap {
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 0 24px;
+    }
+    .hero-image {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(135deg, #e8e4dc 0%, #cdc8be 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    .post-header { padding: 36px 0 32px; }
+    .back-link {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: var(--sage);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .post-kicker {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 18px;
+    }
+    .post-title {
+      font-family: 'Newsreader', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .post-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .post-meta-sep { color: #CCC; }
+    .post-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .post-tag {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--sage);
+      background: rgba(125,140,110,0.1);
+      border: 1px solid rgba(125,140,110,0.25);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── Wide layout (TOC + article) ── */
+    .body-layout {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: flex;
+      gap: 56px;
+      align-items: flex-start;
+    }
+
+    /* ── TOC sidebar ── */
+    .toc-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 76px;
+      align-self: flex-start;
+    }
+    .toc-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #CCC;
+      margin-bottom: 14px;
+    }
+    .toc-nav { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc-nav a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 12.5px;
+      color: #BBBBBB;
+      text-decoration: none;
+      display: block;
+      padding: 5px 0 5px 12px;
+      line-height: 1.4;
+      border-left: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .toc-nav a:hover { color: #555; }
+    .toc-nav a.active { color: var(--sage); border-left-color: var(--sage); }
+
+    /* ── Article body ── */
+    .article {
+      flex: 1;
+      min-width: 0;
+      font-size: 19px;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+    .article h2 {
+      font-family: 'Newsreader', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 2.2em 0 0.7em;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-family: 'Newsreader', serif;
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 1.8em 0 0.6em;
+    }
+    .article p { margin-bottom: 1.4em; }
+    .article p:last-child { margin-bottom: 0; }
+    .article blockquote {
+      border-left: 3px solid var(--sage-light);
+      margin: 1.8em 0;
+      padding: 0.4em 0 0.4em 1.4em;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+    .article ul, .article ol { margin: 1em 0 1.4em 1.4em; }
+    .article li { margin-bottom: 0.4em; }
+    .article a { color: var(--sage); text-decoration: underline; text-underline-offset: 2px; }
+    .article hr { border: none; border-top: 1px solid var(--rule); margin: 2.4em 0; }
+    .article .lead {
+      font-size: 21px;
+      line-height: 1.7;
+      color: var(--ink-light);
+      margin-bottom: 1.6em;
+    }
+
+    /* ── Share buttons ── */
+    .share-section {
+      border-top: 1px solid var(--rule);
+      margin-top: 3em;
+      padding-top: 2em;
+    }
+    .share-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #CCC;
+      margin-bottom: 14px;
+    }
+    .share-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+    .share-btn {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-light);
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 8px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .share-btn:hover { border-color: #999; color: var(--ink); }
+
+    /* ── Related posts ── */
+    .related-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      border-top: 1px solid var(--rule);
+    }
+    .related-heading {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #CCC;
+      margin: 40px 0 24px;
+    }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .related-card {
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+    .related-card:hover { border-color: #bbb; }
+    .related-card-img {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(135deg, #e8e4dc 0%, #d4cfc5 100%);
+    }
+    .related-card-body { padding: 16px; }
+    .related-card-kicker {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+    .related-card-title {
+      font-family: 'Newsreader', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .related-card-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 11.5px;
+      color: #AAA;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid var(--rule);
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer-logo { font-family: 'Newsreader', serif; font-size: 15px; color: var(--ink); text-decoration: none; }
+    .site-footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .site-footer-links a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 12.5px;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .site-footer-links a:hover { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .toc-sidebar { display: none; }
+      .body-layout { padding: 0 0 64px; display: block; }
+      .body-layout .article { padding: 0 24px; }
+      .related-grid { grid-template-columns: 1fr 1fr; }
+      .top-nav-links { gap: 18px; }
+    }
+    @media (max-width: 560px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .top-nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- Top nav -->
+<nav class="top-nav">
+  <a href="/" class="top-nav-logo">Paradox of Acceptance</a>
+  <div class="top-nav-links">
+    <a href="/mindfulness-essays/">Essays</a>
+    <a href="/blog/" class="active">Blog</a>
+    <a href="/mindfulness-fit/">Practice Fit</a>
+    <a href="/pass/">Pass</a>
+  </div>
+</nav>
+
+<!-- Hero image -->
+<div class="hero-image-wrap">
+  <div class="hero-image-placeholder">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="#999" stroke-width="0.8" opacity="0.4">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="m21 15-5-5L5 21"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Post header -->
+<div class="container">
+  <header class="post-header">
+    <a href="/blog/" class="back-link">← Blog</a>
+    <div class="post-kicker">Practice · Mindfulness</div>
+    <h1 class="post-title">What "Beginner's Mind" Actually Means</h1>
+    <div class="post-meta">
+      <span>Nick</span>
+      <span class="post-meta-sep">·</span>
+      <span>March 18, 2026</span>
+      <span class="post-meta-sep">·</span>
+      <span id="read-time">7 min read</span>
+    </div>
+    <div class="post-tags">
+      <a href="/blog/?tag=mindfulness" class="post-tag">#mindfulness</a>
+      <a href="/blog/?tag=practice" class="post-tag">#practice</a>
+      <a href="/blog/?tag=beginners" class="post-tag">#beginners</a>
+    </div>
+  </header>
+</div>
+
+<!-- Body -->
+<div class="body-layout">
+
+  <!-- TOC sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-label">Contents</div>
+    <ol class="toc-nav" id="toc-nav">
+      <li><a href="#the-original-phrase">The original phrase</a></li>
+      <li><a href="#what-it-is-not">What it is not</a></li>
+      <li><a href="#openness-as-a-structural-stance">Openness as a structural stance</a></li>
+      <li><a href="#why-its-hard">Why it's hard</a></li>
+      <li><a href="#practicing-it">Practicing it</a></li>
+    </ol>
+  </aside>
+
+  <!-- Article -->
+  <article class="article" id="article-body">
+
+    <p class="lead">Shunryu Suzuki's phrase — "in the beginner's mind there are many possibilities, in the expert's mind there are few" — gets quoted in almost every introduction to Zen. Which means it also gets explained badly in almost every introduction to Zen.</p>
+
+    <p>The popular interpretation is something like: don't rely too heavily on what you already know; approach things with fresh eyes; stay curious. These aren't wrong, exactly. But they're a significant dilution of what Suzuki was pointing at — and they make beginner's mind sound like a productivity hack rather than a meditative quality.</p>
+
+    <h2 id="the-original-phrase">The original phrase</h2>
+
+    <p>The line comes from Suzuki's 1970 book <em>Zen Mind, Beginner's Mind</em>, and the full sentence matters: "In the beginner's mind there are many possibilities, but in the expert's mind there are few." What does "many possibilities" mean here?</p>
+
+    <p>Not intellectual possibilities — Suzuki isn't saying beginners know fewer things, so they're more open to new information. He's talking about the quality of contact with experience itself. A beginner, encountering a cup of tea, has a full cup of contact with the experience: the weight, the warmth, the smell, the steam, the first sip. An expert — someone who has drunk ten thousand cups of tea — encounters it through a thinner layer of reference. They're tasting against their tea-history rather than tasting the tea.</p>
+
+    <blockquote>
+      "The goal of practice is always to keep our beginner's mind… Each of you is perfect the way you are — and you can use a little improvement."
+      <br>— Shunryu Suzuki
+    </blockquote>
+
+    <p>That second sentence is a joke, but it contains the teaching. You practice precisely because practice improves your ability to be present — not to know more, but to be with more. Beginner's mind is the fruit of practice, not a substitute for it.</p>
+
+    <h2 id="what-it-is-not">What it is not</h2>
+
+    <p>Beginner's mind is not:</p>
+
+    <ul>
+      <li><strong>Pretending not to know things.</strong> Suzuki had been practicing for decades when he wrote the book. The point isn't to perform ignorance.</li>
+      <li><strong>Curiosity as a character trait.</strong> "Stay curious" is fine advice, but it describes a motivation toward things, not a relationship with experience itself.</li>
+      <li><strong>Beginner's confidence.</strong> The Dunning-Kruger interpretation — beginners feel more confident because they don't know what they don't know — is almost the opposite. Suzuki was describing a quality of openness, not a cognitive error.</li>
+    </ul>
+
+    <h2 id="openness-as-a-structural-stance">Openness as a structural stance</h2>
+
+    <p>Here's a more precise way to put it: beginner's mind is not-grasping at the moment of contact.</p>
+
+    <p>Most of the time, when we experience something, we immediately reach for the handle — the concept, the category, the stored response. We don't really taste the tea; we taste "tea." We don't really see our partner's face at breakfast; we see our model of their face, which we last updated months ago.</p>
+
+    <p>The reason meditators focus on breath is partly that breath is repetitive enough that you can catch yourself doing this. You come back to the breath and notice that for the last thirty seconds you were already planning what you were going to do after the sit. The breath is a very small object. You can watch the overlay happen in real time.</p>
+
+    <p>What you're training is the moment of contact itself — can you make contact with the breath before reaching for the concept of "breathing"? This sounds like word games until you actually notice the difference. When you catch it, there's a quality of freshness that isn't dramatic — it's more like the difference between really hearing what someone says versus waiting for them to finish so you can respond.</p>
+
+    <h2 id="why-its-hard">Why it's hard</h2>
+
+    <p>The expert's mind problem gets worse as meditation itself becomes familiar. After a few years of practice, you can meditate on autopilot: you sit, you count breaths, you notice thoughts arising, you label them "thinking," you come back. You're technically doing it right, but the quality of contact has thinned. You're experiencing "a meditation session" rather than this breath.</p>
+
+    <p>This is one of the plateau problems that doesn't get discussed much. Beginning meditators progress quickly because everything is unfamiliar — the discomfort, the distractibility, the surprising depth of boredom. Around year two or three, the novelty is gone, but the habit is formed. And habits, almost by definition, replace presence with procedure.</p>
+
+    <p>Beginner's mind, at this stage, isn't about recovering the feeling of being new. It's about questioning the procedure — not the technique, but the way you're relating to the technique. Are you sitting because you're practicing, or because it's 7am and this is what you do?</p>
+
+    <h2 id="practicing-it">Practicing it</h2>
+
+    <p>A few things that actually help:</p>
+
+    <p><strong>Notice the moment before labeling.</strong> When something arises — a thought, a sensation, a sound — try to stay with the bare experience for one breath before naming it. This isn't always possible and the naming isn't bad; it's just useful to notice that there's a gap, and that you can widen it a little.</p>
+
+    <p><strong>Treat familiar objects as strange.</strong> Pick something you encounter every day — your hand, the back of your chair, the sound of traffic — and try to receive it as if you've never experienced it before. Not as a performance, but as a genuine question: what is this, really?</p>
+
+    <p><strong>Sit with a different teacher or tradition occasionally.</strong> Not to acquire new techniques, but because the unfamiliarity of a different approach can break the expert glaze. You'll notice what you were assuming.</p>
+
+    <p>What you won't be able to do, I think, is manufacture beginner's mind through an act of will. It's not something you produce; it's something you create the conditions for. The actual beginner's mind is a byproduct of sustained practice — the practice of returning, again and again, to the freshness of this breath, this moment, this cup of tea.</p>
+
+    <hr>
+
+    <!-- Share -->
+    <div class="share-section">
+      <div class="share-label">Share</div>
+      <div class="share-buttons">
+        <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Share on X
+        </a>
+        <button class="share-btn" onclick="copyLink()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy link</span>
+        </button>
+      </div>
+    </div>
+
+  </article>
+</div>
+
+<!-- Related posts -->
+<section class="related-section">
+  <div class="related-heading">More from the blog</div>
+  <div class="related-grid">
+    <a class="related-card" href="/blog/when-meditation-makes-things-worse/">
+      <div class="related-card-img"></div>
+      <div class="related-card-body">
+        <div class="related-card-kicker">Mental Health</div>
+        <div class="related-card-title">When Meditation Makes Things Worse</div>
+        <div class="related-card-meta">March 12, 2026 · 9 min read</div>
+      </div>
+    </a>
+    <a class="related-card" href="/blog/building-a-sustainable-practice/">
+      <div class="related-card-img"></div>
+      <div class="related-card-body">
+        <div class="related-card-kicker">Routine</div>
+        <div class="related-card-title">Building a Sustainable Daily Practice</div>
+        <div class="related-card-meta">March 5, 2026 · 8 min read</div>
+      </div>
+    </a>
+    <a class="related-card" href="/mindfulness-essays/paradox-of-acceptance/">
+      <div class="related-card-img"></div>
+      <div class="related-card-body">
+        <div class="related-card-kicker">Essay</div>
+        <div class="related-card-title">The Paradox of Acceptance</div>
+        <div class="related-card-meta">18 min read · Interactive</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <a href="/" class="site-footer-logo">Paradox of Acceptance</a>
+  <div class="site-footer-links">
+    <a href="/mindfulness-essays/">Essays</a>
+    <a href="/blog/">Blog</a>
+    <a href="/mindfulness-fit/">Practice Fit</a>
+    <a href="/pass/">Pass</a>
+    <a href="https://x.com/quiet_drift" target="_blank" rel="noopener">Twitter / X</a>
+    <a href="/feed.xml">RSS</a>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+(function() {
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', function() {
+    const art = document.getElementById('article-body');
+    if (!art) return;
+    const rect = art.getBoundingClientRect();
+    const total = art.offsetHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const pct = Math.min(100, (scrolled / total) * 100);
+    bar.style.width = pct + '%';
+  }, { passive: true });
+})();
+
+// TOC active
+(function() {
+  const headings = document.querySelectorAll('#article-body h2');
+  const links = document.querySelectorAll('#toc-nav a');
+  if (!headings.length) return;
+  window.addEventListener('scroll', function() {
+    let active = null;
+    headings.forEach(function(h) {
+      if (h.getBoundingClientRect().top < 120) active = h.id;
+    });
+    links.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+    });
+  }, { passive: true });
+})();
+
+// Share on X
+(function() {
+  const url = encodeURIComponent(location.href);
+  const text = encodeURIComponent('What "Beginner\'s Mind" Actually Means — from Paradox of Acceptance');
+  document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + text;
+})();
+
+// Copy link
+function copyLink() {
+  navigator.clipboard.writeText(location.href).then(function() {
+    const el = document.getElementById('copy-label');
+    el.textContent = 'Copied!';
+    setTimeout(function() { el.textContent = 'Copy link'; }, 2000);
+  });
+}
+</script>
+<script src="/shared/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Paradox of Acceptance — Essays</title>
+  <link href="https://paradoxofacceptance.xyz/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://paradoxofacceptance.xyz/" rel="alternate" type="text/html"/>
+  <id>https://paradoxofacceptance.xyz/</id>
+  <updated>2026-03-21T00:00:00Z</updated>
+  <subtitle>Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.</subtitle>
+  <rights>© 2026 Paradox of Acceptance</rights>
+  <author>
+    <name>Nick</name>
+  </author>
+
+  <entry>
+    <title>When to Quit: The Exit Conditions Mindfulness Never Names</title>
+    <link href="https://paradoxofacceptance.xyz/essays/when-to-quit/" rel="alternate" type="text/html"/>
+    <id>https://paradoxofacceptance.xyz/essays/when-to-quit/</id>
+    <updated>2026-03-21T00:00:00Z</updated>
+    <published>2026-03-21T00:00:00Z</published>
+    <summary>Mindfulness has rich language for starting and deepening — and almost none for stopping. This piece examines when quitting, reducing, or restructuring practice is the more honest move.</summary>
+    <author>
+      <name>Nick</name>
+    </author>
+  </entry>
+
+  <entry>
+    <title>The Avoidance Problem: When Meditation Becomes Evasion</title>
+    <link href="https://paradoxofacceptance.xyz/essays/the-avoidance-problem/" rel="alternate" type="text/html"/>
+    <id>https://paradoxofacceptance.xyz/essays/the-avoidance-problem/</id>
+    <updated>2026-03-21T00:00:00Z</updated>
+    <published>2026-03-21T00:00:00Z</published>
+    <summary>Mindfulness can make you comfortable in situations you should change. The practice works exactly as intended — and that's the problem. A look at how skillful meditation becomes sophisticated evasion.</summary>
+    <author>
+      <name>Nick</name>
+    </author>
+  </entry>
+
+  <entry>
+    <title>The Cherry-Picking Problem: What Non-Dual Practice Costs</title>
+    <link href="https://paradoxofacceptance.xyz/essays/the-cherry-picking-problem/" rel="alternate" type="text/html"/>
+    <id>https://paradoxofacceptance.xyz/essays/the-cherry-picking-problem/</id>
+    <updated>2026-03-21T00:00:00Z</updated>
+    <published>2026-03-21T00:00:00Z</published>
+    <summary>Most practitioners want to dissolve the suffering self and keep the driven one. But the non-dual insight doesn't make that distinction — and the community won't say what that costs.</summary>
+    <author>
+      <name>Nick</name>
+    </author>
+  </entry>
+
+  <entry>
+    <title>Should You Get Into Mindfulness? The Case for Dosage</title>
+    <link href="https://paradoxofacceptance.xyz/essays/should-you-get-into-mindfulness/" rel="alternate" type="text/html"/>
+    <id>https://paradoxofacceptance.xyz/essays/should-you-get-into-mindfulness/</id>
+    <updated>2026-03-21T00:00:00Z</updated>
+    <published>2026-03-21T00:00:00Z</published>
+    <summary>Mindfulness is sold as universal. Medicine isn't. The case for treating meditation like medicine — with dosage, contraindications, and honest calibration about who it's actually for.</summary>
+    <author>
+      <name>Nick</name>
+    </author>
+  </entry>
+
+  <entry>
+    <title>The Paradox of Acceptance</title>
+    <link href="https://paradoxofacceptance.xyz/essays/paradox-of-acceptance/" rel="alternate" type="text/html"/>
+    <id>https://paradoxofacceptance.xyz/essays/paradox-of-acceptance/</id>
+    <updated>2026-03-20T00:00:00Z</updated>
+    <published>2026-03-20T00:00:00Z</published>
+    <summary>A meditation on what happens to ambition, urgency, and deferred gratification when mindfulness becomes very good.</summary>
+    <author>
+      <name>Nick</name>
+    </author>
+  </entry>
+
+</feed>
