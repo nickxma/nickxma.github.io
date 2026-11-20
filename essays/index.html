@@ -3,67 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://paradoxofacceptance.xyz/essays/">
+<meta property="og:site_name" content="Paradox of Acceptance">
+<meta property="og:title" content="Essays — Paradox of Acceptance">
+<meta property="og:description" content="Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://paradoxofacceptance.xyz/essays/">
+<meta property="og:image" content="https://paradoxofacceptance.xyz/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://paradoxofacceptance.xyz/og-image.jpg">
 <title>Essays — Paradox of Acceptance</title>
 <meta name="description" content="Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.">
 <link rel="alternate" type="application/atom+xml" title="Paradox of Acceptance" href="/feed.xml">
 <link rel="alternate" type="application/json" href="/feed.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #FFFFFF; color: #111111; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #faf8f4; color: #2c2c2c; }
 a { color: inherit; text-decoration: none; }
 
 /* Layout */
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 280px; }
-.page-header { padding: 64px 280px 48px; border-bottom: 1px solid #EEEEEE; }
+.page-header { padding: 64px 280px 48px; border-bottom: 1px solid #e2ddd6; }
 .section { padding: 48px 280px; }
 .footer { padding: 48px 280px; }
 
 /* Nav */
-.nav-logo { font-family: 'Newsreader', serif; font-size: 20px; font-weight: 500; color: #111; }
+.nav-logo { font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: 500; color: #2c2c2c; }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-links a { font-size: 13px; font-weight: 500; color: #666; transition: color 0.15s; }
-.nav-links a:hover { color: #111; }
-.nav-links a.active { color: #111; }
+.nav-links a:hover { color: #2c2c2c; }
+.nav-links a.active { color: #2c2c2c; }
 
 /* Divider */
-.divider { border: none; border-top: 1px solid #EEEEEE; margin: 0; }
+.divider { border: none; border-top: 1px solid #e2ddd6; margin: 0; }
 
 /* Page header */
-.page-kicker { font-size: 12px; font-weight: 600; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-.page-title { font-family: 'Newsreader', serif; font-size: 40px; font-weight: 400; color: #111; margin-bottom: 16px; }
+.page-kicker { font-size: 12px; font-weight: 600; color: #7d8c6e; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.page-title { font-family: Georgia, 'Times New Roman', serif; font-size: 40px; font-weight: 400; color: #2c2c2c; margin-bottom: 16px; }
 .page-desc { font-size: 16px; color: #666; line-height: 1.65; max-width: 560px; }
 
 /* Essay rows */
-.essay-row { display: block; padding: 32px 0; border-bottom: 1px solid #EEEEEE; cursor: pointer; transition: background 0.1s; text-decoration: none; color: inherit; }
-.essay-row:hover { background: #FAFAFA; margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; border-radius: 6px; }
+.essay-row { display: block; padding: 32px 0; border-bottom: 1px solid #e2ddd6; cursor: pointer; transition: background 0.1s; text-decoration: none; color: inherit; }
+.essay-row:hover { background: #f3f0ea; margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; border-radius: 6px; }
 .essay-row:last-child { border-bottom: none; }
-.essay-kicker { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
-.essay-title { font-family: 'Newsreader', serif; font-size: 28px; color: #111; margin-bottom: 8px; line-height: 1.3; }
+.essay-kicker { font-size: 11px; font-weight: 600; color: #7d8c6e; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.essay-title { font-family: Georgia, 'Times New Roman', serif; font-size: 28px; color: #2c2c2c; margin-bottom: 8px; line-height: 1.3; }
 .essay-desc { font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 12px; max-width: 600px; }
 .essay-meta { font-size: 13px; color: #AAA; margin-bottom: 10px; }
 .essay-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
-.essay-tag { font-size: 11px; font-weight: 500; color: #666; background: #F5F5F5; border: 1px solid #E8E8E8; padding: 3px 10px; border-radius: 100px; transition: background 0.1s, border-color 0.1s; }
-.essay-tag:hover { background: #EEEEEE; border-color: #CCC; }
+.essay-tag { font-size: 11px; font-weight: 500; color: #666; background: #f0ece4; border: 1px solid #e2ddd6; padding: 3px 10px; border-radius: 100px; transition: background 0.1s, border-color 0.1s; }
+
+.section-kicker { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
 
 /* Footer */
-.footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EEEEEE; padding-top: 24px; padding-bottom: 24px; }
-.footer-logo { font-family: 'Newsreader', serif; font-size: 16px; color: #111; }
+.footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #e2ddd6; padding-top: 24px; padding-bottom: 24px; }
+.footer-logo { font-family: Georgia, 'Times New Roman', serif; font-size: 16px; color: #2c2c2c; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
 .footer-links a { font-size: 13px; color: #666; transition: color 0.15s; }
-.footer-links a:hover { color: #111; }
+.footer-links a:hover { color: #2c2c2c; }
 
 /* Subscribe */
 .subscribe-section { padding: 80px 280px; text-align: center; }
-.subscribe-headline { font-family: 'Newsreader', serif; font-size: 28px; color: #111; margin-bottom: 10px; }
+.subscribe-headline { font-family: Georgia, 'Times New Roman', serif; font-size: 28px; color: #2c2c2c; margin-bottom: 10px; }
 .subscribe-sub { font-size: 15px; color: #666; margin-bottom: 24px; }
 .subscribe-form { display: inline-flex; border: 1px solid #DDD; border-radius: 4px; overflow: hidden; }
-.subscribe-input { font-family: 'Inter', sans-serif; font-size: 14px; padding: 11px 16px; border: none; outline: none; width: 280px; }
-.subscribe-btn { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; background: #111; color: #fff; border: none; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
-.subscribe-btn:hover { background: #333; }
+.subscribe-input { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; padding: 11px 16px; border: none; outline: none; width: 280px; }
+.subscribe-btn { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; background: #5a6b4e; color: #fff; border: none; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+.subscribe-btn:hover { background: #4a5a40; }
 .subscribe-btn:disabled { background: #666; cursor: default; }
 .subscribe-msg { font-size: 13px; margin-top: 10px; min-height: 18px; }
 .subscribe-msg.success { color: #22C55E; }
@@ -80,10 +94,11 @@ a { color: inherit; text-decoration: none; }
   .footer-links { gap: 16px; }
   .nav-links { gap: 20px; }
 }
+@media (max-width: 560px) {
+  .nav > div { flex-direction: column; align-items: flex-start; gap: 12px !important; }
+  .nav-links { flex-wrap: wrap; gap: 8px 20px; }
+}
 </style>
-    <!-- Sentry error monitoring (https://sentry.io) -->
-    <script src="https://browser.sentry-cdn.com/9.0.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
-    <script src="/shared/sentry-init.js"></script>
 <script defer data-domain="paradoxofacceptance.xyz" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
@@ -93,13 +108,10 @@ a { color: inherit; text-decoration: none; }
   <div style="display:flex;align-items:center;gap:48px;">
     <a href="/" class="nav-logo">Paradox of Acceptance</a>
     <div class="nav-links">
-      <a href="/#start-here">Tools</a>
+      <a href="/#tools">Tools</a>
       <a href="/essays/" class="active">Essays</a>
-      <a href="/reading-lists/">Reading Lists</a>
       <a href="/mindfulness-wiki/">Wiki</a>
-    <a href="/about/">About</a>
       <a href="/pass/">Pass</a>
-      <a href="/search/">Search</a>
     </div>
   </div>
 </nav>
@@ -122,36 +134,36 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">What happens to ambition, urgency, and deferred gratification when mindfulness becomes very good? The better we get at meeting whatever arises, the less obvious it becomes why we should sacrifice now for a later state we also expect to be able to accept.</div>
     <div class="essay-meta">18 min read &middot; Interactive</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/motivation/" class="essay-tag" onclick="event.stopPropagation()">#motivation</a>
-      <a href="/tags/acceptance/" class="essay-tag" onclick="event.stopPropagation()">#acceptance</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#motivation</span>
+      <span class="essay-tag">#acceptance</span>
+      <span class="essay-tag">#practice</span>
     </div>
   </a>
 
-  <a href="/essays/should-you-get-into-mindfulness/" class="essay-row">
+  <a href="/essays/should-you-meditate/" class="essay-row">
     <div class="essay-kicker">Essay · Who Mindfulness Is For</div>
     <div class="essay-title">Should You Get Into Mindfulness?</div>
     <div class="essay-desc">The case for treating meditation like medicine, not vitamins — who it helps, when it doesn't, and what nobody in the mindfulness world will tell you about dosage.</div>
     <div class="essay-meta">7 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/beginners/" class="essay-tag" onclick="event.stopPropagation()">#beginners</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
-      <a href="/tags/mental-health/" class="essay-tag" onclick="event.stopPropagation()">#mental-health</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#beginners</span>
+      <span class="essay-tag">#practice</span>
+      <span class="essay-tag">#mental-health</span>
     </div>
   </a>
 
-  <a href="/essays/the-cherry-picking-problem/" class="essay-row">
+  <a href="/essays/cherry-picking/" class="essay-row">
     <div class="essay-kicker">Essay · Self &amp; Motivation</div>
     <div class="essay-title">The Cherry-Picking Problem</div>
     <div class="essay-desc">You can't be an atheist about every god except one. The neurotic self and the motivated self are the same process — and dissolving one without touching the other is harder than it looks.</div>
     <div class="essay-meta">7 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/self/" class="essay-tag" onclick="event.stopPropagation()">#self</a>
-      <a href="/tags/motivation/" class="essay-tag" onclick="event.stopPropagation()">#motivation</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#self</span>
+      <span class="essay-tag">#motivation</span>
+      <span class="essay-tag">#practice</span>
     </div>
   </a>
 
@@ -161,10 +173,10 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">Skilled meditators can use practice to metabolize difficult feelings before asking what they mean — not equanimity, but avoidance with better posture. Mindfulness can make you comfortable in situations you should change.</div>
     <div class="essay-meta">9 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
-      <a href="/tags/avoidance/" class="essay-tag" onclick="event.stopPropagation()">#avoidance</a>
-      <a href="/tags/honesty/" class="essay-tag" onclick="event.stopPropagation()">#honesty</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#practice</span>
+      <span class="essay-tag">#avoidance</span>
+      <span class="essay-tag">#honesty</span>
     </div>
   </a>
 
@@ -174,13 +186,55 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">The mindfulness world has rich language for starting and deepening — and almost none for stopping. This essay names the legitimate exit conditions that almost no teacher will state clearly.</div>
     <div class="essay-meta">9 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
-      <a href="/tags/stopping/" class="essay-tag" onclick="event.stopPropagation()">#stopping</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#practice</span>
+      <span class="essay-tag">#stopping</span>
     </div>
   </a>
 
 <!-- /ESSAYS -->
+</section>
+
+<hr class="divider">
+
+<!-- Paradoxes: shorter pieces, hosted in the mindfulness-essays repo -->
+<section class="section" id="paradoxes">
+  <div class="section-kicker">Paradoxes</div>
+
+  <a href="/mindfulness-essays/what-falls-away.html" class="essay-row">
+    <div class="essay-title">What Falls Away?</div>
+    <div class="essay-desc">An atheist can't fear hell — not won't, can't. Something similar happens when the sense of self dissolves. A mapping of the beliefs that become structurally incoherent.</div>
+  </a>
+
+  <a href="/mindfulness-essays/infrastructure.html" class="essay-row">
+    <div class="essay-title">How Much Infrastructure Do You Need to Remember?</div>
+    <div class="essay-desc">The teaching says what you're looking for is already here. The product says come back tomorrow for more. At some point, that tension is worth sitting with.</div>
+  </a>
+
+  <a href="/mindfulness-essays/escape-hatch.html" class="essay-row">
+    <div class="essay-title">The Escape Hatch</div>
+    <div class="essay-desc">The skill you developed to be more present quietly becomes the thing pulling you away from your obligations. When does a practice become an escape hatch?</div>
+  </a>
+
+  <a href="/mindfulness-essays/losing-spiritual-urgency.html" class="essay-row">
+    <div class="essay-title">Losing Spiritual Urgency</div>
+    <div class="essay-desc">At some point the urgency to practice disappears. Not because you've failed at it. Because you've succeeded. What happens when "always available" means "never necessary"?</div>
+  </a>
+
+  <a href="/mindfulness-essays/bodhisattva-vow.html" class="essay-row">
+    <div class="essay-title">What the Bodhisattva Vow Assumes</div>
+    <div class="essay-desc">Some Buddhist claims you can test in a single sit. Others require a cosmology. The Bodhisattva vow — to liberate all sentient beings across infinite lifetimes — is worth inspecting to see which side of that line it falls on.</div>
+  </a>
+
+  <a href="/mindfulness-essays/how-are-you-doing.html" class="essay-row">
+    <div class="essay-title">How Are You Doing?</div>
+    <div class="essay-desc">The non-dual insight gives you a true answer to this question. The problem is that it doesn't fit what anyone is actually asking.</div>
+  </a>
+
+  <a href="/mindfulness-essays/what-non-dual-means.html" class="essay-row">
+    <div class="essay-title">What Does Non-Dual Actually Mean?</div>
+    <div class="essay-desc">The term is everywhere in contemplative practice. A breakdown of what it actually points at, why it's a negation rather than an assertion, and the three stages most people don't know to look for.</div>
+  </a>
 </section>
 
 <hr class="divider">
@@ -253,6 +307,6 @@ a { color: inherit; text-decoration: none; }
   };
 })();
 </script>
-<script src="/shared/pwa.js"></script>
+<script src="/shared/subscribe.js"></script>
 </body>
 </html>
