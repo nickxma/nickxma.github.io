@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://paradoxofacceptance.xyz/essays/">
+<meta property="og:site_name" content="Paradox of Acceptance">
+<meta property="og:title" content="Essays — Paradox of Acceptance">
+<meta property="og:description" content="Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://paradoxofacceptance.xyz/essays/">
+<meta property="og:image" content="https://paradoxofacceptance.xyz/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://paradoxofacceptance.xyz/og-image.jpg">
 <title>Essays — Paradox of Acceptance</title>
 <meta name="description" content="Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.">
 <link rel="alternate" type="application/atom+xml" title="Paradox of Acceptance" href="/feed.xml">
@@ -47,7 +63,6 @@ a { color: inherit; text-decoration: none; }
 .essay-meta { font-size: 13px; color: #AAA; margin-bottom: 10px; }
 .essay-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
 .essay-tag { font-size: 11px; font-weight: 500; color: #666; background: #F5F5F5; border: 1px solid #E8E8E8; padding: 3px 10px; border-radius: 100px; transition: background 0.1s, border-color 0.1s; }
-.essay-tag:hover { background: #EEEEEE; border-color: #CCC; }
 
 /* Footer */
 .footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EEEEEE; padding-top: 24px; padding-bottom: 24px; }
@@ -80,10 +95,11 @@ a { color: inherit; text-decoration: none; }
   .footer-links { gap: 16px; }
   .nav-links { gap: 20px; }
 }
+@media (max-width: 560px) {
+  .nav > div { flex-direction: column; align-items: flex-start; gap: 12px !important; }
+  .nav-links { flex-wrap: wrap; gap: 8px 20px; }
+}
 </style>
-    <!-- Sentry error monitoring (https://sentry.io) -->
-    <script src="https://browser.sentry-cdn.com/9.0.0/bundle.tracing.min.js" crossorigin="anonymous"></script>
-    <script src="/shared/sentry-init.js"></script>
 <script defer data-domain="paradoxofacceptance.xyz" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
@@ -93,13 +109,10 @@ a { color: inherit; text-decoration: none; }
   <div style="display:flex;align-items:center;gap:48px;">
     <a href="/" class="nav-logo">Paradox of Acceptance</a>
     <div class="nav-links">
-      <a href="/#start-here">Tools</a>
+      <a href="/#tools">Tools</a>
       <a href="/essays/" class="active">Essays</a>
-      <a href="/reading-lists/">Reading Lists</a>
       <a href="/mindfulness-wiki/">Wiki</a>
-    <a href="/about/">About</a>
       <a href="/pass/">Pass</a>
-      <a href="/search/">Search</a>
     </div>
   </div>
 </nav>
@@ -122,10 +135,10 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">What happens to ambition, urgency, and deferred gratification when mindfulness becomes very good? The better we get at meeting whatever arises, the less obvious it becomes why we should sacrifice now for a later state we also expect to be able to accept.</div>
     <div class="essay-meta">18 min read &middot; Interactive</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/motivation/" class="essay-tag" onclick="event.stopPropagation()">#motivation</a>
-      <a href="/tags/acceptance/" class="essay-tag" onclick="event.stopPropagation()">#acceptance</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#motivation</span>
+      <span class="essay-tag">#acceptance</span>
+      <span class="essay-tag">#practice</span>
     </div>
   </a>
 
@@ -135,10 +148,10 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">The case for treating meditation like medicine, not vitamins — who it helps, when it doesn't, and what nobody in the mindfulness world will tell you about dosage.</div>
     <div class="essay-meta">7 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/beginners/" class="essay-tag" onclick="event.stopPropagation()">#beginners</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
-      <a href="/tags/mental-health/" class="essay-tag" onclick="event.stopPropagation()">#mental-health</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#beginners</span>
+      <span class="essay-tag">#practice</span>
+      <span class="essay-tag">#mental-health</span>
     </div>
   </a>
 
@@ -148,10 +161,10 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">You can't be an atheist about every god except one. The neurotic self and the motivated self are the same process — and dissolving one without touching the other is harder than it looks.</div>
     <div class="essay-meta">7 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/self/" class="essay-tag" onclick="event.stopPropagation()">#self</a>
-      <a href="/tags/motivation/" class="essay-tag" onclick="event.stopPropagation()">#motivation</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#self</span>
+      <span class="essay-tag">#motivation</span>
+      <span class="essay-tag">#practice</span>
     </div>
   </a>
 
@@ -161,10 +174,10 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">Skilled meditators can use practice to metabolize difficult feelings before asking what they mean — not equanimity, but avoidance with better posture. Mindfulness can make you comfortable in situations you should change.</div>
     <div class="essay-meta">9 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
-      <a href="/tags/avoidance/" class="essay-tag" onclick="event.stopPropagation()">#avoidance</a>
-      <a href="/tags/honesty/" class="essay-tag" onclick="event.stopPropagation()">#honesty</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#practice</span>
+      <span class="essay-tag">#avoidance</span>
+      <span class="essay-tag">#honesty</span>
     </div>
   </a>
 
@@ -174,9 +187,9 @@ a { color: inherit; text-decoration: none; }
     <div class="essay-desc">The mindfulness world has rich language for starting and deepening — and almost none for stopping. This essay names the legitimate exit conditions that almost no teacher will state clearly.</div>
     <div class="essay-meta">9 min read</div>
     <div class="essay-tags">
-      <a href="/tags/mindfulness/" class="essay-tag" onclick="event.stopPropagation()">#mindfulness</a>
-      <a href="/tags/practice/" class="essay-tag" onclick="event.stopPropagation()">#practice</a>
-      <a href="/tags/stopping/" class="essay-tag" onclick="event.stopPropagation()">#stopping</a>
+      <span class="essay-tag">#mindfulness</span>
+      <span class="essay-tag">#practice</span>
+      <span class="essay-tag">#stopping</span>
     </div>
   </a>
 
@@ -253,6 +266,5 @@ a { color: inherit; text-decoration: none; }
   };
 })();
 </script>
-<script src="/shared/pwa.js"></script>
 </body>
 </html>
