@@ -8,7 +8,7 @@
  */
 (function () {
   'use strict';
-  var BUTTONDOWN_USER = '';
+  var BUTTONDOWN_USER = 'nickxma';
 
   function forms() {
     return Array.prototype.filter.call(document.querySelectorAll('form'), function (f) {

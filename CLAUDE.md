@@ -8,7 +8,7 @@ Static site for paradoxofacceptance.xyz, served by GitHub Pages from `main` (see
 - `blog/` — blog index (posts listed in a JS array) and posts
 - `feed.xml`, `feed.json`, `sitemap.xml`, `robots.txt`, `404.html`
 - Favicon set at the root (`favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `site.webmanifest`); `og-image.jpg` is the default share image
-- `shared/subscribe.js` — all newsletter forms; set `BUTTONDOWN_USER` to turn signups on (hidden while empty)
+- `shared/subscribe.js` — all newsletter forms; Buttondown username `nickxma` in `BUTTONDOWN_USER` (forms hide if it is emptied)
 - Tool pages (`/meditation-quiz/` etc.), `/mindfulness-essays/`, `/mindfulness-wiki/` come from other repos on the same domain
 - `me/` and `favicon/` are left over from the old personal site
 
