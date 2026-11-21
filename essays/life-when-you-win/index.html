@@ -184,8 +184,70 @@
     article h2.notes-heading { font-size: 1.1em; }
     article ol.footnotes { font-size: 0.85em; color: var(--ink-light); margin: 1em 0 0 1.4em; }
     article ol.footnotes li { margin-bottom: 1em; padding-left: 0.3em; }
+    article h2, ol.footnotes li, sup.fn-ref { scroll-margin-top: 72px; }
+    ol.footnotes li:target, sup.fn-ref:target { background: color-mix(in srgb, var(--sage) 14%, transparent); border-radius: 4px; }
     a.fn-back { margin-left: 4px; }
     article p.qa b:first-child { display: block; margin-bottom: 0.2em; }
+
+    /* ─── Reading polish ─── */
+    /* Measure: about 65-70 characters per line. Set in em so it follows the A-/A+ buttons */
+    .container { max-width: 640px; }
+    article > p, article > ol, article > h3, article > h2 { max-width: 30.5em; }
+    article { line-height: 1.65; }
+    article p, article li { text-wrap: pretty; hanging-punctuation: first; }
+    article p { margin-bottom: 1.15em; }
+    article h2 { margin-top: 64px; }
+    /* Toggle scrolls away with the page instead of floating over the text */
+    .essay-toggle { position: absolute; }
+    /* Phone: smaller text, tighter leading, slightly narrower gutters */
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      article { line-height: 1.6; }
+      .essay-toggle { top: 16px; right: 16px; }
+    }
+    /* Follow the reader's system dark mode unless they picked light */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --cream: #111111; --ink: #E8E6E1; --ink-light: #8a8a86; --rule: #2A2A2A; color-scheme: dark; }
+      :root:not([data-theme="light"]) body { background: #111111; color: #E8E6E1; }
+    }
+    [data-theme="dark"] body { color: #E8E6E1; }
+    /* Contents in the left margin on wide screens only */
+    .toc { display: none; }
+    @media (min-width: 1180px) {
+      .toc { display: block; position: fixed; top: 140px; left: max(24px, calc(50% - 320px - 260px)); width: 210px;
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.45;
+             opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+      .toc.show { opacity: 1; pointer-events: auto; }
+      .toc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+      .toc ol { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+      .toc a { color: var(--ink-light); text-decoration: none; display: block; border-left: 2px solid transparent; padding-left: 10px; margin-left: -12px; }
+      .toc a:hover { color: var(--ink); }
+      .toc a.current { color: var(--ink); border-left-color: var(--sage); }
+    }
+    @media (prefers-reduced-motion: reduce) { .toc { transition: none; } html { scroll-behavior: auto; } }
+
+    /* ─── Round 2: serif headings, lotus dividers, calmer spacing ─── */
+    :root { --ornament: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20160%2020%27%3E%3Cpath%20d%3D%27M2%2010%20Q10%206%2018%2010%20T34%2010%20T50%2010%20T66%2010%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.2%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M94%2010%20Q102%206%20110%2010%20T126%2010%20T142%2010%20T158%2010%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.2%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M80%202%20C84%207%2084%2013%2080%2018%20C76%2013%2076%207%2080%202Z%27/%3E%3Cpath%20d%3D%27M80%2018%20C74%2017%2070%2012%2069%208%20C74%209%2078%2013%2080%2018Z%27/%3E%3Cpath%20d%3D%27M80%2018%20C86%2017%2090%2012%2091%208%20C86%209%2082%2013%2080%2018Z%27/%3E%3C/svg%3E"); }
+    h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }
+    header { margin-bottom: 48px; padding-bottom: 48px; }
+    article h2 {
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 1.45em; line-height: 1.3;
+      letter-spacing: 0; border-top: none; padding-top: 0; display: block; text-align: center; text-wrap: balance;
+      margin: 2.6em auto 1.1em;
+    }
+    article h2::before, article hr {
+      content: ""; display: block; width: 160px; height: 20px; margin: 0 auto 1.3em; border: 0;
+      background-color: var(--sage); opacity: 0.75;
+      -webkit-mask: var(--ornament) center / contain no-repeat; mask: var(--ornament) center / contain no-repeat;
+    }
+    article hr { margin: 2.6em auto; }
+    article hr + h2 { margin-top: 0; }
+    article hr + h2::before { display: none; }
+    article h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+    article h2.notes-heading { font-size: 1.15em; }
+    article figure { margin: 1.8em 0; }
+    article ol.positions { margin-bottom: 1.2em; }
+    a.fn-back { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; margin-left: 6px; }
   </style>
 </head>
 <body>
@@ -214,7 +276,7 @@
 
   <article>
 
-    <figure><img src="img/win-lose-coast.jpg" alt="Two identical photos of the sun over the ocean, captioned life when you win and life when you lose" loading="lazy"></figure>
+    <figure><img src="img/win-lose-coast.jpg" width="640" height="640" alt="Two identical photos of the sun over the ocean, captioned life when you win and life when you lose" loading="lazy"></figure>
 
     <p>I saw this image randomly on Twitter the other day, in a very different context, but it reminded me of a question about mindfulness that I have been thinking about for some time. Two photos of the same sun over the same ocean. One is captioned "life when you win." The other is captioned "life when you lose." They are identical.</p>
 
@@ -256,7 +318,7 @@
 
     <p>The conclusion that I could ignore deferred gratification troubles me, but I cannot find the step where the reasoning goes wrong. As far as I can tell, the image is either correct or incorrect.</p>
 
-    <figure><img src="img/win-lose-desert.jpg" alt="The same desert scene twice, captioned life when you win and life when you lose" loading="lazy"></figure>
+    <figure><img src="img/win-lose-desert.jpg" width="1200" height="1200" alt="The same desert scene twice, captioned life when you win and life when you lose" loading="lazy"></figure>
 
     <ol class="positions"><li><b>The image is correct.</b> Life when you win and life when you lose are the same. The moment after I win and the moment after I lose are equally complete. Nothing is missing from either one. If so, I cannot call one of them better than the other, because there is nothing one has that the other lacks. And a sacrifice only makes sense if it leads to a better moment later, which on this view no moment can be.</li><li><b>The image is incorrect.</b> Awareness is the same in both lives, but the lives are not the same. Then some futures are better than others, and sacrifice makes sense. But this disagrees with more than the image. Non-dual teachings say nothing exists apart from awareness, and on this position there is something more to a moment than awareness, something that can be better or worse.</li></ol>
 
@@ -348,7 +410,7 @@
 
     <p>The claim I am testing is larger than my experience of it. In a conversation with Joan Tollifson, Sam Harris puts the challenge to her this way: "Because awareness, slash, emptiness is enough. So, if this moment is really enough, well then, act like it." The more I practice, and the more often I begin again, the easier that is to recognize. Picture a straight line that stands for the far end of that, where the recognition never lapses: awareness is all you need, whether you win or lose. Then picture a curve that stands for my practice, rising steadily toward that line the deeper the practice goes. I will never reach it. The curve approaches the line asymptotically, always closer and never touching. But practice does move me closer. What I do not know is how close I should want to get.</p>
 
-    <figure class="chart"><img src="img/line-and-curve.png" alt="A curve rising toward a straight line it never touches. The line is the limit of practice, where awareness is all you need whether you win or lose." loading="lazy"></figure>
+    <figure class="chart"><img src="img/line-and-curve.png" width="1600" height="960" alt="A curve rising toward a straight line it never touches. The line is the limit of practice, where awareness is all you need whether you win or lose." loading="lazy"></figure>
 
     <p>Far from the line, getting closer is plainly good. A person who worries about everything suffers a great deal for no benefit, and the early lessons of practice take much of that away. This is why the motivation dilemma does not show up when you start meditating. Early on, the practice makes you less anxious and costs you nothing you would miss. If the curve ever reached the line, I would be the person I described earlier, with no reason to do more than stay alive. That is close to the life of a monk. Somewhere between those two ends, moving closer stops helping and starts to cost something, and the practice itself does not say where. Its instruction is the same at every distance.</p>
 
@@ -380,7 +442,7 @@
 
     <p>So here is the dilemma as plainly as I can put it. It is the same fork as before, now with what each side would ask us to admit.</p>
 
-    <figure><img src="img/win-lose-lake.jpg" alt="The same lake scene twice, captioned life when you win and life when you lose" loading="lazy"></figure>
+    <figure><img src="img/win-lose-lake.jpg" width="1200" height="1200" alt="The same lake scene twice, captioned life when you win and life when you lose" loading="lazy"></figure>
 
     <ol class="positions"><li><b>The image is correct.</b> Life when you win and life when you lose are the same, and the belief that a promotion, more money, a relationship or any new experience would add something is a mistake. If so, ambition is the error. Beyond what it takes to stay alive, and the things we enjoy for their own sake, there is no reason to strive, and I think that is worth saying out loud.</li><li><b>The image is incorrect.</b> Awareness may be the same when you win and when you lose, but the lives are not. If so, I would like us, as a community of practitioners and teachers, to say so plainly: mindfulness is not all upside. It has a trade-off, and the trade-off is extrinsic motivation, which is what gets most of us to do the work nobody would do for its own sake.</li></ol>
 
@@ -416,7 +478,7 @@
 
     <h2 id="notes" class="notes-heading">Notes</h2>
 
-    <ol class="footnotes"><li id="fn-1">Not every tradition says this. The earliest Buddhist texts, and the Theravada schools that follow them, mostly describe a gradual path where the mind is trained by effort over a long time. The Theravada monk Thanissaro Bhikkhu writes that the Buddha "never advocated attributing an innate nature of any kind to the mind." Plenty of meditation is also taught purely as stress relief. My question is only for the teachings that do say this moment is already complete, which as far as I can tell includes every serious non-dual teaching. <a class="fn-back" href="#ref-1" aria-label="Back to text">↩</a></li><li id="fn-2">While the scientific method has been extremely reliable, fallibilism still sits above it for me. Any belief can turn out to be wrong, no matter how much evidence there is for it. The one thing one could argue we can know with certainty is, fittingly for this essay, conscious experience itself. The argument goes that I can be wrong about what an experience means, but I cannot be wrong that it is happening. <a class="fn-back" href="#ref-2" aria-label="Back to text">↩</a></li><li id="fn-3">A fair objection is that "perfect" here means complete, with nothing lacking, and not the best possible. A circle is perfectly round whether it is small or large. On that reading, a moment can lack nothing and still be a worse moment to live through, and I think that is what most teachers mean. But the same traditions also praise having no preferences. So my question stays: if nothing is lacking, and practice loosens preferring, what gets me to work on a Tuesday night? <a class="fn-back" href="#ref-3" aria-label="Back to text">↩</a></li><li id="fn-4">Even staying alive is harder to justify on this view than it looks. One could say awareness has to continue for any moment to be perfect. But to say that a future with more moments of awareness is better than a future with none is to say that some futures are better than others, which is what the position that the image is correct denies. Non-dual teachers go further and say that awareness does not begin or end. "That which is is always there," in Ramana Maharshi's words. On that account there is nothing to preserve. My best guess is that staying alive needs no reason. Hunger, pain and fear act in the moment, with no belief about a better future, the way a hand pulls back from a hot stove. No reflex like that gets me to do instrumental work on a Tuesday night. <a class="fn-back" href="#ref-4" aria-label="Back to text">↩</a></li><li id="fn-5">AI may change part of this. Before it makes work optional for everyone, if it ever does, it may first make it much easier to start a business or earn a living from the thing you would do for free, which would mean more get-to jobs. And if it went all the way to a world where money stopped mattering, one piece of this dilemma would go away: the trade of effort now for more money later. The wish to make things better for the people I love would still be there, and so would the question of whether to act on it. <a class="fn-back" href="#ref-5" aria-label="Back to text">↩</a></li></ol>
+    <ol class="footnotes"><li id="fn-1">Not every tradition says this. The earliest Buddhist texts, and the Theravada schools that follow them, mostly describe a gradual path where the mind is trained by effort over a long time. The Theravada monk Thanissaro Bhikkhu writes that the Buddha "never advocated attributing an innate nature of any kind to the mind." Plenty of meditation is also taught purely as stress relief. My question is only for the teachings that do say this moment is already complete, which as far as I can tell includes every serious non-dual teaching. <a class="fn-back" href="#ref-1" aria-label="Back to text">↩ Back</a></li><li id="fn-2">While the scientific method has been extremely reliable, fallibilism still sits above it for me. Any belief can turn out to be wrong, no matter how much evidence there is for it. The one thing one could argue we can know with certainty is, fittingly for this essay, conscious experience itself. The argument goes that I can be wrong about what an experience means, but I cannot be wrong that it is happening. <a class="fn-back" href="#ref-2" aria-label="Back to text">↩ Back</a></li><li id="fn-3">A fair objection is that "perfect" here means complete, with nothing lacking, and not the best possible. A circle is perfectly round whether it is small or large. On that reading, a moment can lack nothing and still be a worse moment to live through, and I think that is what most teachers mean. But the same traditions also praise having no preferences. So my question stays: if nothing is lacking, and practice loosens preferring, what gets me to work on a Tuesday night? <a class="fn-back" href="#ref-3" aria-label="Back to text">↩ Back</a></li><li id="fn-4">Even staying alive is harder to justify on this view than it looks. One could say awareness has to continue for any moment to be perfect. But to say that a future with more moments of awareness is better than a future with none is to say that some futures are better than others, which is what the position that the image is correct denies. Non-dual teachers go further and say that awareness does not begin or end. "That which is is always there," in Ramana Maharshi's words. On that account there is nothing to preserve. My best guess is that staying alive needs no reason. Hunger, pain and fear act in the moment, with no belief about a better future, the way a hand pulls back from a hot stove. No reflex like that gets me to do instrumental work on a Tuesday night. <a class="fn-back" href="#ref-4" aria-label="Back to text">↩ Back</a></li><li id="fn-5">AI may change part of this. Before it makes work optional for everyone, if it ever does, it may first make it much easier to start a business or earn a living from the thing you would do for free, which would mean more get-to jobs. And if it went all the way to a world where money stopped mattering, one piece of this dilemma would go away: the trade of effort now for more money later. The wish to make things better for the people I love would still be there, and so would the question of whether to act on it. <a class="fn-back" href="#ref-5" aria-label="Back to text">↩ Back</a></li></ol>
 
   </article>
 </div>
@@ -451,7 +513,7 @@
 </script>
 <script>
 (function() {
-  var SIZES = [16, 19, 22, 25];
+  var SIZES = window.innerWidth <= 640 ? [15, 17, 19, 22] : [16, 19, 22, 25];
   var STORAGE_KEY = 'essay-font-size';
   var curIdx = 1;
   var article = document.querySelector('article');
@@ -472,5 +534,25 @@
 })();
 </script>
 
+<nav class="toc" aria-label="Contents"><div class="toc-label">Contents</div><ol></ol></nav>
+<script>
+(function () {
+  var toc = document.querySelector('.toc'), list = toc.querySelector('ol');
+  var heads = [].slice.call(document.querySelectorAll('article h2[id]'));
+  heads.forEach(function (h) {
+    var li = document.createElement('li'), a = document.createElement('a');
+    a.href = '#' + h.id; a.textContent = h.textContent; li.appendChild(a); list.appendChild(li);
+  });
+  var links = [].slice.call(list.querySelectorAll('a'));
+  var header = document.querySelector('header');
+  function update() {
+    toc.classList.toggle('show', header.getBoundingClientRect().bottom < 0);
+    var cur = -1;
+    heads.forEach(function (h, i) { if (h.getBoundingClientRect().top < window.innerHeight * 0.3) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('current', i === cur); });
+  }
+  window.addEventListener('scroll', update, { passive: true }); update();
+})();
+</script>
 </body>
 </html>
