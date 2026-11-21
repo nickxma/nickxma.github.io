@@ -4,12 +4,24 @@
   <link href="https://paradoxofacceptance.xyz/feed.xml" rel="self" type="application/atom+xml"/>
   <link href="https://paradoxofacceptance.xyz/" rel="alternate" type="text/html"/>
   <id>https://paradoxofacceptance.xyz/</id>
-  <updated>2026-03-21T00:00:00Z</updated>
+  <updated>2026-11-21T00:00:00Z</updated>
   <subtitle>Long-form writing on what mindfulness does to a person — the structural tensions, the beliefs that dissolve, and the questions worth sitting with.</subtitle>
   <rights>© 2026 Paradox of Acceptance</rights>
   <author>
     <name>Nick</name>
   </author>
+
+  <entry>
+    <title>Life When You Win, Life When You Lose</title>
+    <link href="https://paradoxofacceptance.xyz/essays/life-when-you-win/" rel="alternate" type="text/html"/>
+    <id>https://paradoxofacceptance.xyz/essays/life-when-you-win/</id>
+    <updated>2026-11-21T00:00:00Z</updated>
+    <published>2026-11-21T00:00:00Z</published>
+    <summary>If this moment is already perfect whether you win or lose, why strive for anything? An essay on the motivation dilemma at the heart of non-dual mindfulness practice.</summary>
+    <author>
+      <name>Nick</name>
+    </author>
+  </entry>
 
   <entry>
     <title>When to Quit: The Exit Conditions Mindfulness Never Names</title>

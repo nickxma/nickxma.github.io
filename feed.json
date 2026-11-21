@@ -10,6 +10,15 @@
   ],
   "items": [
     {
+      "id": "https://paradoxofacceptance.xyz/essays/life-when-you-win/",
+      "url": "https://paradoxofacceptance.xyz/essays/life-when-you-win/",
+      "title": "Life When You Win, Life When You Lose",
+      "summary": "If this moment is already perfect whether you win or lose, why strive for anything? An essay on the motivation dilemma at the heart of non-dual mindfulness practice.",
+      "date_published": "2026-11-21T00:00:00Z",
+      "date_modified": "2026-11-21T00:00:00Z",
+      "authors": [{ "name": "Nick" }]
+    },
+    {
       "id": "https://paradoxofacceptance.xyz/essays/when-to-quit/",
       "url": "https://paradoxofacceptance.xyz/essays/when-to-quit/",
       "title": "When to Quit: The Exit Conditions Mindfulness Never Names",
