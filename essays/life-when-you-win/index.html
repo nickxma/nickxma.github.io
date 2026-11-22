@@ -55,9 +55,11 @@
     }
 
     .container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 24px;
+      --essay-gutter: 24px;
+      /* Keep the header and article on the same centered reading measure. */
+      max-width: min(640px, calc(30.5 * var(--essay-font-size, 19px) + 2 * var(--essay-gutter)));
+      margin-inline: auto;
+      padding-inline: var(--essay-gutter);
     }
 
     .back-nav { padding: 20px 0 0; }
@@ -192,9 +194,7 @@
     article p.qa b:first-child { display: block; margin-bottom: 0.2em; }
 
     /* ─── Reading polish ─── */
-    /* Measure: about 65-70 characters per line. Set in em so it follows the A-/A+ buttons */
-    .container { max-width: 640px; }
-    article { max-width: 30.5em; line-height: 1.65; }
+    article { line-height: 1.65; }
     article p, article li { text-wrap: pretty; hanging-punctuation: first; }
     article p { margin-bottom: 1.15em; }
     article h2 { margin-top: 64px; }
@@ -202,7 +202,7 @@
     .essay-toggle { position: absolute; }
     /* Phone: smaller text, tighter leading, slightly narrower gutters */
     @media (max-width: 640px) {
-      .container { padding: 0 20px; }
+      .container { --essay-gutter: 20px; }
       article { line-height: 1.6; }
       .essay-toggle { top: 16px; right: 16px; }
     }
@@ -467,19 +467,19 @@
   var SIZES = window.innerWidth <= 640 ? [15, 17, 19, 22] : [16, 19, 22, 25];
   var STORAGE_KEY = 'essay-font-size';
   var curIdx = 1;
-  var article = document.querySelector('article');
+  var container = document.querySelector('.container');
   var btnDec = document.getElementById('font-decrease');
   var btnInc = document.getElementById('font-increase');
   function applySize(idx) {
     curIdx = idx;
-    article.style.setProperty('--essay-font-size', SIZES[idx] + 'px');
+    container.style.setProperty('--essay-font-size', SIZES[idx] + 'px');
     localStorage.setItem(STORAGE_KEY, SIZES[idx]);
     btnDec.disabled = (idx === 0);
     btnInc.disabled = (idx === SIZES.length - 1);
   }
   var stored = localStorage.getItem(STORAGE_KEY);
   if (stored) { var idx = SIZES.indexOf(parseInt(stored, 10)); if (idx !== -1) curIdx = idx; }
-  if (article) article.style.setProperty('--essay-font-size', SIZES[curIdx] + 'px');
+  if (container) container.style.setProperty('--essay-font-size', SIZES[curIdx] + 'px');
   if (btnDec) { btnDec.disabled = (curIdx === 0); btnDec.addEventListener('click', function() { if (curIdx > 0) applySize(curIdx - 1); }); }
   if (btnInc) { btnInc.disabled = (curIdx === SIZES.length - 1); btnInc.addEventListener('click', function() { if (curIdx < SIZES.length - 1) applySize(curIdx + 1); }); }
 })();
