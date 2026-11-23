@@ -249,20 +249,94 @@
       :root:not([data-theme="light"]) body { background: #111111; color: #E8E6E1; }
     }
     [data-theme="dark"] body { color: #E8E6E1; }
-    /* Contents in the left margin on wide screens only */
-    .toc { display: none; }
-    @media (min-width: 1180px) {
-      .toc { display: block; position: fixed; top: 140px; left: max(24px, calc(50% - 320px - 260px)); width: 210px;
-             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.45;
-             opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-      .toc.show { opacity: 1; pointer-events: auto; }
-      .toc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-      .toc ol { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-      .toc a { color: var(--ink-light); text-decoration: none; display: block; border-left: 2px solid transparent; padding-left: 10px; margin-left: -12px; }
-      .toc a:hover { color: var(--ink); }
-      .toc a.current { color: var(--ink); border-left-color: var(--accent); }
+    .toc {
+      margin: 0 0 26px;
+      font: 13px/1.4 system-ui, sans-serif;
+      color: var(--ink);
     }
-    @media (prefers-reduced-motion: reduce) { .toc { transition: none; } html { scroll-behavior: auto; } }
+    .toc[hidden] { display: none; }
+    .toc details {
+      padding: 0 10px;
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--cream) 97%, var(--accent));
+    }
+    .toc summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      padding-inline: 4px;
+      list-style: none;
+      cursor: pointer;
+      font-weight: 650;
+      color: var(--accent);
+    }
+    .toc summary::-webkit-details-marker { display: none; }
+    .toc summary::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin: -4px 5px 0 0;
+      border: solid currentColor;
+      border-width: 0 1.5px 1.5px 0;
+      transform: rotate(45deg);
+    }
+    .toc details[open] summary::after { transform: rotate(225deg); margin-top: 4px; }
+    .toc-label { display: none; }
+    .toc ol { list-style: none; padding: 4px 2px 10px; }
+    .toc li + li { margin-top: 2px; }
+    .toc li.toc-reference { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--rule); }
+    .toc a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 7px 10px;
+      border-inline-start: 2px solid transparent;
+      border-radius: 7px;
+      color: var(--ink-light);
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    .toc a:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); color: var(--ink); }
+    .toc a[aria-current] {
+      border-inline-start-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 11%, transparent);
+      color: var(--accent);
+      font-weight: 650;
+    }
+    .toc :is(a, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+    @media (min-width: 1180px) {
+      .toc {
+        position: fixed;
+        top: clamp(36px, 13vh, 128px);
+        left: max(20px, calc(50% - 590px));
+        width: 238px;
+        margin: 0;
+        visibility: hidden;
+      }
+      .toc.is-reading { visibility: visible; }
+      .toc details { padding: 12px 8px 7px; }
+      .toc summary { display: none; }
+      .toc-label {
+        display: block;
+        margin: 0 11px 7px;
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+      .toc ol {
+        max-height: calc(100vh - clamp(36px, 13vh, 128px) - 66px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding: 3px 3px 7px;
+      }
+      .toc a { min-height: 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print { .toc { display: none; } }
 
     /* ─── Round 2: serif headings, lotus dividers, calmer spacing ─── */
     :root { --ornament: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20160%2020%27%3E%3Cpath%20d%3D%27M2%2010%20Q10%206%2018%2010%20T34%2010%20T50%2010%20T66%2010%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.2%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M94%2010%20Q102%206%20110%2010%20T126%2010%20T142%2010%20T158%2010%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.2%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M80%202%20C84%207%2084%2013%2080%2018%20C76%2013%2076%207%2080%202Z%27/%3E%3Cpath%20d%3D%27M80%2018%20C74%2017%2070%2012%2069%208%20C74%209%2078%2013%2080%2018Z%27/%3E%3Cpath%20d%3D%27M80%2018%20C86%2017%2090%2012%2091%208%20C86%209%2082%2013%2080%2018Z%27/%3E%3C/svg%3E"); }
@@ -514,6 +588,14 @@
     </div>
   </header>
 
+  <nav class="toc" aria-label="Contents" hidden>
+    <details>
+      <summary>Contents</summary>
+      <div class="toc-label" aria-hidden="true">Contents</div>
+      <ol></ol>
+    </details>
+  </nav>
+
   <article>
 
     <figure><img src="img/win-lose-coast-restored.jpg" width="1760" height="1760" alt="Two identical photos of the sun over the ocean, captioned life when you win and life when you lose" loading="lazy"></figure>
@@ -734,24 +816,63 @@
 })();
 </script>
 
-<nav class="toc" aria-label="Contents"><div class="toc-label">Contents</div><ol></ol></nav>
 <script>
-(function () {
-  var toc = document.querySelector('.toc'), list = toc.querySelector('ol');
-  var heads = [].slice.call(document.querySelectorAll('article h2[id]'));
-  heads.forEach(function (h) {
-    var li = document.createElement('li'), a = document.createElement('a');
-    a.href = '#' + h.id; a.textContent = h.textContent; li.appendChild(a); list.appendChild(li);
+(() => {
+  const toc = document.querySelector('.toc');
+  const details = toc.querySelector('details');
+  const list = toc.querySelector('ol');
+  const header = document.querySelector('header');
+  const headings = [...document.querySelectorAll('article h2[id]')];
+  const wide = window.matchMedia('(min-width: 1180px)');
+  let active = null;
+
+  const links = headings.map(heading => {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#' + heading.id;
+    link.textContent = heading.textContent;
+    if (heading.id === 'notes') item.className = 'toc-reference';
+    item.append(link);
+    list.append(item);
+    return link;
   });
-  var links = [].slice.call(list.querySelectorAll('a'));
-  var header = document.querySelector('header');
+  if (links.length === 0) return;
+
   function update() {
-    toc.classList.toggle('show', header.getBoundingClientRect().bottom < 0);
-    var cur = -1;
-    heads.forEach(function (h, i) { if (h.getBoundingClientRect().top < window.innerHeight * 0.3) cur = i; });
-    links.forEach(function (a, i) { a.classList.toggle('current', i === cur); });
+    toc.classList.toggle('is-reading', header.getBoundingClientRect().bottom < 0);
+    const readingLine = Math.min(180, innerHeight * 0.3);
+    const atEnd = scrollY > 0 && scrollY + innerHeight >= document.documentElement.scrollHeight - 3;
+    const index = atEnd ? headings.length - 1 :
+      headings.findLastIndex(heading => heading.getBoundingClientRect().top <= readingLine);
+    const current = links[index];
+    if (current === active) return;
+
+    active?.removeAttribute('aria-current');
+    active = current;
+    if (!active) return;
+    active.setAttribute('aria-current', 'location');
+
+    if (wide.matches) {
+      const bounds = list.getBoundingClientRect();
+      const row = active.getBoundingClientRect();
+      if (row.top < bounds.top) list.scrollTop += row.top - bounds.top - 4;
+      if (row.bottom > bounds.bottom) list.scrollTop += row.bottom - bounds.bottom + 4;
+    }
   }
-  window.addEventListener('scroll', update, { passive: true }); update();
+
+  function syncLayout() {
+    details.open = wide.matches;
+    update();
+  }
+
+  list.addEventListener('click', event => {
+    if (!wide.matches && event.target.closest('a')) details.open = false;
+  });
+  wide.addEventListener('change', syncLayout);
+  window.addEventListener('scroll', update, {passive: true});
+  window.addEventListener('resize', update);
+  toc.hidden = false;
+  syncLayout();
 })();
 </script>
 <script type="module" src="audio/player.js?v=3"></script>
