@@ -1,4 +1,4 @@
-import {attachNarrationFollow} from './follow.js?v=2';
+import {attachNarrationFollow} from './follow.js?v=3';
 
 const player = document.querySelector('.narration-player');
 const audio = player.querySelector('audio');
@@ -13,7 +13,7 @@ const close = player.querySelector('[data-close]');
 const status = player.querySelector('[role="status"]');
 
 let scrubbing = false;
-const syncFollow = attachNarrationFollow(player, audio, status);
+const syncFollow = attachNarrationFollow(player, audio, status, seek);
 
 function dock(visible) {
   player.classList.toggle('is-docked', visible);
@@ -58,8 +58,10 @@ function seek(time) {
 function showPlayback() {
   const playing = !audio.paused && !audio.ended;
   play.classList.toggle('is-playing', playing);
-  play.setAttribute('aria-label', playing ? 'Pause narration' : 'Play narration');
-  play.title = playing ? 'Pause (Space)' : 'Play (Space)';
+  const label = !player.classList.contains('is-docked')
+    ? 'Listen to this article' : playing ? 'Pause narration' : 'Play narration';
+  play.setAttribute('aria-label', label);
+  play.title = label;
 }
 
 function mediaError() {
@@ -122,6 +124,7 @@ slider.addEventListener('touchcancel', () => {
 close.addEventListener('click', () => {
   audio.pause();
   dock(false);
+  showPlayback();
   syncFollow?.();
   play.focus({preventScroll: true});
 });

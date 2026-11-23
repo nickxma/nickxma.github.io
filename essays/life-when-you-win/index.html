@@ -15,7 +15,10 @@
   <meta property="og:image" content="https://paradoxofacceptance.xyz/essays/life-when-you-win/img/win-lose-coast-restored.jpg">
       <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://paradoxofacceptance.xyz/essays/life-when-you-win/img/win-lose-coast-restored.jpg">
-  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || storedTheme === 'light') document.documentElement.dataset.theme = storedTheme;
+  </script>
   <title>Life When You Win, Life When You Lose</title>
   <meta name="description" content="If this moment is already perfect whether you win or lose, why strive for anything? An essay on the mindfulness motivation dilemma at the heart of non-dual mindfulness practice." />
   <meta property="og:title" content="Life When You Win, Life When You Lose" />
@@ -73,9 +76,8 @@
     .back-nav a:hover { text-decoration: underline; }
 
     header {
-      padding: 48px 0 60px;
-      border-bottom: 1px solid var(--rule);
-      margin-bottom: 64px;
+      padding: clamp(36px, 6vw, 60px) 0 0;
+      margin-bottom: clamp(24px, 4vw, 38px);
     }
 
     .kicker {
@@ -85,25 +87,14 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+      font: 400 clamp(35px, 7vw, 58px)/1.08 Georgia, 'Times New Roman', serif;
+      letter-spacing: -0.035em;
       color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .meta {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      font-size: 13px;
-      color: var(--ink-light);
-      display: flex;
-      gap: 20px;
+      text-wrap: balance;
     }
 
     article { padding-bottom: 80px; font-size: var(--essay-font-size, 19px); }
@@ -149,27 +140,63 @@
 
     /* Dark mode */
     [data-theme="dark"] body { background: #111111; color: #EEEEEE; }
-    [data-theme="dark"] { --accent: #9abed8; --cream: #111111; --ink: #EEEEEE; --ink-light: #888888; --rule: #2A2A2A; }
+    [data-theme="dark"] { color-scheme: dark; --accent: #9abed8; --cream: #111111; --ink: #EEEEEE; --ink-light: #888888; --rule: #2A2A2A; }
     [data-theme="dark"] footer p { color: #666666; }
 
     /* Dark mode toggle */
     .essay-toggle { position: fixed; top: 20px; right: 24px; z-index: 100; background: none; border: none; cursor: pointer; padding: 2px; display: flex; align-items: center; gap: 6px; }
     .toggle-track { width: 40px; height: 22px; background: #DDDDDD; border-radius: 11px; position: relative; transition: background 0.25s; display: block; flex-shrink: 0; }
-    [data-theme="dark"] .toggle-track { background: #555555; }
+    .essay-toggle[aria-pressed="true"] .toggle-track { background: #555555; }
     .toggle-knob { width: 16px; height: 16px; background: #FFFFFF; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: transform 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
-    [data-theme="dark"] .toggle-knob { transform: translateX(18px); }
+    .essay-toggle[aria-pressed="true"] .toggle-knob { transform: translateX(18px); }
     .moon-icon { color: #CCCCCC; flex-shrink: 0; transition: color 0.25s; }
-    [data-theme="dark"] .moon-icon { color: #DDDDDD; }
+    .essay-toggle[aria-pressed="true"] .moon-icon { color: #DDDDDD; }
 
-    /* ─── Font size controls ─── */
-    .font-size-btn { background: none; border: none; cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 13px; color: var(--ink-light); padding: 0 2px; line-height: 1; transition: color 0.15s; letter-spacing: 0.02em; }
-    .font-size-btn:hover { color: var(--ink); }
-    .font-size-btn:disabled { opacity: 0.3; cursor: default; }
+    .reading-tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+      font: 13px/1.4 system-ui, sans-serif;
+    }
+    .reading-settings {
+      display: flex;
+      flex: 1 1 auto;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 16px;
+    }
+    .read-time { color: var(--ink-light); white-space: nowrap; }
+    .text-size-tools { display: flex; align-items: center; gap: 9px; }
+    .text-size-label { font-weight: 650; }
+    .text-size-stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 11px;
+      background: color-mix(in srgb, var(--cream) 96%, var(--accent));
+    }
+    .font-size-btn {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      border-radius: 10px;
+      background: none;
+      color: var(--ink);
+      font: 650 15px/1 system-ui, sans-serif;
+      cursor: pointer;
+    }
+    .font-size-btn:hover:enabled { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+    .font-size-btn:disabled { opacity: 0.45; cursor: default; }
+    .font-size-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .text-size-value { min-width: 4.5ch; text-align: center; color: var(--ink-light); font-variant-numeric: tabular-nums; }
 
     @media (max-width: 640px) {
       body { font-size: 17px; }
-      header { padding: 40px 0 48px; }
-      h1 { font-size: 30px; }
     }
 
     /* Life When You Win additions */
@@ -229,8 +256,6 @@
 
     /* ─── Round 2: serif headings, lotus dividers, calmer spacing ─── */
     :root { --ornament: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20160%2020%27%3E%3Cpath%20d%3D%27M2%2010%20Q10%206%2018%2010%20T34%2010%20T50%2010%20T66%2010%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.2%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M94%2010%20Q102%206%20110%2010%20T126%2010%20T142%2010%20T158%2010%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.2%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M80%202%20C84%207%2084%2013%2080%2018%20C76%2013%2076%207%2080%202Z%27/%3E%3Cpath%20d%3D%27M80%2018%20C74%2017%2070%2012%2069%208%20C74%209%2078%2013%2080%2018Z%27/%3E%3Cpath%20d%3D%27M80%2018%20C86%2017%2090%2012%2091%208%20C86%209%2082%2013%2080%2018Z%27/%3E%3C/svg%3E"); }
-    h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }
-    header { margin-bottom: 48px; padding-bottom: 48px; }
     article h2 {
       font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 1.45em; line-height: 1.3;
       letter-spacing: 0; border-top: none; padding-top: 0; display: block; text-align: center; text-wrap: balance;
@@ -250,14 +275,8 @@
     article ol.positions { margin-bottom: 1.2em; }
     a.fn-back { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; margin-left: 6px; }
 
-    .narration-player {
-      margin: -18px 0 28px;
-      padding: 8px 12px;
-      border: 1px solid var(--rule);
-      border-radius: 16px;
-      background: var(--cream);
-      font: 13px/1.4 system-ui, sans-serif;
-    }
+    .narration-player { font: 13px/1.4 system-ui, sans-serif; }
+    .narration-player:not(.is-docked):has(audio[controls]) { flex: 1 1 100%; }
     .narration-player.is-docked {
       position: fixed;
       z-index: 20;
@@ -265,16 +284,31 @@
       bottom: max(10px, env(safe-area-inset-bottom));
       max-width: 580px;
       margin: 0 auto;
+      padding: 8px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
       background: color-mix(in srgb, var(--cream) 95%, var(--accent));
       box-shadow: 0 8px 30px #0002;
     }
-    body.has-narration-dock { padding-bottom: calc(128px + env(safe-area-inset-bottom)); }
+    body.has-narration-dock { padding-bottom: calc(145px + env(safe-area-inset-bottom)); }
     .narration-player [hidden],
     .narration-player:not(.is-docked) .narration-dock-only,
     .narration-player.is-docked .narration-intro { display: none; }
     .narration-toolbar { display: flex; justify-content: center; align-items: center; gap: 6px; }
-    .narration-intro { flex: 1; font-weight: 650; }
-    .narration-intro span { margin-inline-start: 0.45em; font-weight: 400; color: var(--ink-light); }
+    .narration-intro { font-weight: 650; }
+    .narration-intro span { margin-inline-start: 0.4em; font-weight: 400; }
+    .narration-player:not(.is-docked) .narration-play {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 15px;
+      border-radius: 24px;
+      white-space: nowrap;
+    }
+    .narration-player:not(.is-docked) .narration-play::before { border-block-width: 5px; border-inline-start-width: 8px; }
+    .narration-hint { margin: 2px 0 0; text-align: center; color: var(--ink-light); font-size: 12px; }
     .narration-player audio { display: block; width: 100%; height: 44px; }
     .narration-player button, .narration-player select, .narration-follow {
       flex: 0 0 auto;
@@ -377,16 +411,20 @@
     .narration-player [data-close] { font-size: 22px; }
     .narration-player [role="status"] { margin: 6px 0 0; }
     ::highlight(narration-word) { color: #262516; background-color: #f3dc91; }
+    @media (max-width: 580px) {
+      .reading-tools { gap: 12px; margin-top: 20px; }
+      .narration-player:not(.is-docked), .narration-player:not(.is-docked) .narration-play { width: 100%; }
+    }
     @media (max-width: 450px) {
       .narration-player.is-docked { padding: 5px 8px 8px; }
       .narration-toolbar, .narration-scrub { gap: 3px; }
     }
-    @media print { .narration-player { display: none; } }
+    @media print { .narration-player, .text-size-tools { display: none; } }
   </style>
 </head>
 <body>
 
-<button class="essay-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+<button class="essay-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false">
   <span class="toggle-track"><span class="toggle-knob"></span></span>
   <svg class="moon-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 </button>
@@ -401,43 +439,51 @@
   <header>
     <div class="kicker">Essay · Mindfulness &amp; Motivation</div>
     <h1>Life When You Win, Life When You Lose</h1>
-    <div class="meta">
-      <span>~30 min read</span>
-      <span>·</span>
-      <span><button class="font-size-btn" id="font-decrease" aria-label="Decrease text size">A−</button><button class="font-size-btn" id="font-increase" aria-label="Increase text size">A+</button></span>
+    <div class="reading-tools">
+      <div class="reading-settings">
+        <span class="read-time">~30 min read</span>
+        <div class="text-size-tools" role="group" aria-labelledby="text-size-label">
+          <span id="text-size-label" class="text-size-label">Text size</span>
+          <div class="text-size-stepper">
+            <button type="button" class="font-size-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+            <span class="text-size-value" aria-live="polite">100%</span>
+            <button type="button" class="font-size-btn" id="font-increase" aria-label="Increase text size">A+</button>
+          </div>
+        </div>
+      </div>
+      <section class="narration-player" id="narration-title" aria-label="Listen to this article">
+        <audio controls preload="none" aria-label="Essay narration" src="audio/narration-v0.30.m4a">
+          <a href="audio/narration-v0.30.m4a">Download the narration</a>
+        </audio>
+        <div class="narration-ui" hidden>
+          <div class="narration-scrub narration-dock-only">
+            <span data-elapsed aria-hidden="true">0:00</span>
+            <input type="range" min="0" max="2031" value="0" step="1" aria-label="Playback position" disabled>
+            <span data-duration aria-hidden="true">33:51</span>
+            <button type="button" data-close aria-label="Close player" title="Close player">×</button>
+          </div>
+          <div class="narration-toolbar">
+            <button type="button" class="narration-dock-only" data-skip="-15" aria-label="Back 15 seconds" disabled>−15s</button>
+            <button type="button" class="narration-play" aria-label="Listen to this article" aria-keyshortcuts="Space" title="Listen to this article">
+              <span class="narration-intro">Listen to this article <span>33:51</span></span>
+            </button>
+            <button type="button" class="narration-dock-only" data-skip="15" aria-label="Forward 15 seconds" disabled>+15s</button>
+            <select class="narration-dock-only" aria-label="Playback speed">
+              <option value="0.75">0.75×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.25">1.25×</option>
+              <option value="1.5">1.5×</option>
+              <option value="1.75">1.75×</option>
+              <option value="2">2×</option>
+            </select>
+            <label class="narration-follow narration-dock-only" hidden><input type="checkbox" aria-label="Follow the text" checked> Follow</label>
+          </div>
+        </div>
+        <p class="narration-hint narration-dock-only" hidden>Click or tap a word to jump</p>
+        <p role="status" hidden></p>
+      </section>
     </div>
   </header>
-
-
-  <section class="narration-player" id="narration-title" aria-label="Listen to this article">
-    <audio controls preload="none" aria-label="Essay narration" src="audio/narration-v0.30.m4a">
-      <a href="audio/narration-v0.30.m4a">Download the narration</a>
-    </audio>
-    <div class="narration-ui" hidden>
-      <div class="narration-scrub narration-dock-only">
-        <span data-elapsed aria-hidden="true">0:00</span>
-        <input type="range" min="0" max="2031" value="0" step="1" aria-label="Playback position" disabled>
-        <span data-duration aria-hidden="true">33:51</span>
-        <button type="button" data-close aria-label="Close player" title="Close player">×</button>
-      </div>
-      <div class="narration-toolbar">
-        <div class="narration-intro">Listen to this article <span>33:51</span></div>
-        <button type="button" class="narration-dock-only" data-skip="-15" aria-label="Back 15 seconds" disabled>−15s</button>
-        <button type="button" class="narration-play" aria-label="Play narration" aria-keyshortcuts="Space" title="Play (Space)"></button>
-        <button type="button" class="narration-dock-only" data-skip="15" aria-label="Forward 15 seconds" disabled>+15s</button>
-        <select class="narration-dock-only" aria-label="Playback speed">
-          <option value="0.75">0.75×</option>
-          <option value="1" selected>1×</option>
-          <option value="1.25">1.25×</option>
-          <option value="1.5">1.5×</option>
-          <option value="1.75">1.75×</option>
-          <option value="2">2×</option>
-        </select>
-        <label class="narration-follow narration-dock-only" hidden><input type="checkbox" aria-label="Follow the text" checked> Follow</label>
-      </div>
-    </div>
-    <p role="status" hidden></p>
-  </section>
 
   <article>
 
@@ -613,37 +659,49 @@
 
   // Dark mode toggle
   const toggle = document.getElementById('theme-toggle');
+  const darkPreference = window.matchMedia('(prefers-color-scheme: dark)');
+  function isDark() {
+    const theme = document.documentElement.dataset.theme;
+    return theme ? theme === 'dark' : darkPreference.matches;
+  }
+  function showTheme() {
+    toggle.setAttribute('aria-pressed', String(isDark()));
+  }
   toggle.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.removeItem('theme');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    }
+    const theme = isDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    showTheme();
   });
+  darkPreference.addEventListener('change', showTheme);
+  showTheme();
 </script>
 <script>
-(function() {
-  var SIZES = window.innerWidth <= 640 ? [15, 17, 19, 22] : [16, 19, 22, 25];
-  var STORAGE_KEY = 'essay-font-size';
-  var curIdx = 1;
-  var container = document.querySelector('.container');
-  var btnDec = document.getElementById('font-decrease');
-  var btnInc = document.getElementById('font-increase');
-  function applySize(idx) {
-    curIdx = idx;
-    container.style.setProperty('--essay-font-size', SIZES[idx] + 'px');
-    localStorage.setItem(STORAGE_KEY, SIZES[idx]);
-    btnDec.disabled = (idx === 0);
-    btnInc.disabled = (idx === SIZES.length - 1);
+(() => {
+  const sizes = window.innerWidth <= 640 ? [15, 17, 19, 22] : [16, 19, 22, 25];
+  const storageKey = 'essay-font-size';
+  const container = document.querySelector('.container');
+  const smaller = document.getElementById('font-decrease');
+  const larger = document.getElementById('font-increase');
+  const meter = document.querySelector('.text-size-value');
+  const storedIndex = sizes.indexOf(Number(localStorage.getItem(storageKey)));
+  let index = storedIndex >= 0 ? storedIndex : 1;
+
+  function renderSize() {
+    container.style.setProperty('--essay-font-size', sizes[index] + 'px');
+    meter.textContent = Math.round(100 * sizes[index] / sizes[1]) + '%';
+    smaller.disabled = index === 0;
+    larger.disabled = index === sizes.length - 1;
   }
-  var stored = localStorage.getItem(STORAGE_KEY);
-  if (stored) { var idx = SIZES.indexOf(parseInt(stored, 10)); if (idx !== -1) curIdx = idx; }
-  if (container) container.style.setProperty('--essay-font-size', SIZES[curIdx] + 'px');
-  if (btnDec) { btnDec.disabled = (curIdx === 0); btnDec.addEventListener('click', function() { if (curIdx > 0) applySize(curIdx - 1); }); }
-  if (btnInc) { btnInc.disabled = (curIdx === SIZES.length - 1); btnInc.addEventListener('click', function() { if (curIdx < SIZES.length - 1) applySize(curIdx + 1); }); }
+
+  function stepSize(delta) {
+    index = Math.max(0, Math.min(index + delta, sizes.length - 1));
+    localStorage.setItem(storageKey, sizes[index]);
+    renderSize();
+  }
+  smaller.addEventListener('click', () => stepSize(-1));
+  larger.addEventListener('click', () => stepSize(1));
+  renderSize();
 })();
 </script>
 
@@ -667,6 +725,6 @@
   window.addEventListener('scroll', update, { passive: true }); update();
 })();
 </script>
-<script type="module" src="audio/player.js?v=2"></script>
+<script type="module" src="audio/player.js?v=3"></script>
 </body>
 </html>
