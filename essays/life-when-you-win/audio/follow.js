@@ -83,7 +83,7 @@ export function attachNarrationFollow(player, audio, status, seek) {
 
   async function loadTimings() {
     try {
-      const response = await fetch(new URL('./timings-v0.31.json', import.meta.url));
+      const response = await fetch(new URL('./timings-narration-v0.31.json', import.meta.url));
       if (!response.ok) throw new Error('Could not load timings');
       const timings = await response.json();
       words = narrationWords([document.querySelector('h1'), article]);

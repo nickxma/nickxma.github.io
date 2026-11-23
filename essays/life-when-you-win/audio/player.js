@@ -1,4 +1,4 @@
-import {attachNarrationFollow} from './follow.js?v=3';
+import {attachNarrationFollow} from './follow.js?v=4';
 
 const player = document.querySelector('.narration-player');
 const audio = player.querySelector('audio');
