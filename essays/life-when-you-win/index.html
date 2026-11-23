@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -36,6 +36,7 @@
     html { scroll-behavior: smooth; }
 
     body {
+      padding-block-start: env(safe-area-inset-top, 0px);
       background: var(--cream);
       color: var(--ink);
       font-family: Georgia, 'Times New Roman', serif;
@@ -45,7 +46,7 @@
 
     #progress-bar {
       position: fixed;
-      top: 0; left: 0;
+      top: env(safe-area-inset-top, 0px); left: 0;
       height: 3px;
       width: 0%;
       background: var(--accent);
@@ -58,7 +59,7 @@
       /* Keep the header and article on the same centered reading measure. */
       max-width: min(640px, calc(30.5 * var(--essay-font-size, 19px) + 2 * var(--essay-gutter)));
       margin-inline: auto;
-      padding-inline: var(--essay-gutter);
+      padding-inline: max(var(--essay-gutter), env(safe-area-inset-left)) max(var(--essay-gutter), env(safe-area-inset-right));
     }
 
     .back-nav { padding: 20px 0 0; }
@@ -198,12 +199,12 @@
     article p { margin-bottom: 1.15em; }
     article h2 { margin-top: 64px; }
     /* Toggle scrolls away with the page instead of floating over the text */
-    .essay-toggle { position: absolute; }
+    .essay-toggle { position: absolute; top: calc(20px + env(safe-area-inset-top, 0px)); right: max(24px, env(safe-area-inset-right, 0px)); }
     /* Phone: smaller text, tighter leading, slightly narrower gutters */
     @media (max-width: 640px) {
       .container { --essay-gutter: 20px; }
       article { line-height: 1.6; }
-      .essay-toggle { top: 16px; right: 16px; }
+      .essay-toggle { top: calc(16px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
     }
     /* Follow the reader's system dark mode unless they picked light */
     @media (prefers-color-scheme: dark) {
@@ -251,22 +252,135 @@
 
     .narration-player {
       margin: -18px 0 28px;
-      padding: 10px 14px;
+      padding: 8px 12px;
       border: 1px solid var(--rule);
-      border-radius: 10px;
+      border-radius: 16px;
       background: var(--cream);
       font: 13px/1.4 system-ui, sans-serif;
     }
-    .narration-player.is-listening { position: sticky; top: 10px; z-index: 5; }
-    .narration-player.is-listening + article :is(h2, .footnotes li, .fn-ref) { scroll-margin-top: 120px; }
-    .narration-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 14px; }
-    .narration-title { font-weight: 650; }
-    .narration-time { font-weight: 400; color: var(--ink-light); margin-inline-start: 0.45em; }
-    .narration-follow:not([hidden]) { display: inline-flex; align-items: center; gap: 0.4em; }
+    .narration-player.is-docked {
+      position: fixed;
+      z-index: 20;
+      inset-inline: max(10px, env(safe-area-inset-left)) max(10px, env(safe-area-inset-right));
+      bottom: max(10px, env(safe-area-inset-bottom));
+      max-width: 580px;
+      margin: 0 auto;
+      background: color-mix(in srgb, var(--cream) 95%, var(--accent));
+      box-shadow: 0 8px 30px #0002;
+    }
+    body.has-narration-dock { padding-bottom: calc(128px + env(safe-area-inset-bottom)); }
+    .narration-player [hidden],
+    .narration-player:not(.is-docked) .narration-dock-only,
+    .narration-player.is-docked .narration-intro { display: none; }
+    .narration-toolbar { display: flex; justify-content: center; align-items: center; gap: 6px; }
+    .narration-intro { flex: 1; font-weight: 650; }
+    .narration-intro span { margin-inline-start: 0.45em; font-weight: 400; color: var(--ink-light); }
+    .narration-player audio { display: block; width: 100%; height: 44px; }
+    .narration-player button, .narration-player select, .narration-follow {
+      flex: 0 0 auto;
+      min-inline-size: 44px;
+      min-block-size: 44px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+    .narration-player button { -webkit-tap-highlight-color: transparent; }
+    .narration-player button:is(:hover, :active), .narration-player select:hover, .narration-follow:hover {
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+    .narration-player :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .narration-player button:disabled, .narration-player input:disabled { opacity: 0.45; cursor: default; }
+    .narration-player .narration-play {
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--cream);
+    }
+    .narration-player .narration-play:hover { background: color-mix(in srgb, var(--accent) 88%, var(--ink)); }
+    .narration-play::before {
+      content: "";
+      display: block;
+      margin-inline-start: 2px;
+      border-block: 7px solid transparent;
+      border-inline-start: 11px solid currentColor;
+    }
+    .narration-play.is-playing::before {
+      width: 12px;
+      height: 14px;
+      margin: 0;
+      border: solid currentColor;
+      border-width: 0 4px;
+    }
+    .narration-player select {
+      appearance: none;
+      -webkit-appearance: none;
+      height: 44px;
+      padding: 0 6px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .narration-player select option { background: var(--cream); color: var(--ink); }
+    .narration-follow { display: flex; align-items: center; gap: 5px; padding-inline: 5px; white-space: nowrap; }
     .narration-follow input { accent-color: var(--accent); }
-    .narration-player audio { display: block; width: 100%; height: 40px; margin-top: 6px; }
+    .narration-scrub {
+      display: grid;
+      grid-template-columns: 5ch minmax(0, 1fr) 5ch 44px;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-light);
+      font-variant-numeric: tabular-nums;
+    }
+    .narration-scrub span[data-duration] { text-align: end; }
+    .narration-scrub input {
+      --played: 0%;
+      --track: color-mix(in srgb, var(--accent) 25%, var(--cream));
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-width: 0;
+      height: 40px;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .narration-scrub input::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 4px;
+      background: linear-gradient(to right, var(--accent) var(--played), var(--track) var(--played));
+    }
+    .narration-scrub input::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      margin-top: -5px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .narration-scrub input::-moz-range-track {
+      height: 4px;
+      border-radius: 4px;
+      background: linear-gradient(to right, var(--accent) var(--played), var(--track) var(--played));
+    }
+    .narration-scrub input::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .narration-player [data-close] { font-size: 22px; }
     .narration-player [role="status"] { margin: 6px 0 0; }
     ::highlight(narration-word) { color: #262516; background-color: #f3dc91; }
+    @media (max-width: 450px) {
+      .narration-player.is-docked { padding: 5px 8px 8px; }
+      .narration-toolbar, .narration-scrub { gap: 3px; }
+    }
     @media print { .narration-player { display: none; } }
   </style>
 </head>
@@ -295,15 +409,33 @@
   </header>
 
 
-  <section class="narration-player" aria-labelledby="narration-title">
-    <div class="narration-heading">
-      <div id="narration-title" class="narration-title">Listen to this article <span class="narration-time">33:51</span></div>
-      <label class="narration-follow" hidden><input type="checkbox" checked> Follow the text</label>
-    </div>
-    <audio controls preload="none" aria-label="Essay narration"
-      src="audio/narration-v0.30.m4a">
+  <section class="narration-player" id="narration-title" aria-label="Listen to this article">
+    <audio controls preload="none" aria-label="Essay narration" src="audio/narration-v0.30.m4a">
       <a href="audio/narration-v0.30.m4a">Download the narration</a>
     </audio>
+    <div class="narration-ui" hidden>
+      <div class="narration-scrub narration-dock-only">
+        <span data-elapsed aria-hidden="true">0:00</span>
+        <input type="range" min="0" max="2031" value="0" step="1" aria-label="Playback position" disabled>
+        <span data-duration aria-hidden="true">33:51</span>
+        <button type="button" data-close aria-label="Close player" title="Close player">×</button>
+      </div>
+      <div class="narration-toolbar">
+        <div class="narration-intro">Listen to this article <span>33:51</span></div>
+        <button type="button" class="narration-dock-only" data-skip="-15" aria-label="Back 15 seconds" disabled>−15s</button>
+        <button type="button" class="narration-play" aria-label="Play narration" aria-keyshortcuts="Space" title="Play (Space)"></button>
+        <button type="button" class="narration-dock-only" data-skip="15" aria-label="Forward 15 seconds" disabled>+15s</button>
+        <select class="narration-dock-only" aria-label="Playback speed">
+          <option value="0.75">0.75×</option>
+          <option value="1" selected>1×</option>
+          <option value="1.25">1.25×</option>
+          <option value="1.5">1.5×</option>
+          <option value="1.75">1.75×</option>
+          <option value="2">2×</option>
+        </select>
+        <label class="narration-follow narration-dock-only" hidden><input type="checkbox" aria-label="Follow the text" checked> Follow</label>
+      </div>
+    </div>
     <p role="status" hidden></p>
   </section>
 
@@ -537,6 +669,6 @@
   window.addEventListener('scroll', update, { passive: true }); update();
 })();
 </script>
-<script type="module" src="audio/follow.js"></script>
+<script type="module" src="audio/player.js"></script>
 </body>
 </html>

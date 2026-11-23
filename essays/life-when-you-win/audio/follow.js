@@ -24,11 +24,9 @@ export function narrationSignature(words) {
   return (hash >>> 0).toString(16);
 }
 
-const player = document.querySelector('.narration-player');
-if (player && globalThis.CSS?.highlights && globalThis.Highlight) {
-  const audio = player.querySelector('audio');
-  const follow = player.querySelector('input');
-  const status = player.querySelector('[role="status"]');
+export function attachNarrationFollow(player, audio, status) {
+  if (!globalThis.CSS?.highlights || !globalThis.Highlight) return;
+  const follow = player.querySelector('input[type="checkbox"]');
   follow.closest('label').hidden = false;
   let data, words, active, frame, loading;
   const highlight = new Highlight();
@@ -46,9 +44,10 @@ if (player && globalThis.CSS?.highlights && globalThis.Highlight) {
     return cue && time < cue[1] ? cue : undefined;
   }
 
-  function update() {
-    const cue = data && follow.checked && !audio.ended && cueAt(audio.currentTime * 1000);
-    if (cue === active) return;
+  function update(reveal = false) {
+    const cue = data && follow.checked && !audio.ended &&
+      player.classList.contains('is-docked') && cueAt(audio.currentTime * 1000);
+    if (cue === active && !reveal) return;
     active = cue;
     highlight.clear();
     if (!cue) return;
@@ -60,9 +59,9 @@ if (player && globalThis.CSS?.highlights && globalThis.Highlight) {
     highlight.add(range);
 
     const bounds = range.getBoundingClientRect();
-    const top = player.getBoundingClientRect().bottom + 20;
-    if (!audio.paused && (bounds.top < top || bounds.bottom > innerHeight - 32)) {
-      window.scrollBy({top: bounds.top - Math.max(top + 8, innerHeight * 0.38), behavior: 'instant'});
+    const bottom = Math.min(player.getBoundingClientRect().top, innerHeight) - 18;
+    if ((!audio.paused || reveal) && (bounds.top < 24 || bounds.bottom > bottom)) {
+      window.scrollBy({top: bounds.top - Math.max(28, bottom * 0.38), behavior: 'instant'});
     }
   }
 
@@ -88,27 +87,15 @@ if (player && globalThis.CSS?.highlights && globalThis.Highlight) {
     }
   }
 
-  function sync() {
+  function sync(reveal = false) {
     cancelAnimationFrame(frame);
-    player.classList.toggle('is-listening', !audio.ended && (!audio.paused || audio.currentTime > 0));
+    update(reveal);
     if (follow.checked && !audio.paused) {
       loading ??= loadTimings();
-      tick();
-    } else {
-      update();
+      frame = requestAnimationFrame(tick);
     }
   }
 
-  audio.addEventListener('play', sync);
-  audio.addEventListener('pause', sync);
-  audio.addEventListener('ended', sync);
-  audio.addEventListener('seeked', sync);
-  follow.addEventListener('change', sync);
+  follow.addEventListener('change', () => sync(follow.checked));
+  return sync;
 }
-
-const narrationAudio = player?.querySelector('audio');
-narrationAudio?.addEventListener('error', () => {
-  const status = player.querySelector('[role="status"]');
-  status.textContent = 'The narration couldn’t load. Try refreshing the page.';
-  status.hidden = false;
-});
