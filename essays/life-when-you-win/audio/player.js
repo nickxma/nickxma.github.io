@@ -106,11 +106,16 @@ slider.addEventListener('input', () => {
   scrubbing = true;
   showPosition(Number(slider.value));
 });
-slider.addEventListener('change', () => {
+function commitScrub() {
+  if (!scrubbing) return;
   scrubbing = false;
   seek(Number(slider.value));
-});
-slider.addEventListener('pointercancel', () => {
+}
+
+slider.addEventListener('change', commitScrub);
+// WebKit can release a tap on the native slider without firing change.
+slider.addEventListener('touchend', commitScrub);
+slider.addEventListener('touchcancel', () => {
   scrubbing = false;
   updatePosition();
 });
