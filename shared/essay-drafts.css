@@ -1,0 +1,31 @@
+:root {
+  --draft-red: #a12d31;
+}
+
+:root[data-theme="dark"] {
+  --draft-red: #ff9f9b;
+}
+
+/* Retain the theme's contrast for form fields and button labels. */
+.draft-essay :is(header, article, .essay-header, .toc),
+.draft-essay :is(header, article, .essay-header, .toc)
+  :not(:is(button, button *, form, form *, svg, svg *)),
+.draft-listing,
+.draft-listing *,
+.draft-status {
+  color: var(--draft-red) !important;
+}
+
+.draft-essay article p a,
+.draft-essay article li a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.draft-status {
+  display: block;
+  margin: 0 0 0.75rem;
+  font: 650 0.75rem/1.45 system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
