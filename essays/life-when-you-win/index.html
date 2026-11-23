@@ -65,7 +65,12 @@
       padding-inline: max(var(--essay-gutter), env(safe-area-inset-left)) max(var(--essay-gutter), env(safe-area-inset-right));
     }
 
-    .back-nav { padding: 20px 0 0; }
+    .back-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+    }
     .back-nav a {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       font-size: 13px;
@@ -76,8 +81,9 @@
     .back-nav a:hover { text-decoration: underline; }
 
     header {
-      padding: clamp(36px, 6vw, 60px) 0 0;
-      margin-bottom: clamp(24px, 4vw, 38px);
+      padding-top: clamp(24px, 4vw, 44px);
+      margin-bottom: clamp(22px, 3vw, 30px);
+      text-align: center;
     }
 
     .kicker {
@@ -91,11 +97,13 @@
     }
 
     h1 {
-      font: 400 clamp(35px, 7vw, 58px)/1.08 Georgia, 'Times New Roman', serif;
+      font: 400 clamp(27px, 8.6vw, 54px)/1.07 Georgia, 'Times New Roman', serif;
       letter-spacing: -0.035em;
       color: var(--ink);
       text-wrap: balance;
     }
+
+    h1 span { display: block; }
 
     article { padding-bottom: 80px; font-size: var(--essay-font-size, 19px); }
 
@@ -144,7 +152,8 @@
     [data-theme="dark"] footer p { color: #666666; }
 
     /* Dark mode toggle */
-    .essay-toggle { position: fixed; top: 20px; right: 24px; z-index: 100; background: none; border: none; cursor: pointer; padding: 2px; display: flex; align-items: center; gap: 6px; }
+    .essay-toggle { min-height: 44px; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 7px; }
+    .essay-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 9px; }
     .toggle-track { width: 40px; height: 22px; background: #DDDDDD; border-radius: 11px; position: relative; transition: background 0.25s; display: block; flex-shrink: 0; }
     .essay-toggle[aria-pressed="true"] .toggle-track { background: #555555; }
     .toggle-knob { width: 16px; height: 16px; background: #FFFFFF; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: transform 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
@@ -152,27 +161,31 @@
     .moon-icon { color: #CCCCCC; flex-shrink: 0; transition: color 0.25s; }
     .essay-toggle[aria-pressed="true"] .moon-icon { color: #DDDDDD; }
 
-    .reading-tools {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px 18px;
-      margin-top: 26px;
-      padding-top: 14px;
-      border-top: 1px solid var(--rule);
+    .read-time {
+      margin: 14px 0 0;
+      color: var(--ink-light);
       font: 13px/1.4 system-ui, sans-serif;
     }
-    .reading-settings {
-      display: flex;
-      flex: 1 1 auto;
-      flex-wrap: wrap;
+    .reading-tools {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: center;
-      justify-content: space-between;
-      gap: 8px 16px;
+      max-width: 510px;
+      margin: 22px auto 0;
+      padding: 8px 0;
+      border-block: 1px solid var(--rule);
+      font: 13px/1.4 system-ui, sans-serif;
     }
-    .read-time { color: var(--ink-light); white-space: nowrap; }
-    .text-size-tools { display: flex; align-items: center; gap: 9px; }
-    .text-size-label { font-weight: 650; }
+    .reading-tools:has(.is-docked) { grid-template-columns: minmax(0, 1fr); }
+    .text-size-tools {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .reading-tools:not(:has(.is-docked)) .text-size-tools { border-inline-start: 1px solid var(--rule); }
+    .text-size-label { font-weight: 650; white-space: nowrap; }
     .text-size-stepper {
       display: flex;
       align-items: center;
@@ -225,13 +238,10 @@
     article p, article li { text-wrap: pretty; hanging-punctuation: first; }
     article p { margin-bottom: 1.15em; }
     article h2 { margin-top: 64px; }
-    /* Toggle scrolls away with the page instead of floating over the text */
-    .essay-toggle { position: absolute; top: calc(20px + env(safe-area-inset-top, 0px)); right: max(24px, env(safe-area-inset-right, 0px)); }
     /* Phone: smaller text, tighter leading, slightly narrower gutters */
     @media (max-width: 640px) {
       .container { --essay-gutter: 20px; }
       article { line-height: 1.6; }
-      .essay-toggle { top: calc(16px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
     }
     /* Follow the reader's system dark mode unless they picked light */
     @media (prefers-color-scheme: dark) {
@@ -276,7 +286,7 @@
     a.fn-back { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; margin-left: 6px; }
 
     .narration-player { font: 13px/1.4 system-ui, sans-serif; }
-    .narration-player:not(.is-docked):has(audio[controls]) { flex: 1 1 100%; }
+    .narration-player:not(.is-docked):has(audio[controls]) { padding-inline: 6px 10px; }
     .narration-player.is-docked {
       position: fixed;
       z-index: 20;
@@ -293,21 +303,41 @@
     body.has-narration-dock { padding-bottom: calc(145px + env(safe-area-inset-bottom)); }
     .narration-player [hidden],
     .narration-player:not(.is-docked) .narration-dock-only,
-    .narration-player.is-docked .narration-intro { display: none; }
+    .narration-player.is-docked :is(.narration-intro, .narration-listen-icon) { display: none; }
     .narration-toolbar { display: flex; justify-content: center; align-items: center; gap: 6px; }
-    .narration-intro { font-weight: 650; }
-    .narration-intro span { margin-inline-start: 0.4em; font-weight: 400; }
+    .narration-intro { font-weight: 650; text-align: start; }
+    .narration-length { display: block; color: var(--ink-light); font-weight: 400; font-variant-numeric: tabular-nums; }
     .narration-player:not(.is-docked) .narration-play {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 46px;
-      padding: 0 15px;
-      border-radius: 24px;
-      white-space: nowrap;
+      gap: 11px;
+      max-width: calc(100% - 8px);
+      min-height: 44px;
+      padding: 3px 10px;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--ink);
     }
-    .narration-player:not(.is-docked) .narration-play::before { border-block-width: 5px; border-inline-start-width: 8px; }
+    .narration-player:not(.is-docked) .narration-play:hover {
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    .narration-player:not(.is-docked) .narration-play::before { display: none; }
+    .narration-listen-icon {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--cream);
+    }
+    .narration-listen-icon::before {
+      content: "";
+      margin-inline-start: 2px;
+      border-block: 6px solid transparent;
+      border-inline-start: 9px solid currentColor;
+    }
     .narration-hint { margin: 2px 0 0; text-align: center; color: var(--ink-light); font-size: 12px; }
     .narration-player audio { display: block; width: 100%; height: 44px; }
     .narration-player button, .narration-player select, .narration-follow {
@@ -411,9 +441,10 @@
     .narration-player [data-close] { font-size: 22px; }
     .narration-player [role="status"] { margin: 6px 0 0; }
     ::highlight(narration-word) { color: #262516; background-color: #f3dc91; }
-    @media (max-width: 580px) {
-      .reading-tools { gap: 12px; margin-top: 20px; }
-      .narration-player:not(.is-docked), .narration-player:not(.is-docked) .narration-play { width: 100%; }
+    @media (max-width: 520px) {
+      .reading-tools { margin-top: 18px; }
+      .text-size-tools { flex-direction: column; gap: 3px; }
+      .narration-intro-detail { display: none; }
     }
     @media (max-width: 450px) {
       .narration-player.is-docked { padding: 5px 8px 8px; }
@@ -424,33 +455,22 @@
 </head>
 <body>
 
-<button class="essay-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false">
-  <span class="toggle-track"><span class="toggle-knob"></span></span>
-  <svg class="moon-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-</button>
-
 <div id="progress-bar"></div>
 
 <div class="container">
   <div class="back-nav">
     <a href="/essays/">← All essays</a>
+    <button class="essay-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false">
+      <span class="toggle-track"><span class="toggle-knob"></span></span>
+      <svg class="moon-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 
   <header>
     <div class="kicker">Essay · Mindfulness &amp; Motivation</div>
-    <h1>Life When You Win, Life When You Lose</h1>
+    <h1><span>Life When You Win,</span> <span>Life When You Lose</span></h1>
+    <p class="read-time">~30 min read</p>
     <div class="reading-tools">
-      <div class="reading-settings">
-        <span class="read-time">~30 min read</span>
-        <div class="text-size-tools" role="group" aria-labelledby="text-size-label">
-          <span id="text-size-label" class="text-size-label">Text size</span>
-          <div class="text-size-stepper">
-            <button type="button" class="font-size-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
-            <span class="text-size-value" aria-live="polite">100%</span>
-            <button type="button" class="font-size-btn" id="font-increase" aria-label="Increase text size">A+</button>
-          </div>
-        </div>
-      </div>
       <section class="narration-player" id="narration-title" aria-label="Listen to this article">
         <audio controls preload="none" aria-label="Essay narration" src="audio/narration-v0.30.m4a">
           <a href="audio/narration-v0.30.m4a">Download the narration</a>
@@ -465,7 +485,8 @@
           <div class="narration-toolbar">
             <button type="button" class="narration-dock-only" data-skip="-15" aria-label="Back 15 seconds" disabled>−15s</button>
             <button type="button" class="narration-play" aria-label="Listen to this article" aria-keyshortcuts="Space" title="Listen to this article">
-              <span class="narration-intro">Listen to this article <span>33:51</span></span>
+              <span class="narration-listen-icon" aria-hidden="true"></span>
+              <span class="narration-intro">Listen<span class="narration-intro-detail"> to this article</span><span class="narration-length">33:51</span></span>
             </button>
             <button type="button" class="narration-dock-only" data-skip="15" aria-label="Forward 15 seconds" disabled>+15s</button>
             <select class="narration-dock-only" aria-label="Playback speed">
@@ -482,6 +503,14 @@
         <p class="narration-hint narration-dock-only" hidden>Click or tap a word to jump</p>
         <p role="status" hidden></p>
       </section>
+      <div class="text-size-tools" role="group" aria-labelledby="text-size-label">
+        <span id="text-size-label" class="text-size-label">Text size</span>
+        <div class="text-size-stepper">
+          <button type="button" class="font-size-btn" id="font-decrease" aria-label="Decrease text size">A−</button>
+          <span class="text-size-value" aria-live="polite">100%</span>
+          <button type="button" class="font-size-btn" id="font-increase" aria-label="Increase text size">A+</button>
+        </div>
+      </div>
     </div>
   </header>
 
