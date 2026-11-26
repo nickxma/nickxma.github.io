@@ -1,3 +1,9 @@
+User-agent: Cloudflare-AI-Search
+Allow: /$
+Allow: /essays/life-when-you-win/$
+Allow: /sitemap.xml$
+Disallow: /
+
 User-agent: *
 Allow: /
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -362,7 +363,7 @@ function renderFeatured(post) {
   return `
     <a class="featured-post" href="/blog/${post.slug}/">
       <div class="featured-text">
-        <div class="featured-kicker">Featured · ${post.kicker}</div>
+        <div class="featured-kicker">Draft · ${post.kicker}</div>
         <h2 class="featured-title">${post.title}</h2>
         <p class="featured-excerpt">${post.excerpt}</p>
         <div class="featured-meta">
@@ -387,7 +388,7 @@ function renderCard(post) {
     <a class="post-card" href="/blog/${post.slug}/">
       ${imgHTML}
       <div class="post-card-body">
-        <div class="post-card-kicker">${post.kicker}</div>
+        <div class="post-card-kicker">Draft · ${post.kicker}</div>
         <h2 class="post-card-title">${post.title}</h2>
         <p class="post-card-excerpt">${post.excerpt}</p>
         <div class="post-card-meta">${post.date} · ${post.readTime}</div>
